@@ -1,4 +1,4 @@
-type C_BorrowEvent @entity {
+type BorrowEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -16,7 +16,7 @@ type C_BorrowEvent @entity {
   referral: Int! # uint16
 }
 
-type C_DepositEvent @entity {
+type DepositEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -32,7 +32,7 @@ type C_DepositEvent @entity {
   referral: Int! # uint16
 }
 
-type C_FlashLoanEvent @entity {
+type FlashLoanEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -49,7 +49,7 @@ type C_FlashLoanEvent @entity {
   referralCode: Int! # uint16
 }
 
-type C_LiquidationCallEvent @entity {
+type LiquidationCallEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -67,7 +67,7 @@ type C_LiquidationCallEvent @entity {
   receiveAToken: Boolean! # bool
 }
 
-type C_PausedEvent @entity {
+type PausedEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -78,7 +78,7 @@ type C_PausedEvent @entity {
   blockTimestamp: BigInt! # uint256
 }
 
-type C_RebalanceStableBorrowRateEvent @entity {
+type RebalanceStableBorrowRateEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -91,7 +91,7 @@ type C_RebalanceStableBorrowRateEvent @entity {
   user: Bytes! # address
 }
 
-type C_RepayEvent @entity {
+type RepayEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -106,7 +106,7 @@ type C_RepayEvent @entity {
   amount: BigInt! # uint256
 }
 
-type C_ReserveDataUpdatedEvent @entity {
+type ReserveDataUpdatedEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -123,7 +123,7 @@ type C_ReserveDataUpdatedEvent @entity {
   variableBorrowIndex: BigInt! # uint256
 }
 
-type C_ReserveUsedAsCollateralDisabledEvent @entity {
+type ReserveUsedAsCollateralDisabledEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -136,7 +136,7 @@ type C_ReserveUsedAsCollateralDisabledEvent @entity {
   user: Bytes! # address
 }
 
-type C_ReserveUsedAsCollateralEnabledEvent @entity {
+type ReserveUsedAsCollateralEnabledEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -149,7 +149,7 @@ type C_ReserveUsedAsCollateralEnabledEvent @entity {
   user: Bytes! # address
 }
 
-type C_SwapEvent @entity {
+type SwapEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -163,7 +163,7 @@ type C_SwapEvent @entity {
   rateMode: BigInt! # uint256
 }
 
-type C_UnpausedEvent @entity {
+type UnpausedEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -174,7 +174,7 @@ type C_UnpausedEvent @entity {
   blockTimestamp: BigInt! # uint256
 }
 
-type C_WithdrawEvent @entity {
+type WithdrawEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -189,7 +189,7 @@ type C_WithdrawEvent @entity {
   amount: BigInt! # uint256
 }
 
-type C1_AddressSetEvent @entity {
+type AddressSetEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -202,7 +202,7 @@ type C1_AddressSetEvent @entity {
   hasProxy: Boolean! # bool
 }
 
-type C1_ConfigurationAdminUpdatedEvent @entity {
+type ConfigurationAdminUpdatedEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -214,7 +214,7 @@ type C1_ConfigurationAdminUpdatedEvent @entity {
   newAddress: Bytes! # address
 }
 
-type C1_EmergencyAdminUpdatedEvent @entity {
+type EmergencyAdminUpdatedEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -226,7 +226,7 @@ type C1_EmergencyAdminUpdatedEvent @entity {
   newAddress: Bytes! # address
 }
 
-type C1_LendingPoolCollateralManagerUpdatedEvent @entity {
+type LendingPoolCollateralManagerUpdatedEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -238,7 +238,7 @@ type C1_LendingPoolCollateralManagerUpdatedEvent @entity {
   newAddress: Bytes! # address
 }
 
-type C1_LendingPoolConfiguratorUpdatedEvent @entity {
+type LendingPoolConfiguratorUpdatedEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -250,7 +250,7 @@ type C1_LendingPoolConfiguratorUpdatedEvent @entity {
   newAddress: Bytes! # address
 }
 
-type C1_LendingPoolUpdatedEvent @entity {
+type LendingPoolUpdatedEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -262,7 +262,7 @@ type C1_LendingPoolUpdatedEvent @entity {
   newAddress: Bytes! # address
 }
 
-type C1_LendingRateOracleUpdatedEvent @entity {
+type LendingRateOracleUpdatedEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -274,7 +274,7 @@ type C1_LendingRateOracleUpdatedEvent @entity {
   newAddress: Bytes! # address
 }
 
-type C1_MarketIdSetEvent @entity {
+type MarketIdSetEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -286,7 +286,7 @@ type C1_MarketIdSetEvent @entity {
   newMarketId: String! # string
 }
 
-type C1_OwnershipTransferredEvent @entity {
+type OwnershipTransferredEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -299,7 +299,7 @@ type C1_OwnershipTransferredEvent @entity {
   newOwner: Bytes! # address
 }
 
-type C1_PriceOracleUpdatedEvent @entity {
+type PriceOracleUpdatedEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -311,7 +311,7 @@ type C1_PriceOracleUpdatedEvent @entity {
   newAddress: Bytes! # address
 }
 
-type C1_ProxyCreatedEvent @entity {
+type ProxyCreatedEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -323,7 +323,7 @@ type C1_ProxyCreatedEvent @entity {
   newAddress: Bytes! # address
 }
 
-type C2_ApprovalEvent @entity {
+type ApprovalEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -337,7 +337,7 @@ type C2_ApprovalEvent @entity {
   value: BigInt! # uint256
 }
 
-type C2_BorrowAllowanceDelegatedEvent @entity {
+type BorrowAllowanceDelegatedEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address
@@ -352,222 +352,7 @@ type C2_BorrowAllowanceDelegatedEvent @entity {
   amount: BigInt! # uint256
 }
 
-type C2_TransferEvent @entity {
-  id: ID!
-  txHash: Bytes
-  fromAddress: Bytes # address
-  toAddress: Bytes # address
-  valueTransferred: BigInt
-  gasUsed: BigInt
-  gasPrice: BigInt
-  blockTimestamp: BigInt! # uint256
-  from: Bytes! # address
-  to: Bytes! # address
-  value: BigInt! # uint256
-}
-
-type C3_ApprovalEvent @entity {
-  id: ID!
-  txHash: Bytes
-  fromAddress: Bytes # address
-  toAddress: Bytes # address
-  valueTransferred: BigInt
-  gasUsed: BigInt
-  gasPrice: BigInt
-  blockTimestamp: BigInt! # uint256
-  owner: Bytes! # address
-  spender: Bytes! # address
-  value: BigInt! # uint256
-}
-
-type C3_BorrowAllowanceDelegatedEvent @entity {
-  id: ID!
-  txHash: Bytes
-  fromAddress: Bytes # address
-  toAddress: Bytes # address
-  valueTransferred: BigInt
-  gasUsed: BigInt
-  gasPrice: BigInt
-  blockTimestamp: BigInt! # uint256
-  fromUser: Bytes! # address
-  toUser: Bytes! # address
-  asset: Bytes! # address
-  amount: BigInt! # uint256
-}
-
-type C3_TransferEvent @entity {
-  id: ID!
-  txHash: Bytes
-  fromAddress: Bytes # address
-  toAddress: Bytes # address
-  valueTransferred: BigInt
-  gasUsed: BigInt
-  gasPrice: BigInt
-  blockTimestamp: BigInt! # uint256
-  from: Bytes! # address
-  to: Bytes! # address
-  value: BigInt! # uint256
-}
-
-type C4_ApprovalEvent @entity {
-  id: ID!
-  txHash: Bytes
-  fromAddress: Bytes # address
-  toAddress: Bytes # address
-  valueTransferred: BigInt
-  gasUsed: BigInt
-  gasPrice: BigInt
-  blockTimestamp: BigInt! # uint256
-  owner: Bytes! # address
-  spender: Bytes! # address
-  value: BigInt! # uint256
-}
-
-type C4_BorrowAllowanceDelegatedEvent @entity {
-  id: ID!
-  txHash: Bytes
-  fromAddress: Bytes # address
-  toAddress: Bytes # address
-  valueTransferred: BigInt
-  gasUsed: BigInt
-  gasPrice: BigInt
-  blockTimestamp: BigInt! # uint256
-  fromUser: Bytes! # address
-  toUser: Bytes! # address
-  asset: Bytes! # address
-  amount: BigInt! # uint256
-}
-
-type C4_TransferEvent @entity {
-  id: ID!
-  txHash: Bytes
-  fromAddress: Bytes # address
-  toAddress: Bytes # address
-  valueTransferred: BigInt
-  gasUsed: BigInt
-  gasPrice: BigInt
-  blockTimestamp: BigInt! # uint256
-  from: Bytes! # address
-  to: Bytes! # address
-  value: BigInt! # uint256
-}
-
-type C5_ApprovalEvent @entity {
-  id: ID!
-  txHash: Bytes
-  fromAddress: Bytes # address
-  toAddress: Bytes # address
-  valueTransferred: BigInt
-  gasUsed: BigInt
-  gasPrice: BigInt
-  blockTimestamp: BigInt! # uint256
-  owner: Bytes! # address
-  spender: Bytes! # address
-  value: BigInt! # uint256
-}
-
-type C5_BorrowAllowanceDelegatedEvent @entity {
-  id: ID!
-  txHash: Bytes
-  fromAddress: Bytes # address
-  toAddress: Bytes # address
-  valueTransferred: BigInt
-  gasUsed: BigInt
-  gasPrice: BigInt
-  blockTimestamp: BigInt! # uint256
-  fromUser: Bytes! # address
-  toUser: Bytes! # address
-  asset: Bytes! # address
-  amount: BigInt! # uint256
-}
-
-type C5_TransferEvent @entity {
-  id: ID!
-  txHash: Bytes
-  fromAddress: Bytes # address
-  toAddress: Bytes # address
-  valueTransferred: BigInt
-  gasUsed: BigInt
-  gasPrice: BigInt
-  blockTimestamp: BigInt! # uint256
-  from: Bytes! # address
-  to: Bytes! # address
-  value: BigInt! # uint256
-}
-
-type C6_ApprovalEvent @entity {
-  id: ID!
-  txHash: Bytes
-  fromAddress: Bytes # address
-  toAddress: Bytes # address
-  valueTransferred: BigInt
-  gasUsed: BigInt
-  gasPrice: BigInt
-  blockTimestamp: BigInt! # uint256
-  owner: Bytes! # address
-  spender: Bytes! # address
-  value: BigInt! # uint256
-}
-
-type C6_BorrowAllowanceDelegatedEvent @entity {
-  id: ID!
-  txHash: Bytes
-  fromAddress: Bytes # address
-  toAddress: Bytes # address
-  valueTransferred: BigInt
-  gasUsed: BigInt
-  gasPrice: BigInt
-  blockTimestamp: BigInt! # uint256
-  fromUser: Bytes! # address
-  toUser: Bytes! # address
-  asset: Bytes! # address
-  amount: BigInt! # uint256
-}
-
-type C6_TransferEvent @entity {
-  id: ID!
-  txHash: Bytes
-  fromAddress: Bytes # address
-  toAddress: Bytes # address
-  valueTransferred: BigInt
-  gasUsed: BigInt
-  gasPrice: BigInt
-  blockTimestamp: BigInt! # uint256
-  from: Bytes! # address
-  to: Bytes! # address
-  value: BigInt! # uint256
-}
-
-type C7_ApprovalEvent @entity {
-  id: ID!
-  txHash: Bytes
-  fromAddress: Bytes # address
-  toAddress: Bytes # address
-  valueTransferred: BigInt
-  gasUsed: BigInt
-  gasPrice: BigInt
-  blockTimestamp: BigInt! # uint256
-  owner: Bytes! # address
-  spender: Bytes! # address
-  value: BigInt! # uint256
-}
-
-type C7_BorrowAllowanceDelegatedEvent @entity {
-  id: ID!
-  txHash: Bytes
-  fromAddress: Bytes # address
-  toAddress: Bytes # address
-  valueTransferred: BigInt
-  gasUsed: BigInt
-  gasPrice: BigInt
-  blockTimestamp: BigInt! # uint256
-  fromUser: Bytes! # address
-  toUser: Bytes! # address
-  asset: Bytes! # address
-  amount: BigInt! # uint256
-}
-
-type C7_TransferEvent @entity {
+type TransferEvent @entity {
   id: ID!
   txHash: Bytes
   fromAddress: Bytes # address

@@ -5,9 +5,9 @@ import {
 } from "../generated/C2_/C2_"
 import {} from "../generated/C2_/C2_"
 import {
-  C2_ApprovalEvent as C2_ApprovalEventSchema,
-  C2_BorrowAllowanceDelegatedEvent as C2_BorrowAllowanceDelegatedEventSchema,
-  C2_TransferEvent as C2_TransferEventSchema
+  ApprovalEvent as C2_ApprovalEventSchema,
+  BorrowAllowanceDelegatedEvent as C2_BorrowAllowanceDelegatedEventSchema,
+  TransferEvent as C2_TransferEventSchema
 } from "../generated/schema"
 import {} from "../generated/schema"
 

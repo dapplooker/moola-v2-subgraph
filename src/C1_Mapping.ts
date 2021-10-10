@@ -13,17 +13,17 @@ import {
 } from "../generated/C1_/C1_"
 import {} from "../generated/C1_/C1_"
 import {
-  C1_AddressSetEvent as C1_AddressSetEventSchema,
-  C1_ConfigurationAdminUpdatedEvent as C1_ConfigurationAdminUpdatedEventSchema,
-  C1_EmergencyAdminUpdatedEvent as C1_EmergencyAdminUpdatedEventSchema,
-  C1_LendingPoolCollateralManagerUpdatedEvent as C1_LendingPoolCollateralManagerUpdatedEventSchema,
-  C1_LendingPoolConfiguratorUpdatedEvent as C1_LendingPoolConfiguratorUpdatedEventSchema,
-  C1_LendingPoolUpdatedEvent as C1_LendingPoolUpdatedEventSchema,
-  C1_LendingRateOracleUpdatedEvent as C1_LendingRateOracleUpdatedEventSchema,
-  C1_MarketIdSetEvent as C1_MarketIdSetEventSchema,
-  C1_OwnershipTransferredEvent as C1_OwnershipTransferredEventSchema,
-  C1_PriceOracleUpdatedEvent as C1_PriceOracleUpdatedEventSchema,
-  C1_ProxyCreatedEvent as C1_ProxyCreatedEventSchema
+  AddressSetEvent as C1_AddressSetEventSchema,
+  ConfigurationAdminUpdatedEvent as C1_ConfigurationAdminUpdatedEventSchema,
+  EmergencyAdminUpdatedEvent as C1_EmergencyAdminUpdatedEventSchema,
+  LendingPoolCollateralManagerUpdatedEvent as C1_LendingPoolCollateralManagerUpdatedEventSchema,
+  LendingPoolConfiguratorUpdatedEvent as C1_LendingPoolConfiguratorUpdatedEventSchema,
+  LendingPoolUpdatedEvent as C1_LendingPoolUpdatedEventSchema,
+  LendingRateOracleUpdatedEvent as C1_LendingRateOracleUpdatedEventSchema,
+  MarketIdSetEvent as C1_MarketIdSetEventSchema,
+  OwnershipTransferredEvent as C1_OwnershipTransferredEventSchema,
+  PriceOracleUpdatedEvent as C1_PriceOracleUpdatedEventSchema,
+  ProxyCreatedEvent as C1_ProxyCreatedEventSchema
 } from "../generated/schema"
 import {} from "../generated/schema"
 

@@ -15,19 +15,19 @@ import {
 } from "../generated/C_/C_"
 import {} from "../generated/C_/C_"
 import {
-  C_BorrowEvent as C_BorrowEventSchema,
-  C_DepositEvent as C_DepositEventSchema,
-  C_FlashLoanEvent as C_FlashLoanEventSchema,
-  C_LiquidationCallEvent as C_LiquidationCallEventSchema,
-  C_PausedEvent as C_PausedEventSchema,
-  C_RebalanceStableBorrowRateEvent as C_RebalanceStableBorrowRateEventSchema,
-  C_RepayEvent as C_RepayEventSchema,
-  C_ReserveDataUpdatedEvent as C_ReserveDataUpdatedEventSchema,
-  C_ReserveUsedAsCollateralDisabledEvent as C_ReserveUsedAsCollateralDisabledEventSchema,
-  C_ReserveUsedAsCollateralEnabledEvent as C_ReserveUsedAsCollateralEnabledEventSchema,
-  C_SwapEvent as C_SwapEventSchema,
-  C_UnpausedEvent as C_UnpausedEventSchema,
-  C_WithdrawEvent as C_WithdrawEventSchema
+  BorrowEvent as C_BorrowEventSchema,
+  DepositEvent as C_DepositEventSchema,
+  FlashLoanEvent as C_FlashLoanEventSchema,
+  LiquidationCallEvent as C_LiquidationCallEventSchema,
+  PausedEvent as C_PausedEventSchema,
+  RebalanceStableBorrowRateEvent as C_RebalanceStableBorrowRateEventSchema,
+  RepayEvent as C_RepayEventSchema,
+  ReserveDataUpdatedEvent as C_ReserveDataUpdatedEventSchema,
+  ReserveUsedAsCollateralDisabledEvent as C_ReserveUsedAsCollateralDisabledEventSchema,
+  ReserveUsedAsCollateralEnabledEvent as C_ReserveUsedAsCollateralEnabledEventSchema,
+  SwapEvent as C_SwapEventSchema,
+  UnpausedEvent as C_UnpausedEventSchema,
+  WithdrawEvent as C_WithdrawEventSchema
 } from "../generated/schema"
 import {} from "../generated/schema"
 

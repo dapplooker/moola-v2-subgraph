@@ -12,7 +12,7 @@ import {
   BigDecimal
 } from "@graphprotocol/graph-ts";
 
-export class C_BorrowEvent extends Entity {
+export class BorrowEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -20,17 +20,17 @@ export class C_BorrowEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save C_BorrowEvent entity without an ID");
+    assert(id !== null, "Cannot save BorrowEvent entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C_BorrowEvent entity with non-string ID. " +
+      "Cannot save BorrowEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C_BorrowEvent", id.toString(), this);
+    store.set("BorrowEvent", id.toString(), this);
   }
 
-  static load(id: string): C_BorrowEvent | null {
-    return store.get("C_BorrowEvent", id) as C_BorrowEvent | null;
+  static load(id: string): BorrowEvent | null {
+    return store.get("BorrowEvent", id) as BorrowEvent | null;
   }
 
   get id(): string {
@@ -217,7 +217,7 @@ export class C_BorrowEvent extends Entity {
   }
 }
 
-export class C_DepositEvent extends Entity {
+export class DepositEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -225,17 +225,17 @@ export class C_DepositEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save C_DepositEvent entity without an ID");
+    assert(id !== null, "Cannot save DepositEvent entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C_DepositEvent entity with non-string ID. " +
+      "Cannot save DepositEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C_DepositEvent", id.toString(), this);
+    store.set("DepositEvent", id.toString(), this);
   }
 
-  static load(id: string): C_DepositEvent | null {
-    return store.get("C_DepositEvent", id) as C_DepositEvent | null;
+  static load(id: string): DepositEvent | null {
+    return store.get("DepositEvent", id) as DepositEvent | null;
   }
 
   get id(): string {
@@ -404,7 +404,7 @@ export class C_DepositEvent extends Entity {
   }
 }
 
-export class C_FlashLoanEvent extends Entity {
+export class FlashLoanEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -412,17 +412,17 @@ export class C_FlashLoanEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save C_FlashLoanEvent entity without an ID");
+    assert(id !== null, "Cannot save FlashLoanEvent entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C_FlashLoanEvent entity with non-string ID. " +
+      "Cannot save FlashLoanEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C_FlashLoanEvent", id.toString(), this);
+    store.set("FlashLoanEvent", id.toString(), this);
   }
 
-  static load(id: string): C_FlashLoanEvent | null {
-    return store.get("C_FlashLoanEvent", id) as C_FlashLoanEvent | null;
+  static load(id: string): FlashLoanEvent | null {
+    return store.get("FlashLoanEvent", id) as FlashLoanEvent | null;
   }
 
   get id(): string {
@@ -600,7 +600,7 @@ export class C_FlashLoanEvent extends Entity {
   }
 }
 
-export class C_LiquidationCallEvent extends Entity {
+export class LiquidationCallEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -610,21 +610,18 @@ export class C_LiquidationCallEvent extends Entity {
     let id = this.get("id");
     assert(
       id !== null,
-      "Cannot save C_LiquidationCallEvent entity without an ID"
+      "Cannot save LiquidationCallEvent entity without an ID"
     );
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C_LiquidationCallEvent entity with non-string ID. " +
+      "Cannot save LiquidationCallEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C_LiquidationCallEvent", id.toString(), this);
+    store.set("LiquidationCallEvent", id.toString(), this);
   }
 
-  static load(id: string): C_LiquidationCallEvent | null {
-    return store.get(
-      "C_LiquidationCallEvent",
-      id
-    ) as C_LiquidationCallEvent | null;
+  static load(id: string): LiquidationCallEvent | null {
+    return store.get("LiquidationCallEvent", id) as LiquidationCallEvent | null;
   }
 
   get id(): string {
@@ -811,7 +808,7 @@ export class C_LiquidationCallEvent extends Entity {
   }
 }
 
-export class C_PausedEvent extends Entity {
+export class PausedEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -819,17 +816,17 @@ export class C_PausedEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save C_PausedEvent entity without an ID");
+    assert(id !== null, "Cannot save PausedEvent entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C_PausedEvent entity with non-string ID. " +
+      "Cannot save PausedEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C_PausedEvent", id.toString(), this);
+    store.set("PausedEvent", id.toString(), this);
   }
 
-  static load(id: string): C_PausedEvent | null {
-    return store.get("C_PausedEvent", id) as C_PausedEvent | null;
+  static load(id: string): PausedEvent | null {
+    return store.get("PausedEvent", id) as PausedEvent | null;
   }
 
   get id(): string {
@@ -953,7 +950,7 @@ export class C_PausedEvent extends Entity {
   }
 }
 
-export class C_RebalanceStableBorrowRateEvent extends Entity {
+export class RebalanceStableBorrowRateEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -963,21 +960,21 @@ export class C_RebalanceStableBorrowRateEvent extends Entity {
     let id = this.get("id");
     assert(
       id !== null,
-      "Cannot save C_RebalanceStableBorrowRateEvent entity without an ID"
+      "Cannot save RebalanceStableBorrowRateEvent entity without an ID"
     );
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C_RebalanceStableBorrowRateEvent entity with non-string ID. " +
+      "Cannot save RebalanceStableBorrowRateEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C_RebalanceStableBorrowRateEvent", id.toString(), this);
+    store.set("RebalanceStableBorrowRateEvent", id.toString(), this);
   }
 
-  static load(id: string): C_RebalanceStableBorrowRateEvent | null {
+  static load(id: string): RebalanceStableBorrowRateEvent | null {
     return store.get(
-      "C_RebalanceStableBorrowRateEvent",
+      "RebalanceStableBorrowRateEvent",
       id
-    ) as C_RebalanceStableBorrowRateEvent | null;
+    ) as RebalanceStableBorrowRateEvent | null;
   }
 
   get id(): string {
@@ -1119,7 +1116,7 @@ export class C_RebalanceStableBorrowRateEvent extends Entity {
   }
 }
 
-export class C_RepayEvent extends Entity {
+export class RepayEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -1127,17 +1124,17 @@ export class C_RepayEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save C_RepayEvent entity without an ID");
+    assert(id !== null, "Cannot save RepayEvent entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C_RepayEvent entity with non-string ID. " +
+      "Cannot save RepayEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C_RepayEvent", id.toString(), this);
+    store.set("RepayEvent", id.toString(), this);
   }
 
-  static load(id: string): C_RepayEvent | null {
-    return store.get("C_RepayEvent", id) as C_RepayEvent | null;
+  static load(id: string): RepayEvent | null {
+    return store.get("RepayEvent", id) as RepayEvent | null;
   }
 
   get id(): string {
@@ -1297,7 +1294,7 @@ export class C_RepayEvent extends Entity {
   }
 }
 
-export class C_ReserveDataUpdatedEvent extends Entity {
+export class ReserveDataUpdatedEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -1307,21 +1304,21 @@ export class C_ReserveDataUpdatedEvent extends Entity {
     let id = this.get("id");
     assert(
       id !== null,
-      "Cannot save C_ReserveDataUpdatedEvent entity without an ID"
+      "Cannot save ReserveDataUpdatedEvent entity without an ID"
     );
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C_ReserveDataUpdatedEvent entity with non-string ID. " +
+      "Cannot save ReserveDataUpdatedEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C_ReserveDataUpdatedEvent", id.toString(), this);
+    store.set("ReserveDataUpdatedEvent", id.toString(), this);
   }
 
-  static load(id: string): C_ReserveDataUpdatedEvent | null {
+  static load(id: string): ReserveDataUpdatedEvent | null {
     return store.get(
-      "C_ReserveDataUpdatedEvent",
+      "ReserveDataUpdatedEvent",
       id
-    ) as C_ReserveDataUpdatedEvent | null;
+    ) as ReserveDataUpdatedEvent | null;
   }
 
   get id(): string {
@@ -1499,7 +1496,7 @@ export class C_ReserveDataUpdatedEvent extends Entity {
   }
 }
 
-export class C_ReserveUsedAsCollateralDisabledEvent extends Entity {
+export class ReserveUsedAsCollateralDisabledEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -1509,21 +1506,21 @@ export class C_ReserveUsedAsCollateralDisabledEvent extends Entity {
     let id = this.get("id");
     assert(
       id !== null,
-      "Cannot save C_ReserveUsedAsCollateralDisabledEvent entity without an ID"
+      "Cannot save ReserveUsedAsCollateralDisabledEvent entity without an ID"
     );
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C_ReserveUsedAsCollateralDisabledEvent entity with non-string ID. " +
+      "Cannot save ReserveUsedAsCollateralDisabledEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C_ReserveUsedAsCollateralDisabledEvent", id.toString(), this);
+    store.set("ReserveUsedAsCollateralDisabledEvent", id.toString(), this);
   }
 
-  static load(id: string): C_ReserveUsedAsCollateralDisabledEvent | null {
+  static load(id: string): ReserveUsedAsCollateralDisabledEvent | null {
     return store.get(
-      "C_ReserveUsedAsCollateralDisabledEvent",
+      "ReserveUsedAsCollateralDisabledEvent",
       id
-    ) as C_ReserveUsedAsCollateralDisabledEvent | null;
+    ) as ReserveUsedAsCollateralDisabledEvent | null;
   }
 
   get id(): string {
@@ -1665,7 +1662,7 @@ export class C_ReserveUsedAsCollateralDisabledEvent extends Entity {
   }
 }
 
-export class C_ReserveUsedAsCollateralEnabledEvent extends Entity {
+export class ReserveUsedAsCollateralEnabledEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -1675,21 +1672,21 @@ export class C_ReserveUsedAsCollateralEnabledEvent extends Entity {
     let id = this.get("id");
     assert(
       id !== null,
-      "Cannot save C_ReserveUsedAsCollateralEnabledEvent entity without an ID"
+      "Cannot save ReserveUsedAsCollateralEnabledEvent entity without an ID"
     );
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C_ReserveUsedAsCollateralEnabledEvent entity with non-string ID. " +
+      "Cannot save ReserveUsedAsCollateralEnabledEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C_ReserveUsedAsCollateralEnabledEvent", id.toString(), this);
+    store.set("ReserveUsedAsCollateralEnabledEvent", id.toString(), this);
   }
 
-  static load(id: string): C_ReserveUsedAsCollateralEnabledEvent | null {
+  static load(id: string): ReserveUsedAsCollateralEnabledEvent | null {
     return store.get(
-      "C_ReserveUsedAsCollateralEnabledEvent",
+      "ReserveUsedAsCollateralEnabledEvent",
       id
-    ) as C_ReserveUsedAsCollateralEnabledEvent | null;
+    ) as ReserveUsedAsCollateralEnabledEvent | null;
   }
 
   get id(): string {
@@ -1831,7 +1828,7 @@ export class C_ReserveUsedAsCollateralEnabledEvent extends Entity {
   }
 }
 
-export class C_SwapEvent extends Entity {
+export class SwapEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -1839,17 +1836,17 @@ export class C_SwapEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save C_SwapEvent entity without an ID");
+    assert(id !== null, "Cannot save SwapEvent entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C_SwapEvent entity with non-string ID. " +
+      "Cannot save SwapEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C_SwapEvent", id.toString(), this);
+    store.set("SwapEvent", id.toString(), this);
   }
 
-  static load(id: string): C_SwapEvent | null {
-    return store.get("C_SwapEvent", id) as C_SwapEvent | null;
+  static load(id: string): SwapEvent | null {
+    return store.get("SwapEvent", id) as SwapEvent | null;
   }
 
   get id(): string {
@@ -2000,7 +1997,7 @@ export class C_SwapEvent extends Entity {
   }
 }
 
-export class C_UnpausedEvent extends Entity {
+export class UnpausedEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -2008,17 +2005,17 @@ export class C_UnpausedEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save C_UnpausedEvent entity without an ID");
+    assert(id !== null, "Cannot save UnpausedEvent entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C_UnpausedEvent entity with non-string ID. " +
+      "Cannot save UnpausedEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C_UnpausedEvent", id.toString(), this);
+    store.set("UnpausedEvent", id.toString(), this);
   }
 
-  static load(id: string): C_UnpausedEvent | null {
-    return store.get("C_UnpausedEvent", id) as C_UnpausedEvent | null;
+  static load(id: string): UnpausedEvent | null {
+    return store.get("UnpausedEvent", id) as UnpausedEvent | null;
   }
 
   get id(): string {
@@ -2142,7 +2139,7 @@ export class C_UnpausedEvent extends Entity {
   }
 }
 
-export class C_WithdrawEvent extends Entity {
+export class WithdrawEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -2150,17 +2147,17 @@ export class C_WithdrawEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save C_WithdrawEvent entity without an ID");
+    assert(id !== null, "Cannot save WithdrawEvent entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C_WithdrawEvent entity with non-string ID. " +
+      "Cannot save WithdrawEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C_WithdrawEvent", id.toString(), this);
+    store.set("WithdrawEvent", id.toString(), this);
   }
 
-  static load(id: string): C_WithdrawEvent | null {
-    return store.get("C_WithdrawEvent", id) as C_WithdrawEvent | null;
+  static load(id: string): WithdrawEvent | null {
+    return store.get("WithdrawEvent", id) as WithdrawEvent | null;
   }
 
   get id(): string {
@@ -2320,7 +2317,7 @@ export class C_WithdrawEvent extends Entity {
   }
 }
 
-export class C1_AddressSetEvent extends Entity {
+export class AddressSetEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -2328,17 +2325,17 @@ export class C1_AddressSetEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save C1_AddressSetEvent entity without an ID");
+    assert(id !== null, "Cannot save AddressSetEvent entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C1_AddressSetEvent entity with non-string ID. " +
+      "Cannot save AddressSetEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C1_AddressSetEvent", id.toString(), this);
+    store.set("AddressSetEvent", id.toString(), this);
   }
 
-  static load(id: string): C1_AddressSetEvent | null {
-    return store.get("C1_AddressSetEvent", id) as C1_AddressSetEvent | null;
+  static load(id: string): AddressSetEvent | null {
+    return store.get("AddressSetEvent", id) as AddressSetEvent | null;
   }
 
   get id(): string {
@@ -2480,7 +2477,7 @@ export class C1_AddressSetEvent extends Entity {
   }
 }
 
-export class C1_ConfigurationAdminUpdatedEvent extends Entity {
+export class ConfigurationAdminUpdatedEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -2490,21 +2487,21 @@ export class C1_ConfigurationAdminUpdatedEvent extends Entity {
     let id = this.get("id");
     assert(
       id !== null,
-      "Cannot save C1_ConfigurationAdminUpdatedEvent entity without an ID"
+      "Cannot save ConfigurationAdminUpdatedEvent entity without an ID"
     );
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C1_ConfigurationAdminUpdatedEvent entity with non-string ID. " +
+      "Cannot save ConfigurationAdminUpdatedEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C1_ConfigurationAdminUpdatedEvent", id.toString(), this);
+    store.set("ConfigurationAdminUpdatedEvent", id.toString(), this);
   }
 
-  static load(id: string): C1_ConfigurationAdminUpdatedEvent | null {
+  static load(id: string): ConfigurationAdminUpdatedEvent | null {
     return store.get(
-      "C1_ConfigurationAdminUpdatedEvent",
+      "ConfigurationAdminUpdatedEvent",
       id
-    ) as C1_ConfigurationAdminUpdatedEvent | null;
+    ) as ConfigurationAdminUpdatedEvent | null;
   }
 
   get id(): string {
@@ -2637,7 +2634,7 @@ export class C1_ConfigurationAdminUpdatedEvent extends Entity {
   }
 }
 
-export class C1_EmergencyAdminUpdatedEvent extends Entity {
+export class EmergencyAdminUpdatedEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -2647,21 +2644,21 @@ export class C1_EmergencyAdminUpdatedEvent extends Entity {
     let id = this.get("id");
     assert(
       id !== null,
-      "Cannot save C1_EmergencyAdminUpdatedEvent entity without an ID"
+      "Cannot save EmergencyAdminUpdatedEvent entity without an ID"
     );
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C1_EmergencyAdminUpdatedEvent entity with non-string ID. " +
+      "Cannot save EmergencyAdminUpdatedEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C1_EmergencyAdminUpdatedEvent", id.toString(), this);
+    store.set("EmergencyAdminUpdatedEvent", id.toString(), this);
   }
 
-  static load(id: string): C1_EmergencyAdminUpdatedEvent | null {
+  static load(id: string): EmergencyAdminUpdatedEvent | null {
     return store.get(
-      "C1_EmergencyAdminUpdatedEvent",
+      "EmergencyAdminUpdatedEvent",
       id
-    ) as C1_EmergencyAdminUpdatedEvent | null;
+    ) as EmergencyAdminUpdatedEvent | null;
   }
 
   get id(): string {
@@ -2794,7 +2791,7 @@ export class C1_EmergencyAdminUpdatedEvent extends Entity {
   }
 }
 
-export class C1_LendingPoolCollateralManagerUpdatedEvent extends Entity {
+export class LendingPoolCollateralManagerUpdatedEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -2804,25 +2801,21 @@ export class C1_LendingPoolCollateralManagerUpdatedEvent extends Entity {
     let id = this.get("id");
     assert(
       id !== null,
-      "Cannot save C1_LendingPoolCollateralManagerUpdatedEvent entity without an ID"
+      "Cannot save LendingPoolCollateralManagerUpdatedEvent entity without an ID"
     );
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C1_LendingPoolCollateralManagerUpdatedEvent entity with non-string ID. " +
+      "Cannot save LendingPoolCollateralManagerUpdatedEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set(
-      "C1_LendingPoolCollateralManagerUpdatedEvent",
-      id.toString(),
-      this
-    );
+    store.set("LendingPoolCollateralManagerUpdatedEvent", id.toString(), this);
   }
 
-  static load(id: string): C1_LendingPoolCollateralManagerUpdatedEvent | null {
+  static load(id: string): LendingPoolCollateralManagerUpdatedEvent | null {
     return store.get(
-      "C1_LendingPoolCollateralManagerUpdatedEvent",
+      "LendingPoolCollateralManagerUpdatedEvent",
       id
-    ) as C1_LendingPoolCollateralManagerUpdatedEvent | null;
+    ) as LendingPoolCollateralManagerUpdatedEvent | null;
   }
 
   get id(): string {
@@ -2955,7 +2948,7 @@ export class C1_LendingPoolCollateralManagerUpdatedEvent extends Entity {
   }
 }
 
-export class C1_LendingPoolConfiguratorUpdatedEvent extends Entity {
+export class LendingPoolConfiguratorUpdatedEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -2965,21 +2958,21 @@ export class C1_LendingPoolConfiguratorUpdatedEvent extends Entity {
     let id = this.get("id");
     assert(
       id !== null,
-      "Cannot save C1_LendingPoolConfiguratorUpdatedEvent entity without an ID"
+      "Cannot save LendingPoolConfiguratorUpdatedEvent entity without an ID"
     );
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C1_LendingPoolConfiguratorUpdatedEvent entity with non-string ID. " +
+      "Cannot save LendingPoolConfiguratorUpdatedEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C1_LendingPoolConfiguratorUpdatedEvent", id.toString(), this);
+    store.set("LendingPoolConfiguratorUpdatedEvent", id.toString(), this);
   }
 
-  static load(id: string): C1_LendingPoolConfiguratorUpdatedEvent | null {
+  static load(id: string): LendingPoolConfiguratorUpdatedEvent | null {
     return store.get(
-      "C1_LendingPoolConfiguratorUpdatedEvent",
+      "LendingPoolConfiguratorUpdatedEvent",
       id
-    ) as C1_LendingPoolConfiguratorUpdatedEvent | null;
+    ) as LendingPoolConfiguratorUpdatedEvent | null;
   }
 
   get id(): string {
@@ -3112,7 +3105,7 @@ export class C1_LendingPoolConfiguratorUpdatedEvent extends Entity {
   }
 }
 
-export class C1_LendingPoolUpdatedEvent extends Entity {
+export class LendingPoolUpdatedEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -3122,21 +3115,21 @@ export class C1_LendingPoolUpdatedEvent extends Entity {
     let id = this.get("id");
     assert(
       id !== null,
-      "Cannot save C1_LendingPoolUpdatedEvent entity without an ID"
+      "Cannot save LendingPoolUpdatedEvent entity without an ID"
     );
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C1_LendingPoolUpdatedEvent entity with non-string ID. " +
+      "Cannot save LendingPoolUpdatedEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C1_LendingPoolUpdatedEvent", id.toString(), this);
+    store.set("LendingPoolUpdatedEvent", id.toString(), this);
   }
 
-  static load(id: string): C1_LendingPoolUpdatedEvent | null {
+  static load(id: string): LendingPoolUpdatedEvent | null {
     return store.get(
-      "C1_LendingPoolUpdatedEvent",
+      "LendingPoolUpdatedEvent",
       id
-    ) as C1_LendingPoolUpdatedEvent | null;
+    ) as LendingPoolUpdatedEvent | null;
   }
 
   get id(): string {
@@ -3269,7 +3262,7 @@ export class C1_LendingPoolUpdatedEvent extends Entity {
   }
 }
 
-export class C1_LendingRateOracleUpdatedEvent extends Entity {
+export class LendingRateOracleUpdatedEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -3279,21 +3272,21 @@ export class C1_LendingRateOracleUpdatedEvent extends Entity {
     let id = this.get("id");
     assert(
       id !== null,
-      "Cannot save C1_LendingRateOracleUpdatedEvent entity without an ID"
+      "Cannot save LendingRateOracleUpdatedEvent entity without an ID"
     );
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C1_LendingRateOracleUpdatedEvent entity with non-string ID. " +
+      "Cannot save LendingRateOracleUpdatedEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C1_LendingRateOracleUpdatedEvent", id.toString(), this);
+    store.set("LendingRateOracleUpdatedEvent", id.toString(), this);
   }
 
-  static load(id: string): C1_LendingRateOracleUpdatedEvent | null {
+  static load(id: string): LendingRateOracleUpdatedEvent | null {
     return store.get(
-      "C1_LendingRateOracleUpdatedEvent",
+      "LendingRateOracleUpdatedEvent",
       id
-    ) as C1_LendingRateOracleUpdatedEvent | null;
+    ) as LendingRateOracleUpdatedEvent | null;
   }
 
   get id(): string {
@@ -3426,7 +3419,7 @@ export class C1_LendingRateOracleUpdatedEvent extends Entity {
   }
 }
 
-export class C1_MarketIdSetEvent extends Entity {
+export class MarketIdSetEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -3434,17 +3427,17 @@ export class C1_MarketIdSetEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save C1_MarketIdSetEvent entity without an ID");
+    assert(id !== null, "Cannot save MarketIdSetEvent entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C1_MarketIdSetEvent entity with non-string ID. " +
+      "Cannot save MarketIdSetEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C1_MarketIdSetEvent", id.toString(), this);
+    store.set("MarketIdSetEvent", id.toString(), this);
   }
 
-  static load(id: string): C1_MarketIdSetEvent | null {
-    return store.get("C1_MarketIdSetEvent", id) as C1_MarketIdSetEvent | null;
+  static load(id: string): MarketIdSetEvent | null {
+    return store.get("MarketIdSetEvent", id) as MarketIdSetEvent | null;
   }
 
   get id(): string {
@@ -3577,7 +3570,7 @@ export class C1_MarketIdSetEvent extends Entity {
   }
 }
 
-export class C1_OwnershipTransferredEvent extends Entity {
+export class OwnershipTransferredEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -3587,21 +3580,21 @@ export class C1_OwnershipTransferredEvent extends Entity {
     let id = this.get("id");
     assert(
       id !== null,
-      "Cannot save C1_OwnershipTransferredEvent entity without an ID"
+      "Cannot save OwnershipTransferredEvent entity without an ID"
     );
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C1_OwnershipTransferredEvent entity with non-string ID. " +
+      "Cannot save OwnershipTransferredEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C1_OwnershipTransferredEvent", id.toString(), this);
+    store.set("OwnershipTransferredEvent", id.toString(), this);
   }
 
-  static load(id: string): C1_OwnershipTransferredEvent | null {
+  static load(id: string): OwnershipTransferredEvent | null {
     return store.get(
-      "C1_OwnershipTransferredEvent",
+      "OwnershipTransferredEvent",
       id
-    ) as C1_OwnershipTransferredEvent | null;
+    ) as OwnershipTransferredEvent | null;
   }
 
   get id(): string {
@@ -3743,7 +3736,7 @@ export class C1_OwnershipTransferredEvent extends Entity {
   }
 }
 
-export class C1_PriceOracleUpdatedEvent extends Entity {
+export class PriceOracleUpdatedEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -3753,21 +3746,21 @@ export class C1_PriceOracleUpdatedEvent extends Entity {
     let id = this.get("id");
     assert(
       id !== null,
-      "Cannot save C1_PriceOracleUpdatedEvent entity without an ID"
+      "Cannot save PriceOracleUpdatedEvent entity without an ID"
     );
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C1_PriceOracleUpdatedEvent entity with non-string ID. " +
+      "Cannot save PriceOracleUpdatedEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C1_PriceOracleUpdatedEvent", id.toString(), this);
+    store.set("PriceOracleUpdatedEvent", id.toString(), this);
   }
 
-  static load(id: string): C1_PriceOracleUpdatedEvent | null {
+  static load(id: string): PriceOracleUpdatedEvent | null {
     return store.get(
-      "C1_PriceOracleUpdatedEvent",
+      "PriceOracleUpdatedEvent",
       id
-    ) as C1_PriceOracleUpdatedEvent | null;
+    ) as PriceOracleUpdatedEvent | null;
   }
 
   get id(): string {
@@ -3900,7 +3893,7 @@ export class C1_PriceOracleUpdatedEvent extends Entity {
   }
 }
 
-export class C1_ProxyCreatedEvent extends Entity {
+export class ProxyCreatedEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -3908,20 +3901,17 @@ export class C1_ProxyCreatedEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(
-      id !== null,
-      "Cannot save C1_ProxyCreatedEvent entity without an ID"
-    );
+    assert(id !== null, "Cannot save ProxyCreatedEvent entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C1_ProxyCreatedEvent entity with non-string ID. " +
+      "Cannot save ProxyCreatedEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C1_ProxyCreatedEvent", id.toString(), this);
+    store.set("ProxyCreatedEvent", id.toString(), this);
   }
 
-  static load(id: string): C1_ProxyCreatedEvent | null {
-    return store.get("C1_ProxyCreatedEvent", id) as C1_ProxyCreatedEvent | null;
+  static load(id: string): ProxyCreatedEvent | null {
+    return store.get("ProxyCreatedEvent", id) as ProxyCreatedEvent | null;
   }
 
   get id(): string {
@@ -4054,7 +4044,7 @@ export class C1_ProxyCreatedEvent extends Entity {
   }
 }
 
-export class C2_ApprovalEvent extends Entity {
+export class ApprovalEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -4062,17 +4052,17 @@ export class C2_ApprovalEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save C2_ApprovalEvent entity without an ID");
+    assert(id !== null, "Cannot save ApprovalEvent entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C2_ApprovalEvent entity with non-string ID. " +
+      "Cannot save ApprovalEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C2_ApprovalEvent", id.toString(), this);
+    store.set("ApprovalEvent", id.toString(), this);
   }
 
-  static load(id: string): C2_ApprovalEvent | null {
-    return store.get("C2_ApprovalEvent", id) as C2_ApprovalEvent | null;
+  static load(id: string): ApprovalEvent | null {
+    return store.get("ApprovalEvent", id) as ApprovalEvent | null;
   }
 
   get id(): string {
@@ -4223,7 +4213,7 @@ export class C2_ApprovalEvent extends Entity {
   }
 }
 
-export class C2_BorrowAllowanceDelegatedEvent extends Entity {
+export class BorrowAllowanceDelegatedEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -4233,21 +4223,21 @@ export class C2_BorrowAllowanceDelegatedEvent extends Entity {
     let id = this.get("id");
     assert(
       id !== null,
-      "Cannot save C2_BorrowAllowanceDelegatedEvent entity without an ID"
+      "Cannot save BorrowAllowanceDelegatedEvent entity without an ID"
     );
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C2_BorrowAllowanceDelegatedEvent entity with non-string ID. " +
+      "Cannot save BorrowAllowanceDelegatedEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C2_BorrowAllowanceDelegatedEvent", id.toString(), this);
+    store.set("BorrowAllowanceDelegatedEvent", id.toString(), this);
   }
 
-  static load(id: string): C2_BorrowAllowanceDelegatedEvent | null {
+  static load(id: string): BorrowAllowanceDelegatedEvent | null {
     return store.get(
-      "C2_BorrowAllowanceDelegatedEvent",
+      "BorrowAllowanceDelegatedEvent",
       id
-    ) as C2_BorrowAllowanceDelegatedEvent | null;
+    ) as BorrowAllowanceDelegatedEvent | null;
   }
 
   get id(): string {
@@ -4407,7 +4397,7 @@ export class C2_BorrowAllowanceDelegatedEvent extends Entity {
   }
 }
 
-export class C2_TransferEvent extends Entity {
+export class TransferEvent extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -4415,2627 +4405,17 @@ export class C2_TransferEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save C2_TransferEvent entity without an ID");
+    assert(id !== null, "Cannot save TransferEvent entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save C2_TransferEvent entity with non-string ID. " +
+      "Cannot save TransferEvent entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("C2_TransferEvent", id.toString(), this);
+    store.set("TransferEvent", id.toString(), this);
   }
 
-  static load(id: string): C2_TransferEvent | null {
-    return store.get("C2_TransferEvent", id) as C2_TransferEvent | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get txHash(): Bytes | null {
-    let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set txHash(value: Bytes | null) {
-    if (value === null) {
-      this.unset("txHash");
-    } else {
-      this.set("txHash", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get fromAddress(): Bytes | null {
-    let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set fromAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("fromAddress");
-    } else {
-      this.set("fromAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get toAddress(): Bytes | null {
-    let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set toAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("toAddress");
-    } else {
-      this.set("toAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get valueTransferred(): BigInt | null {
-    let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set valueTransferred(value: BigInt | null) {
-    if (value === null) {
-      this.unset("valueTransferred");
-    } else {
-      this.set("valueTransferred", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasUsed(): BigInt | null {
-    let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasUsed(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasUsed");
-    } else {
-      this.set("gasUsed", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasPrice(): BigInt | null {
-    let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasPrice(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasPrice");
-    } else {
-      this.set("gasPrice", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get from(): Bytes {
-    let value = this.get("from");
-    return value.toBytes();
-  }
-
-  set from(value: Bytes) {
-    this.set("from", Value.fromBytes(value));
-  }
-
-  get to(): Bytes {
-    let value = this.get("to");
-    return value.toBytes();
-  }
-
-  set to(value: Bytes) {
-    this.set("to", Value.fromBytes(value));
-  }
-
-  get value(): BigInt {
-    let value = this.get("value");
-    return value.toBigInt();
-  }
-
-  set value(value: BigInt) {
-    this.set("value", Value.fromBigInt(value));
-  }
-}
-
-export class C3_ApprovalEvent extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id !== null, "Cannot save C3_ApprovalEvent entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save C3_ApprovalEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("C3_ApprovalEvent", id.toString(), this);
-  }
-
-  static load(id: string): C3_ApprovalEvent | null {
-    return store.get("C3_ApprovalEvent", id) as C3_ApprovalEvent | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get txHash(): Bytes | null {
-    let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set txHash(value: Bytes | null) {
-    if (value === null) {
-      this.unset("txHash");
-    } else {
-      this.set("txHash", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get fromAddress(): Bytes | null {
-    let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set fromAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("fromAddress");
-    } else {
-      this.set("fromAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get toAddress(): Bytes | null {
-    let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set toAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("toAddress");
-    } else {
-      this.set("toAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get valueTransferred(): BigInt | null {
-    let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set valueTransferred(value: BigInt | null) {
-    if (value === null) {
-      this.unset("valueTransferred");
-    } else {
-      this.set("valueTransferred", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasUsed(): BigInt | null {
-    let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasUsed(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasUsed");
-    } else {
-      this.set("gasUsed", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasPrice(): BigInt | null {
-    let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasPrice(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasPrice");
-    } else {
-      this.set("gasPrice", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get owner(): Bytes {
-    let value = this.get("owner");
-    return value.toBytes();
-  }
-
-  set owner(value: Bytes) {
-    this.set("owner", Value.fromBytes(value));
-  }
-
-  get spender(): Bytes {
-    let value = this.get("spender");
-    return value.toBytes();
-  }
-
-  set spender(value: Bytes) {
-    this.set("spender", Value.fromBytes(value));
-  }
-
-  get value(): BigInt {
-    let value = this.get("value");
-    return value.toBigInt();
-  }
-
-  set value(value: BigInt) {
-    this.set("value", Value.fromBigInt(value));
-  }
-}
-
-export class C3_BorrowAllowanceDelegatedEvent extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(
-      id !== null,
-      "Cannot save C3_BorrowAllowanceDelegatedEvent entity without an ID"
-    );
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save C3_BorrowAllowanceDelegatedEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("C3_BorrowAllowanceDelegatedEvent", id.toString(), this);
-  }
-
-  static load(id: string): C3_BorrowAllowanceDelegatedEvent | null {
-    return store.get(
-      "C3_BorrowAllowanceDelegatedEvent",
-      id
-    ) as C3_BorrowAllowanceDelegatedEvent | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get txHash(): Bytes | null {
-    let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set txHash(value: Bytes | null) {
-    if (value === null) {
-      this.unset("txHash");
-    } else {
-      this.set("txHash", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get fromAddress(): Bytes | null {
-    let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set fromAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("fromAddress");
-    } else {
-      this.set("fromAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get toAddress(): Bytes | null {
-    let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set toAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("toAddress");
-    } else {
-      this.set("toAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get valueTransferred(): BigInt | null {
-    let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set valueTransferred(value: BigInt | null) {
-    if (value === null) {
-      this.unset("valueTransferred");
-    } else {
-      this.set("valueTransferred", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasUsed(): BigInt | null {
-    let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasUsed(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasUsed");
-    } else {
-      this.set("gasUsed", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasPrice(): BigInt | null {
-    let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasPrice(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasPrice");
-    } else {
-      this.set("gasPrice", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get fromUser(): Bytes {
-    let value = this.get("fromUser");
-    return value.toBytes();
-  }
-
-  set fromUser(value: Bytes) {
-    this.set("fromUser", Value.fromBytes(value));
-  }
-
-  get toUser(): Bytes {
-    let value = this.get("toUser");
-    return value.toBytes();
-  }
-
-  set toUser(value: Bytes) {
-    this.set("toUser", Value.fromBytes(value));
-  }
-
-  get asset(): Bytes {
-    let value = this.get("asset");
-    return value.toBytes();
-  }
-
-  set asset(value: Bytes) {
-    this.set("asset", Value.fromBytes(value));
-  }
-
-  get amount(): BigInt {
-    let value = this.get("amount");
-    return value.toBigInt();
-  }
-
-  set amount(value: BigInt) {
-    this.set("amount", Value.fromBigInt(value));
-  }
-}
-
-export class C3_TransferEvent extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id !== null, "Cannot save C3_TransferEvent entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save C3_TransferEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("C3_TransferEvent", id.toString(), this);
-  }
-
-  static load(id: string): C3_TransferEvent | null {
-    return store.get("C3_TransferEvent", id) as C3_TransferEvent | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get txHash(): Bytes | null {
-    let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set txHash(value: Bytes | null) {
-    if (value === null) {
-      this.unset("txHash");
-    } else {
-      this.set("txHash", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get fromAddress(): Bytes | null {
-    let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set fromAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("fromAddress");
-    } else {
-      this.set("fromAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get toAddress(): Bytes | null {
-    let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set toAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("toAddress");
-    } else {
-      this.set("toAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get valueTransferred(): BigInt | null {
-    let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set valueTransferred(value: BigInt | null) {
-    if (value === null) {
-      this.unset("valueTransferred");
-    } else {
-      this.set("valueTransferred", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasUsed(): BigInt | null {
-    let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasUsed(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasUsed");
-    } else {
-      this.set("gasUsed", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasPrice(): BigInt | null {
-    let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasPrice(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasPrice");
-    } else {
-      this.set("gasPrice", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get from(): Bytes {
-    let value = this.get("from");
-    return value.toBytes();
-  }
-
-  set from(value: Bytes) {
-    this.set("from", Value.fromBytes(value));
-  }
-
-  get to(): Bytes {
-    let value = this.get("to");
-    return value.toBytes();
-  }
-
-  set to(value: Bytes) {
-    this.set("to", Value.fromBytes(value));
-  }
-
-  get value(): BigInt {
-    let value = this.get("value");
-    return value.toBigInt();
-  }
-
-  set value(value: BigInt) {
-    this.set("value", Value.fromBigInt(value));
-  }
-}
-
-export class C4_ApprovalEvent extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id !== null, "Cannot save C4_ApprovalEvent entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save C4_ApprovalEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("C4_ApprovalEvent", id.toString(), this);
-  }
-
-  static load(id: string): C4_ApprovalEvent | null {
-    return store.get("C4_ApprovalEvent", id) as C4_ApprovalEvent | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get txHash(): Bytes | null {
-    let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set txHash(value: Bytes | null) {
-    if (value === null) {
-      this.unset("txHash");
-    } else {
-      this.set("txHash", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get fromAddress(): Bytes | null {
-    let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set fromAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("fromAddress");
-    } else {
-      this.set("fromAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get toAddress(): Bytes | null {
-    let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set toAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("toAddress");
-    } else {
-      this.set("toAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get valueTransferred(): BigInt | null {
-    let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set valueTransferred(value: BigInt | null) {
-    if (value === null) {
-      this.unset("valueTransferred");
-    } else {
-      this.set("valueTransferred", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasUsed(): BigInt | null {
-    let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasUsed(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasUsed");
-    } else {
-      this.set("gasUsed", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasPrice(): BigInt | null {
-    let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasPrice(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasPrice");
-    } else {
-      this.set("gasPrice", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get owner(): Bytes {
-    let value = this.get("owner");
-    return value.toBytes();
-  }
-
-  set owner(value: Bytes) {
-    this.set("owner", Value.fromBytes(value));
-  }
-
-  get spender(): Bytes {
-    let value = this.get("spender");
-    return value.toBytes();
-  }
-
-  set spender(value: Bytes) {
-    this.set("spender", Value.fromBytes(value));
-  }
-
-  get value(): BigInt {
-    let value = this.get("value");
-    return value.toBigInt();
-  }
-
-  set value(value: BigInt) {
-    this.set("value", Value.fromBigInt(value));
-  }
-}
-
-export class C4_BorrowAllowanceDelegatedEvent extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(
-      id !== null,
-      "Cannot save C4_BorrowAllowanceDelegatedEvent entity without an ID"
-    );
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save C4_BorrowAllowanceDelegatedEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("C4_BorrowAllowanceDelegatedEvent", id.toString(), this);
-  }
-
-  static load(id: string): C4_BorrowAllowanceDelegatedEvent | null {
-    return store.get(
-      "C4_BorrowAllowanceDelegatedEvent",
-      id
-    ) as C4_BorrowAllowanceDelegatedEvent | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get txHash(): Bytes | null {
-    let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set txHash(value: Bytes | null) {
-    if (value === null) {
-      this.unset("txHash");
-    } else {
-      this.set("txHash", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get fromAddress(): Bytes | null {
-    let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set fromAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("fromAddress");
-    } else {
-      this.set("fromAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get toAddress(): Bytes | null {
-    let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set toAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("toAddress");
-    } else {
-      this.set("toAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get valueTransferred(): BigInt | null {
-    let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set valueTransferred(value: BigInt | null) {
-    if (value === null) {
-      this.unset("valueTransferred");
-    } else {
-      this.set("valueTransferred", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasUsed(): BigInt | null {
-    let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasUsed(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasUsed");
-    } else {
-      this.set("gasUsed", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasPrice(): BigInt | null {
-    let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasPrice(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasPrice");
-    } else {
-      this.set("gasPrice", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get fromUser(): Bytes {
-    let value = this.get("fromUser");
-    return value.toBytes();
-  }
-
-  set fromUser(value: Bytes) {
-    this.set("fromUser", Value.fromBytes(value));
-  }
-
-  get toUser(): Bytes {
-    let value = this.get("toUser");
-    return value.toBytes();
-  }
-
-  set toUser(value: Bytes) {
-    this.set("toUser", Value.fromBytes(value));
-  }
-
-  get asset(): Bytes {
-    let value = this.get("asset");
-    return value.toBytes();
-  }
-
-  set asset(value: Bytes) {
-    this.set("asset", Value.fromBytes(value));
-  }
-
-  get amount(): BigInt {
-    let value = this.get("amount");
-    return value.toBigInt();
-  }
-
-  set amount(value: BigInt) {
-    this.set("amount", Value.fromBigInt(value));
-  }
-}
-
-export class C4_TransferEvent extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id !== null, "Cannot save C4_TransferEvent entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save C4_TransferEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("C4_TransferEvent", id.toString(), this);
-  }
-
-  static load(id: string): C4_TransferEvent | null {
-    return store.get("C4_TransferEvent", id) as C4_TransferEvent | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get txHash(): Bytes | null {
-    let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set txHash(value: Bytes | null) {
-    if (value === null) {
-      this.unset("txHash");
-    } else {
-      this.set("txHash", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get fromAddress(): Bytes | null {
-    let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set fromAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("fromAddress");
-    } else {
-      this.set("fromAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get toAddress(): Bytes | null {
-    let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set toAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("toAddress");
-    } else {
-      this.set("toAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get valueTransferred(): BigInt | null {
-    let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set valueTransferred(value: BigInt | null) {
-    if (value === null) {
-      this.unset("valueTransferred");
-    } else {
-      this.set("valueTransferred", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasUsed(): BigInt | null {
-    let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasUsed(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasUsed");
-    } else {
-      this.set("gasUsed", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasPrice(): BigInt | null {
-    let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasPrice(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasPrice");
-    } else {
-      this.set("gasPrice", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get from(): Bytes {
-    let value = this.get("from");
-    return value.toBytes();
-  }
-
-  set from(value: Bytes) {
-    this.set("from", Value.fromBytes(value));
-  }
-
-  get to(): Bytes {
-    let value = this.get("to");
-    return value.toBytes();
-  }
-
-  set to(value: Bytes) {
-    this.set("to", Value.fromBytes(value));
-  }
-
-  get value(): BigInt {
-    let value = this.get("value");
-    return value.toBigInt();
-  }
-
-  set value(value: BigInt) {
-    this.set("value", Value.fromBigInt(value));
-  }
-}
-
-export class C5_ApprovalEvent extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id !== null, "Cannot save C5_ApprovalEvent entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save C5_ApprovalEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("C5_ApprovalEvent", id.toString(), this);
-  }
-
-  static load(id: string): C5_ApprovalEvent | null {
-    return store.get("C5_ApprovalEvent", id) as C5_ApprovalEvent | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get txHash(): Bytes | null {
-    let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set txHash(value: Bytes | null) {
-    if (value === null) {
-      this.unset("txHash");
-    } else {
-      this.set("txHash", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get fromAddress(): Bytes | null {
-    let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set fromAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("fromAddress");
-    } else {
-      this.set("fromAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get toAddress(): Bytes | null {
-    let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set toAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("toAddress");
-    } else {
-      this.set("toAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get valueTransferred(): BigInt | null {
-    let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set valueTransferred(value: BigInt | null) {
-    if (value === null) {
-      this.unset("valueTransferred");
-    } else {
-      this.set("valueTransferred", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasUsed(): BigInt | null {
-    let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasUsed(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasUsed");
-    } else {
-      this.set("gasUsed", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasPrice(): BigInt | null {
-    let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasPrice(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasPrice");
-    } else {
-      this.set("gasPrice", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get owner(): Bytes {
-    let value = this.get("owner");
-    return value.toBytes();
-  }
-
-  set owner(value: Bytes) {
-    this.set("owner", Value.fromBytes(value));
-  }
-
-  get spender(): Bytes {
-    let value = this.get("spender");
-    return value.toBytes();
-  }
-
-  set spender(value: Bytes) {
-    this.set("spender", Value.fromBytes(value));
-  }
-
-  get value(): BigInt {
-    let value = this.get("value");
-    return value.toBigInt();
-  }
-
-  set value(value: BigInt) {
-    this.set("value", Value.fromBigInt(value));
-  }
-}
-
-export class C5_BorrowAllowanceDelegatedEvent extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(
-      id !== null,
-      "Cannot save C5_BorrowAllowanceDelegatedEvent entity without an ID"
-    );
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save C5_BorrowAllowanceDelegatedEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("C5_BorrowAllowanceDelegatedEvent", id.toString(), this);
-  }
-
-  static load(id: string): C5_BorrowAllowanceDelegatedEvent | null {
-    return store.get(
-      "C5_BorrowAllowanceDelegatedEvent",
-      id
-    ) as C5_BorrowAllowanceDelegatedEvent | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get txHash(): Bytes | null {
-    let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set txHash(value: Bytes | null) {
-    if (value === null) {
-      this.unset("txHash");
-    } else {
-      this.set("txHash", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get fromAddress(): Bytes | null {
-    let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set fromAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("fromAddress");
-    } else {
-      this.set("fromAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get toAddress(): Bytes | null {
-    let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set toAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("toAddress");
-    } else {
-      this.set("toAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get valueTransferred(): BigInt | null {
-    let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set valueTransferred(value: BigInt | null) {
-    if (value === null) {
-      this.unset("valueTransferred");
-    } else {
-      this.set("valueTransferred", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasUsed(): BigInt | null {
-    let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasUsed(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasUsed");
-    } else {
-      this.set("gasUsed", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasPrice(): BigInt | null {
-    let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasPrice(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasPrice");
-    } else {
-      this.set("gasPrice", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get fromUser(): Bytes {
-    let value = this.get("fromUser");
-    return value.toBytes();
-  }
-
-  set fromUser(value: Bytes) {
-    this.set("fromUser", Value.fromBytes(value));
-  }
-
-  get toUser(): Bytes {
-    let value = this.get("toUser");
-    return value.toBytes();
-  }
-
-  set toUser(value: Bytes) {
-    this.set("toUser", Value.fromBytes(value));
-  }
-
-  get asset(): Bytes {
-    let value = this.get("asset");
-    return value.toBytes();
-  }
-
-  set asset(value: Bytes) {
-    this.set("asset", Value.fromBytes(value));
-  }
-
-  get amount(): BigInt {
-    let value = this.get("amount");
-    return value.toBigInt();
-  }
-
-  set amount(value: BigInt) {
-    this.set("amount", Value.fromBigInt(value));
-  }
-}
-
-export class C5_TransferEvent extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id !== null, "Cannot save C5_TransferEvent entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save C5_TransferEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("C5_TransferEvent", id.toString(), this);
-  }
-
-  static load(id: string): C5_TransferEvent | null {
-    return store.get("C5_TransferEvent", id) as C5_TransferEvent | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get txHash(): Bytes | null {
-    let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set txHash(value: Bytes | null) {
-    if (value === null) {
-      this.unset("txHash");
-    } else {
-      this.set("txHash", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get fromAddress(): Bytes | null {
-    let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set fromAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("fromAddress");
-    } else {
-      this.set("fromAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get toAddress(): Bytes | null {
-    let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set toAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("toAddress");
-    } else {
-      this.set("toAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get valueTransferred(): BigInt | null {
-    let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set valueTransferred(value: BigInt | null) {
-    if (value === null) {
-      this.unset("valueTransferred");
-    } else {
-      this.set("valueTransferred", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasUsed(): BigInt | null {
-    let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasUsed(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasUsed");
-    } else {
-      this.set("gasUsed", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasPrice(): BigInt | null {
-    let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasPrice(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasPrice");
-    } else {
-      this.set("gasPrice", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get from(): Bytes {
-    let value = this.get("from");
-    return value.toBytes();
-  }
-
-  set from(value: Bytes) {
-    this.set("from", Value.fromBytes(value));
-  }
-
-  get to(): Bytes {
-    let value = this.get("to");
-    return value.toBytes();
-  }
-
-  set to(value: Bytes) {
-    this.set("to", Value.fromBytes(value));
-  }
-
-  get value(): BigInt {
-    let value = this.get("value");
-    return value.toBigInt();
-  }
-
-  set value(value: BigInt) {
-    this.set("value", Value.fromBigInt(value));
-  }
-}
-
-export class C6_ApprovalEvent extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id !== null, "Cannot save C6_ApprovalEvent entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save C6_ApprovalEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("C6_ApprovalEvent", id.toString(), this);
-  }
-
-  static load(id: string): C6_ApprovalEvent | null {
-    return store.get("C6_ApprovalEvent", id) as C6_ApprovalEvent | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get txHash(): Bytes | null {
-    let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set txHash(value: Bytes | null) {
-    if (value === null) {
-      this.unset("txHash");
-    } else {
-      this.set("txHash", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get fromAddress(): Bytes | null {
-    let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set fromAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("fromAddress");
-    } else {
-      this.set("fromAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get toAddress(): Bytes | null {
-    let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set toAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("toAddress");
-    } else {
-      this.set("toAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get valueTransferred(): BigInt | null {
-    let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set valueTransferred(value: BigInt | null) {
-    if (value === null) {
-      this.unset("valueTransferred");
-    } else {
-      this.set("valueTransferred", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasUsed(): BigInt | null {
-    let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasUsed(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasUsed");
-    } else {
-      this.set("gasUsed", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasPrice(): BigInt | null {
-    let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasPrice(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasPrice");
-    } else {
-      this.set("gasPrice", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get owner(): Bytes {
-    let value = this.get("owner");
-    return value.toBytes();
-  }
-
-  set owner(value: Bytes) {
-    this.set("owner", Value.fromBytes(value));
-  }
-
-  get spender(): Bytes {
-    let value = this.get("spender");
-    return value.toBytes();
-  }
-
-  set spender(value: Bytes) {
-    this.set("spender", Value.fromBytes(value));
-  }
-
-  get value(): BigInt {
-    let value = this.get("value");
-    return value.toBigInt();
-  }
-
-  set value(value: BigInt) {
-    this.set("value", Value.fromBigInt(value));
-  }
-}
-
-export class C6_BorrowAllowanceDelegatedEvent extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(
-      id !== null,
-      "Cannot save C6_BorrowAllowanceDelegatedEvent entity without an ID"
-    );
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save C6_BorrowAllowanceDelegatedEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("C6_BorrowAllowanceDelegatedEvent", id.toString(), this);
-  }
-
-  static load(id: string): C6_BorrowAllowanceDelegatedEvent | null {
-    return store.get(
-      "C6_BorrowAllowanceDelegatedEvent",
-      id
-    ) as C6_BorrowAllowanceDelegatedEvent | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get txHash(): Bytes | null {
-    let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set txHash(value: Bytes | null) {
-    if (value === null) {
-      this.unset("txHash");
-    } else {
-      this.set("txHash", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get fromAddress(): Bytes | null {
-    let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set fromAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("fromAddress");
-    } else {
-      this.set("fromAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get toAddress(): Bytes | null {
-    let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set toAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("toAddress");
-    } else {
-      this.set("toAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get valueTransferred(): BigInt | null {
-    let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set valueTransferred(value: BigInt | null) {
-    if (value === null) {
-      this.unset("valueTransferred");
-    } else {
-      this.set("valueTransferred", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasUsed(): BigInt | null {
-    let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasUsed(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasUsed");
-    } else {
-      this.set("gasUsed", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasPrice(): BigInt | null {
-    let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasPrice(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasPrice");
-    } else {
-      this.set("gasPrice", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get fromUser(): Bytes {
-    let value = this.get("fromUser");
-    return value.toBytes();
-  }
-
-  set fromUser(value: Bytes) {
-    this.set("fromUser", Value.fromBytes(value));
-  }
-
-  get toUser(): Bytes {
-    let value = this.get("toUser");
-    return value.toBytes();
-  }
-
-  set toUser(value: Bytes) {
-    this.set("toUser", Value.fromBytes(value));
-  }
-
-  get asset(): Bytes {
-    let value = this.get("asset");
-    return value.toBytes();
-  }
-
-  set asset(value: Bytes) {
-    this.set("asset", Value.fromBytes(value));
-  }
-
-  get amount(): BigInt {
-    let value = this.get("amount");
-    return value.toBigInt();
-  }
-
-  set amount(value: BigInt) {
-    this.set("amount", Value.fromBigInt(value));
-  }
-}
-
-export class C6_TransferEvent extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id !== null, "Cannot save C6_TransferEvent entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save C6_TransferEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("C6_TransferEvent", id.toString(), this);
-  }
-
-  static load(id: string): C6_TransferEvent | null {
-    return store.get("C6_TransferEvent", id) as C6_TransferEvent | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get txHash(): Bytes | null {
-    let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set txHash(value: Bytes | null) {
-    if (value === null) {
-      this.unset("txHash");
-    } else {
-      this.set("txHash", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get fromAddress(): Bytes | null {
-    let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set fromAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("fromAddress");
-    } else {
-      this.set("fromAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get toAddress(): Bytes | null {
-    let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set toAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("toAddress");
-    } else {
-      this.set("toAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get valueTransferred(): BigInt | null {
-    let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set valueTransferred(value: BigInt | null) {
-    if (value === null) {
-      this.unset("valueTransferred");
-    } else {
-      this.set("valueTransferred", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasUsed(): BigInt | null {
-    let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasUsed(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasUsed");
-    } else {
-      this.set("gasUsed", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasPrice(): BigInt | null {
-    let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasPrice(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasPrice");
-    } else {
-      this.set("gasPrice", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get from(): Bytes {
-    let value = this.get("from");
-    return value.toBytes();
-  }
-
-  set from(value: Bytes) {
-    this.set("from", Value.fromBytes(value));
-  }
-
-  get to(): Bytes {
-    let value = this.get("to");
-    return value.toBytes();
-  }
-
-  set to(value: Bytes) {
-    this.set("to", Value.fromBytes(value));
-  }
-
-  get value(): BigInt {
-    let value = this.get("value");
-    return value.toBigInt();
-  }
-
-  set value(value: BigInt) {
-    this.set("value", Value.fromBigInt(value));
-  }
-}
-
-export class C7_ApprovalEvent extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id !== null, "Cannot save C7_ApprovalEvent entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save C7_ApprovalEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("C7_ApprovalEvent", id.toString(), this);
-  }
-
-  static load(id: string): C7_ApprovalEvent | null {
-    return store.get("C7_ApprovalEvent", id) as C7_ApprovalEvent | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get txHash(): Bytes | null {
-    let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set txHash(value: Bytes | null) {
-    if (value === null) {
-      this.unset("txHash");
-    } else {
-      this.set("txHash", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get fromAddress(): Bytes | null {
-    let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set fromAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("fromAddress");
-    } else {
-      this.set("fromAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get toAddress(): Bytes | null {
-    let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set toAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("toAddress");
-    } else {
-      this.set("toAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get valueTransferred(): BigInt | null {
-    let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set valueTransferred(value: BigInt | null) {
-    if (value === null) {
-      this.unset("valueTransferred");
-    } else {
-      this.set("valueTransferred", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasUsed(): BigInt | null {
-    let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasUsed(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasUsed");
-    } else {
-      this.set("gasUsed", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasPrice(): BigInt | null {
-    let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasPrice(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasPrice");
-    } else {
-      this.set("gasPrice", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get owner(): Bytes {
-    let value = this.get("owner");
-    return value.toBytes();
-  }
-
-  set owner(value: Bytes) {
-    this.set("owner", Value.fromBytes(value));
-  }
-
-  get spender(): Bytes {
-    let value = this.get("spender");
-    return value.toBytes();
-  }
-
-  set spender(value: Bytes) {
-    this.set("spender", Value.fromBytes(value));
-  }
-
-  get value(): BigInt {
-    let value = this.get("value");
-    return value.toBigInt();
-  }
-
-  set value(value: BigInt) {
-    this.set("value", Value.fromBigInt(value));
-  }
-}
-
-export class C7_BorrowAllowanceDelegatedEvent extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(
-      id !== null,
-      "Cannot save C7_BorrowAllowanceDelegatedEvent entity without an ID"
-    );
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save C7_BorrowAllowanceDelegatedEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("C7_BorrowAllowanceDelegatedEvent", id.toString(), this);
-  }
-
-  static load(id: string): C7_BorrowAllowanceDelegatedEvent | null {
-    return store.get(
-      "C7_BorrowAllowanceDelegatedEvent",
-      id
-    ) as C7_BorrowAllowanceDelegatedEvent | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get txHash(): Bytes | null {
-    let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set txHash(value: Bytes | null) {
-    if (value === null) {
-      this.unset("txHash");
-    } else {
-      this.set("txHash", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get fromAddress(): Bytes | null {
-    let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set fromAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("fromAddress");
-    } else {
-      this.set("fromAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get toAddress(): Bytes | null {
-    let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set toAddress(value: Bytes | null) {
-    if (value === null) {
-      this.unset("toAddress");
-    } else {
-      this.set("toAddress", Value.fromBytes(value as Bytes));
-    }
-  }
-
-  get valueTransferred(): BigInt | null {
-    let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set valueTransferred(value: BigInt | null) {
-    if (value === null) {
-      this.unset("valueTransferred");
-    } else {
-      this.set("valueTransferred", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasUsed(): BigInt | null {
-    let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasUsed(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasUsed");
-    } else {
-      this.set("gasUsed", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get gasPrice(): BigInt | null {
-    let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set gasPrice(value: BigInt | null) {
-    if (value === null) {
-      this.unset("gasPrice");
-    } else {
-      this.set("gasPrice", Value.fromBigInt(value as BigInt));
-    }
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get fromUser(): Bytes {
-    let value = this.get("fromUser");
-    return value.toBytes();
-  }
-
-  set fromUser(value: Bytes) {
-    this.set("fromUser", Value.fromBytes(value));
-  }
-
-  get toUser(): Bytes {
-    let value = this.get("toUser");
-    return value.toBytes();
-  }
-
-  set toUser(value: Bytes) {
-    this.set("toUser", Value.fromBytes(value));
-  }
-
-  get asset(): Bytes {
-    let value = this.get("asset");
-    return value.toBytes();
-  }
-
-  set asset(value: Bytes) {
-    this.set("asset", Value.fromBytes(value));
-  }
-
-  get amount(): BigInt {
-    let value = this.get("amount");
-    return value.toBigInt();
-  }
-
-  set amount(value: BigInt) {
-    this.set("amount", Value.fromBigInt(value));
-  }
-}
-
-export class C7_TransferEvent extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id !== null, "Cannot save C7_TransferEvent entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save C7_TransferEvent entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("C7_TransferEvent", id.toString(), this);
-  }
-
-  static load(id: string): C7_TransferEvent | null {
-    return store.get("C7_TransferEvent", id) as C7_TransferEvent | null;
+  static load(id: string): TransferEvent | null {
+    return store.get("TransferEvent", id) as TransferEvent | null;
   }
 
   get id(): string {
