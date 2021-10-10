@@ -1,0 +1,337 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: C_
+    network: celo
+    source:
+      address: "0x970b12522CA9b4054807a2c5B736149a5BE6f670"
+      abi: C_
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - C_BorrowEvent
+        - C_DepositEvent
+        - C_FlashLoanEvent
+        - C_LiquidationCallEvent
+        - C_PausedEvent
+        - C_RebalanceStableBorrowRateEvent
+        - C_RepayEvent
+        - C_ReserveDataUpdatedEvent
+        - C_ReserveUsedAsCollateralDisabledEvent
+        - C_ReserveUsedAsCollateralEnabledEvent
+        - C_SwapEvent
+        - C_UnpausedEvent
+        - C_WithdrawEvent
+        - C_borrowCall
+        - C_depositCall
+        - C_finalizeTransferCall
+        - C_flashLoanCall
+        - C_initReserveCall
+        - C_initializeCall
+        - C_liquidationCallCall
+        - C_rebalanceStableBorrowRateCall
+        - C_repayCall
+        - C_setConfigurationCall
+        - C_setPauseCall
+        - C_setReserveInterestRateStrategyAddressCall
+        - C_setUserUseReserveAsCollateralCall
+        - C_swapBorrowRateModeCall
+        - C_withdrawCall
+      abis:
+        - name: C_
+          file: ./abis/C_.json
+
+      eventHandlers:
+        - event: Borrow(indexed address,address,indexed address,uint256,uint256,uint256,indexed uint16)
+          handler: handleBorrowEvent
+        - event: Deposit(indexed address,address,indexed address,uint256,indexed uint16)
+          handler: handleDepositEvent
+        - event: FlashLoan(indexed address,indexed address,indexed address,uint256,uint256,uint16)
+          handler: handleFlashLoanEvent
+        - event: LiquidationCall(indexed address,indexed address,indexed address,uint256,uint256,address,bool)
+          handler: handleLiquidationCallEvent
+        - event: Paused()
+          handler: handlePausedEvent
+        - event: RebalanceStableBorrowRate(indexed address,indexed address)
+          handler: handleRebalanceStableBorrowRateEvent
+        - event: Repay(indexed address,indexed address,indexed address,uint256)
+          handler: handleRepayEvent
+        - event: ReserveDataUpdated(indexed address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleReserveDataUpdatedEvent
+        - event: ReserveUsedAsCollateralDisabled(indexed address,indexed address)
+          handler: handleReserveUsedAsCollateralDisabledEvent
+        - event: ReserveUsedAsCollateralEnabled(indexed address,indexed address)
+          handler: handleReserveUsedAsCollateralEnabledEvent
+        - event: Swap(indexed address,indexed address,uint256)
+          handler: handleSwapEvent
+        - event: Unpaused()
+          handler: handleUnpausedEvent
+        - event: Withdraw(indexed address,indexed address,indexed address,uint256)
+          handler: handleWithdrawEvent
+      file: ./src/C_Mapping.ts
+  - kind: ethereum/contract
+    name: C1_
+    network: celo
+    source:
+      address: "0xD1088091A174d33412a968Fa34Cb67131188B332"
+      abi: C1_
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - C1_AddressSetEvent
+        - C1_ConfigurationAdminUpdatedEvent
+        - C1_EmergencyAdminUpdatedEvent
+        - C1_LendingPoolCollateralManagerUpdatedEvent
+        - C1_LendingPoolConfiguratorUpdatedEvent
+        - C1_LendingPoolUpdatedEvent
+        - C1_LendingRateOracleUpdatedEvent
+        - C1_MarketIdSetEvent
+        - C1_OwnershipTransferredEvent
+        - C1_PriceOracleUpdatedEvent
+        - C1_ProxyCreatedEvent
+        - C1_renounceOwnershipCall
+        - C1_setAddressCall
+        - C1_setAddressAsProxyCall
+        - C1_setEmergencyAdminCall
+        - C1_setLendingPoolCollateralManagerCall
+        - C1_setLendingPoolConfiguratorImplCall
+        - C1_setLendingPoolImplCall
+        - C1_setLendingRateOracleCall
+        - C1_setMarketIdCall
+        - C1_setPoolAdminCall
+        - C1_setPriceOracleCall
+        - C1_transferOwnershipCall
+      abis:
+        - name: C1_
+          file: ./abis/C1_.json
+
+      eventHandlers:
+        - event: AddressSet(bytes32,indexed address,bool)
+          handler: handleAddressSetEvent
+        - event: ConfigurationAdminUpdated(indexed address)
+          handler: handleConfigurationAdminUpdatedEvent
+        - event: EmergencyAdminUpdated(indexed address)
+          handler: handleEmergencyAdminUpdatedEvent
+        - event: LendingPoolCollateralManagerUpdated(indexed address)
+          handler: handleLendingPoolCollateralManagerUpdatedEvent
+        - event: LendingPoolConfiguratorUpdated(indexed address)
+          handler: handleLendingPoolConfiguratorUpdatedEvent
+        - event: LendingPoolUpdated(indexed address)
+          handler: handleLendingPoolUpdatedEvent
+        - event: LendingRateOracleUpdated(indexed address)
+          handler: handleLendingRateOracleUpdatedEvent
+        - event: MarketIdSet(string)
+          handler: handleMarketIdSetEvent
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferredEvent
+        - event: PriceOracleUpdated(indexed address)
+          handler: handlePriceOracleUpdatedEvent
+        - event: ProxyCreated(bytes32,indexed address)
+          handler: handleProxyCreatedEvent
+      file: ./src/C1_Mapping.ts
+  - kind: ethereum/contract
+    name: C2_
+    network: celo
+    source:
+      address: "0xAF451D23d6f0FA680113CE2D27a891Aa3587f0C3"
+      abi: C2_
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - C2_ApprovalEvent
+        - C2_BorrowAllowanceDelegatedEvent
+        - C2_TransferEvent
+        - C2_approveCall
+        - C2_approveDelegationCall
+        - C2_decreaseAllowanceCall
+        - C2_increaseAllowanceCall
+        - C2_transferCall
+        - C2_transferFromCall
+      abis:
+        - name: C2_
+          file: ./abis/C2_.json
+
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApprovalEvent
+        - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
+          handler: handleBorrowAllowanceDelegatedEvent
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransferEvent
+      file: ./src/C2_Mapping.ts
+  - kind: ethereum/contract
+    name: C3_
+    network: celo
+    source:
+      address: "0x02661dd90c6243Fe5cdF88De3E8cb74BcC3bD25E"
+      abi: C3_
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - C3_ApprovalEvent
+        - C3_BorrowAllowanceDelegatedEvent
+        - C3_TransferEvent
+        - C3_approveCall
+        - C3_approveDelegationCall
+        - C3_decreaseAllowanceCall
+        - C3_increaseAllowanceCall
+        - C3_transferCall
+        - C3_transferFromCall
+      abis:
+        - name: C3_
+          file: ./abis/C3_.json
+
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApprovalEvent
+        - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
+          handler: handleBorrowAllowanceDelegatedEvent
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransferEvent
+      file: ./src/C3_Mapping.ts
+  - kind: ethereum/contract
+    name: C4_
+    network: celo
+    source:
+      address: "0xfb6c830c13D8322b31b282Ef1Fe85cbb669d9aE8"
+      abi: C4_
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - C4_ApprovalEvent
+        - C4_BorrowAllowanceDelegatedEvent
+        - C4_TransferEvent
+        - C4_approveCall
+        - C4_approveDelegationCall
+        - C4_decreaseAllowanceCall
+        - C4_increaseAllowanceCall
+        - C4_transferCall
+        - C4_transferFromCall
+      abis:
+        - name: C4_
+          file: ./abis/C4_.json
+
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApprovalEvent
+        - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
+          handler: handleBorrowAllowanceDelegatedEvent
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransferEvent
+      file: ./src/C4_Mapping.ts
+  - kind: ethereum/contract
+    name: C5_
+    network: celo
+    source:
+      address: "0x612599D8421F36b7dA4dDBA201a3854FF55e3d03"
+      abi: C5_
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - C5_ApprovalEvent
+        - C5_BorrowAllowanceDelegatedEvent
+        - C5_TransferEvent
+        - C5_approveCall
+        - C5_approveDelegationCall
+        - C5_decreaseAllowanceCall
+        - C5_increaseAllowanceCall
+        - C5_transferCall
+        - C5_transferFromCall
+      abis:
+        - name: C5_
+          file: ./abis/C5_.json
+
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApprovalEvent
+        - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
+          handler: handleBorrowAllowanceDelegatedEvent
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransferEvent
+      file: ./src/C5_Mapping.ts
+  - kind: ethereum/contract
+    name: C6_
+    network: celo
+    source:
+      address: "0xf602D9617564C07f1e128687798D8C699cED3961"
+      abi: C6_
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - C6_ApprovalEvent
+        - C6_BorrowAllowanceDelegatedEvent
+        - C6_TransferEvent
+        - C6_approveCall
+        - C6_approveDelegationCall
+        - C6_decreaseAllowanceCall
+        - C6_increaseAllowanceCall
+        - C6_transferCall
+        - C6_transferFromCall
+      abis:
+        - name: C6_
+          file: ./abis/C6_.json
+
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApprovalEvent
+        - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
+          handler: handleBorrowAllowanceDelegatedEvent
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransferEvent
+      file: ./src/C6_Mapping.ts
+  - kind: ethereum/contract
+    name: C7_
+    network: celo
+    source:
+      address: "0xa9F50D9F7c03E8B48b2415218008822Ea3334adb"
+      abi: C7_
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - C7_ApprovalEvent
+        - C7_BorrowAllowanceDelegatedEvent
+        - C7_TransferEvent
+        - C7_approveCall
+        - C7_approveDelegationCall
+        - C7_decreaseAllowanceCall
+        - C7_increaseAllowanceCall
+        - C7_transferCall
+        - C7_transferFromCall
+      abis:
+        - name: C7_
+          file: ./abis/C7_.json
+
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApprovalEvent
+        - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
+          handler: handleBorrowAllowanceDelegatedEvent
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransferEvent
+      file: ./src/C7_Mapping.ts

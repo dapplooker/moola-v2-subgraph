@@ -1,0 +1,16 @@
+{
+  "name": "sokol",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ dapplooker/sokol",
+    "create-local": "graph create --node http://localhost:8020/ dapplooker/sokol",
+    "remove-local": "graph remove --node http://localhost:8020/ dapplooker/sokol",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 dapplooker/sokol"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "git+ssh://git@github.com/dapplooker/graph-cli-dlooker.git",
+    "@graphprotocol/graph-ts": "0.18.1"
+  }
+}
