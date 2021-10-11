@@ -14,12 +14,12 @@ dataSources:
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - BorrowEvent
-        - DepositEvent
-        - FlashLoanEvent
-        - RepayEvent
-        - SwapEvent
-        - WithdrawEvent
+        - Borrow
+        - Deposit
+        - FlashLoan
+        - Repay
+        - Swap
+        - Withdraw
         - borrowCall
         - depositCall
         - flashLoanCall
@@ -56,7 +56,7 @@ dataSources:
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - BorrowAllowanceDelegatedEvent
+        - BorrowAllowanceDelegated
         - approveDelegationCall
         - decreaseAllowanceCall
         - increaseAllowanceCall
@@ -79,7 +79,7 @@ dataSources:
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - BorrowAllowanceDelegatedEvent
+        - BorrowAllowanceDelegated
         - approveDelegationCall
         - decreaseAllowanceCall
         - increaseAllowanceCall
@@ -102,7 +102,7 @@ dataSources:
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - BorrowAllowanceDelegatedEvent
+        - BorrowAllowanceDelegated
         - approveDelegationCall
         - decreaseAllowanceCall
         - increaseAllowanceCall
@@ -125,7 +125,7 @@ dataSources:
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - BorrowAllowanceDelegatedEvent
+        - BorrowAllowanceDelegated
         - approveDelegationCall
         - decreaseAllowanceCall
         - increaseAllowanceCall
@@ -148,7 +148,7 @@ dataSources:
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - BorrowAllowanceDelegatedEvent
+        - BorrowAllowanceDelegated
         - approveDelegationCall
         - decreaseAllowanceCall
         - increaseAllowanceCall
@@ -171,7 +171,7 @@ dataSources:
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - BorrowAllowanceDelegatedEvent
+        - BorrowAllowanceDelegated
         - approveDelegationCall
         - decreaseAllowanceCall
         - increaseAllowanceCall

@@ -2,25 +2,18 @@ import {
   Borrow as BorrowEvent,
   Deposit as DepositEvent,
   FlashLoan as FlashLoanEvent,
-  LiquidationCall as LiquidationCallEvent,
-  Paused as PausedEvent,
-  RebalanceStableBorrowRate as RebalanceStableBorrowRateEvent,
   Repay as RepayEvent,
-  ReserveDataUpdated as ReserveDataUpdatedEvent,
-  ReserveUsedAsCollateralDisabled as ReserveUsedAsCollateralDisabledEvent,
-  ReserveUsedAsCollateralEnabled as ReserveUsedAsCollateralEnabledEvent,
   Swap as SwapEvent,
-  Unpaused as UnpausedEvent,
   Withdraw as WithdrawEvent
 } from "../generated/LendingPool/LendingPool"
 import {} from "../generated/LendingPool/LendingPool"
 import {
-  BorrowEvent as BorrowEventSchema,
-  DepositEvent as DepositEventSchema,
-  FlashLoanEvent as FlashLoanEventSchema,
-  RepayEvent as RepayEventSchema,
-  SwapEvent as SwapEventSchema,
-  WithdrawEvent as WithdrawEventSchema
+  Borrow as BorrowEventSchema,
+  Deposit as DepositEventSchema,
+  FlashLoan as FlashLoanEventSchema,
+  Repay as RepayEventSchema,
+  Swap as SwapEventSchema,
+  Withdraw as WithdrawEventSchema
 } from "../generated/schema"
 import {} from "../generated/schema"
 

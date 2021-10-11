@@ -12,7 +12,7 @@ import {
   BigDecimal
 } from "@graphprotocol/graph-ts";
 
-export class BorrowEvent extends Entity {
+export class Borrow extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -20,17 +20,17 @@ export class BorrowEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save BorrowEvent entity without an ID");
+    assert(id !== null, "Cannot save Borrow entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save BorrowEvent entity with non-string ID. " +
+      "Cannot save Borrow entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("BorrowEvent", id.toString(), this);
+    store.set("Borrow", id.toString(), this);
   }
 
-  static load(id: string): BorrowEvent | null {
-    return store.get("BorrowEvent", id) as BorrowEvent | null;
+  static load(id: string): Borrow | null {
+    return store.get("Borrow", id) as Borrow | null;
   }
 
   get id(): string {
@@ -217,7 +217,7 @@ export class BorrowEvent extends Entity {
   }
 }
 
-export class DepositEvent extends Entity {
+export class Deposit extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -225,17 +225,17 @@ export class DepositEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save DepositEvent entity without an ID");
+    assert(id !== null, "Cannot save Deposit entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save DepositEvent entity with non-string ID. " +
+      "Cannot save Deposit entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("DepositEvent", id.toString(), this);
+    store.set("Deposit", id.toString(), this);
   }
 
-  static load(id: string): DepositEvent | null {
-    return store.get("DepositEvent", id) as DepositEvent | null;
+  static load(id: string): Deposit | null {
+    return store.get("Deposit", id) as Deposit | null;
   }
 
   get id(): string {
@@ -404,7 +404,7 @@ export class DepositEvent extends Entity {
   }
 }
 
-export class FlashLoanEvent extends Entity {
+export class FlashLoan extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -412,17 +412,17 @@ export class FlashLoanEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save FlashLoanEvent entity without an ID");
+    assert(id !== null, "Cannot save FlashLoan entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save FlashLoanEvent entity with non-string ID. " +
+      "Cannot save FlashLoan entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("FlashLoanEvent", id.toString(), this);
+    store.set("FlashLoan", id.toString(), this);
   }
 
-  static load(id: string): FlashLoanEvent | null {
-    return store.get("FlashLoanEvent", id) as FlashLoanEvent | null;
+  static load(id: string): FlashLoan | null {
+    return store.get("FlashLoan", id) as FlashLoan | null;
   }
 
   get id(): string {
@@ -600,7 +600,7 @@ export class FlashLoanEvent extends Entity {
   }
 }
 
-export class RepayEvent extends Entity {
+export class Repay extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -608,17 +608,17 @@ export class RepayEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save RepayEvent entity without an ID");
+    assert(id !== null, "Cannot save Repay entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save RepayEvent entity with non-string ID. " +
+      "Cannot save Repay entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("RepayEvent", id.toString(), this);
+    store.set("Repay", id.toString(), this);
   }
 
-  static load(id: string): RepayEvent | null {
-    return store.get("RepayEvent", id) as RepayEvent | null;
+  static load(id: string): Repay | null {
+    return store.get("Repay", id) as Repay | null;
   }
 
   get id(): string {
@@ -778,7 +778,7 @@ export class RepayEvent extends Entity {
   }
 }
 
-export class SwapEvent extends Entity {
+export class Swap extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -786,17 +786,17 @@ export class SwapEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save SwapEvent entity without an ID");
+    assert(id !== null, "Cannot save Swap entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save SwapEvent entity with non-string ID. " +
+      "Cannot save Swap entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("SwapEvent", id.toString(), this);
+    store.set("Swap", id.toString(), this);
   }
 
-  static load(id: string): SwapEvent | null {
-    return store.get("SwapEvent", id) as SwapEvent | null;
+  static load(id: string): Swap | null {
+    return store.get("Swap", id) as Swap | null;
   }
 
   get id(): string {
@@ -947,7 +947,7 @@ export class SwapEvent extends Entity {
   }
 }
 
-export class WithdrawEvent extends Entity {
+export class Withdraw extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -955,17 +955,17 @@ export class WithdrawEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save WithdrawEvent entity without an ID");
+    assert(id !== null, "Cannot save Withdraw entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save WithdrawEvent entity with non-string ID. " +
+      "Cannot save Withdraw entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("WithdrawEvent", id.toString(), this);
+    store.set("Withdraw", id.toString(), this);
   }
 
-  static load(id: string): WithdrawEvent | null {
-    return store.get("WithdrawEvent", id) as WithdrawEvent | null;
+  static load(id: string): Withdraw | null {
+    return store.get("Withdraw", id) as Withdraw | null;
   }
 
   get id(): string {
@@ -1125,7 +1125,7 @@ export class WithdrawEvent extends Entity {
   }
 }
 
-export class BorrowAllowanceDelegatedEvent extends Entity {
+export class BorrowAllowanceDelegated extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -1135,21 +1135,21 @@ export class BorrowAllowanceDelegatedEvent extends Entity {
     let id = this.get("id");
     assert(
       id !== null,
-      "Cannot save BorrowAllowanceDelegatedEvent entity without an ID"
+      "Cannot save BorrowAllowanceDelegated entity without an ID"
     );
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save BorrowAllowanceDelegatedEvent entity with non-string ID. " +
+      "Cannot save BorrowAllowanceDelegated entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("BorrowAllowanceDelegatedEvent", id.toString(), this);
+    store.set("BorrowAllowanceDelegated", id.toString(), this);
   }
 
-  static load(id: string): BorrowAllowanceDelegatedEvent | null {
+  static load(id: string): BorrowAllowanceDelegated | null {
     return store.get(
-      "BorrowAllowanceDelegatedEvent",
+      "BorrowAllowanceDelegated",
       id
-    ) as BorrowAllowanceDelegatedEvent | null;
+    ) as BorrowAllowanceDelegated | null;
   }
 
   get id(): string {

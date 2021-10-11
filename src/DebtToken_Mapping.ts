@@ -1,11 +1,9 @@
 import {
-  Approval as ApprovalEvent,
   BorrowAllowanceDelegated as BorrowAllowanceDelegatedEvent,
-  Transfer as TransferEvent
 } from "../generated/DebtToken1/DebtToken"
 import {} from "../generated/DebtToken1/DebtToken"
 import {
-  BorrowAllowanceDelegatedEvent as BorrowAllowanceDelegatedEventSchema,
+  BorrowAllowanceDelegated as BorrowAllowanceDelegatedEventSchema,
 } from "../generated/schema"
 import {} from "../generated/schema"
 
