@@ -3,11 +3,11 @@ schema:
   file: schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: C_
+    name: LendingPool
     network: celo
     source:
       address: "0x970b12522CA9b4054807a2c5B736149a5BE6f670"
-      abi: C_
+      abi: LendingPool
       startBlock: 0
     mapping:
       kind: ethereum/events
@@ -17,34 +17,18 @@ dataSources:
         - BorrowEvent
         - DepositEvent
         - FlashLoanEvent
-        - LiquidationCallEvent
-        - PausedEvent
-        - RebalanceStableBorrowRateEvent
         - RepayEvent
-        - ReserveDataUpdatedEvent
-        - ReserveUsedAsCollateralDisabledEvent
-        - ReserveUsedAsCollateralEnabledEvent
         - SwapEvent
-        - UnpausedEvent
         - WithdrawEvent
         - borrowCall
         - depositCall
-        - finalizeTransferCall
         - flashLoanCall
-        - initReserveCall
-        - initializeCall
-        - liquidationCallCall
-        - rebalanceStableBorrowRateCall
         - repayCall
-        - setConfigurationCall
-        - setPauseCall
-        - setReserveInterestRateStrategyAddressCall
-        - setUserUseReserveAsCollateralCall
         - swapBorrowRateModeCall
         - withdrawCall
       abis:
-        - name: C_
-          file: C_/abis/C_.json
+        - name: LendingPool
+          file: LendingPool/abis/LendingPool.json
       eventHandlers:
         - event: Borrow(indexed address,address,indexed address,uint256,uint256,uint256,indexed
             uint16)
@@ -53,279 +37,148 @@ dataSources:
           handler: handleDepositEvent
         - event: FlashLoan(indexed address,indexed address,indexed address,uint256,uint256,uint16)
           handler: handleFlashLoanEvent
-        - event: LiquidationCall(indexed address,indexed address,indexed
-            address,uint256,uint256,address,bool)
-          handler: handleLiquidationCallEvent
-        - event: Paused()
-          handler: handlePausedEvent
-        - event: RebalanceStableBorrowRate(indexed address,indexed address)
-          handler: handleRebalanceStableBorrowRateEvent
         - event: Repay(indexed address,indexed address,indexed address,uint256)
           handler: handleRepayEvent
-        - event: ReserveDataUpdated(indexed address,uint256,uint256,uint256,uint256,uint256)
-          handler: handleReserveDataUpdatedEvent
-        - event: ReserveUsedAsCollateralDisabled(indexed address,indexed address)
-          handler: handleReserveUsedAsCollateralDisabledEvent
-        - event: ReserveUsedAsCollateralEnabled(indexed address,indexed address)
-          handler: handleReserveUsedAsCollateralEnabledEvent
         - event: Swap(indexed address,indexed address,uint256)
           handler: handleSwapEvent
-        - event: Unpaused()
-          handler: handleUnpausedEvent
         - event: Withdraw(indexed address,indexed address,indexed address,uint256)
           handler: handleWithdrawEvent
-      file: C_/C_.wasm
+      file: LendingPool/LendingPool.wasm
   - kind: ethereum/contract
-    name: C1_
-    network: celo
-    source:
-      address: "0xD1088091A174d33412a968Fa34Cb67131188B332"
-      abi: C1_
-      startBlock: 0
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.4
-      language: wasm/assemblyscript
-      entities:
-        - AddressSetEvent
-        - ConfigurationAdminUpdatedEvent
-        - EmergencyAdminUpdatedEvent
-        - LendingPoolCollateralManagerUpdatedEvent
-        - LendingPoolConfiguratorUpdatedEvent
-        - LendingPoolUpdatedEvent
-        - LendingRateOracleUpdatedEvent
-        - MarketIdSetEvent
-        - OwnershipTransferredEvent
-        - PriceOracleUpdatedEvent
-        - ProxyCreatedEvent
-        - renounceOwnershipCall
-        - setAddressCall
-        - setAddressAsProxyCall
-        - setEmergencyAdminCall
-        - setLendingPoolCollateralManagerCall
-        - setLendingPoolConfiguratorImplCall
-        - setLendingPoolImplCall
-        - setLendingRateOracleCall
-        - setMarketIdCall
-        - setPoolAdminCall
-        - setPriceOracleCall
-        - transferOwnershipCall
-      abis:
-        - name: C1_
-          file: C1_/abis/C1_.json
-      eventHandlers:
-        - event: AddressSet(bytes32,indexed address,bool)
-          handler: handleAddressSetEvent
-        - event: ConfigurationAdminUpdated(indexed address)
-          handler: handleConfigurationAdminUpdatedEvent
-        - event: EmergencyAdminUpdated(indexed address)
-          handler: handleEmergencyAdminUpdatedEvent
-        - event: LendingPoolCollateralManagerUpdated(indexed address)
-          handler: handleLendingPoolCollateralManagerUpdatedEvent
-        - event: LendingPoolConfiguratorUpdated(indexed address)
-          handler: handleLendingPoolConfiguratorUpdatedEvent
-        - event: LendingPoolUpdated(indexed address)
-          handler: handleLendingPoolUpdatedEvent
-        - event: LendingRateOracleUpdated(indexed address)
-          handler: handleLendingRateOracleUpdatedEvent
-        - event: MarketIdSet(string)
-          handler: handleMarketIdSetEvent
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferredEvent
-        - event: PriceOracleUpdated(indexed address)
-          handler: handlePriceOracleUpdatedEvent
-        - event: ProxyCreated(bytes32,indexed address)
-          handler: handleProxyCreatedEvent
-      file: C1_/C1_.wasm
-  - kind: ethereum/contract
-    name: C2_
+    name: DebtToken1
     network: celo
     source:
       address: "0xAF451D23d6f0FA680113CE2D27a891Aa3587f0C3"
-      abi: C2_
+      abi: DebtToken
       startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - ApprovalEvent
         - BorrowAllowanceDelegatedEvent
-        - TransferEvent
-        - approveCall
         - approveDelegationCall
         - decreaseAllowanceCall
         - increaseAllowanceCall
-        - transferCall
-        - transferFromCall
       abis:
-        - name: C2_
-          file: C2_/abis/C2_.json
+        - name: DebtToken
+          file: DebtToken1/abis/DebtToken.json
       eventHandlers:
-        - event: Approval(indexed address,indexed address,uint256)
-          handler: handleApprovalEvent
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleBorrowAllowanceDelegatedEvent
-        - event: Transfer(indexed address,indexed address,uint256)
-          handler: handleTransferEvent
-      file: C2_/C2_.wasm
+      file: DebtToken1/DebtToken1.wasm
   - kind: ethereum/contract
-    name: C3_
+    name: DebtToken2
     network: celo
     source:
       address: "0x02661dd90c6243Fe5cdF88De3E8cb74BcC3bD25E"
-      abi: C2_
+      abi: DebtToken
       startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - ApprovalEvent
         - BorrowAllowanceDelegatedEvent
-        - TransferEvent
-        - approveCall
         - approveDelegationCall
         - decreaseAllowanceCall
         - increaseAllowanceCall
-        - transferCall
-        - transferFromCall
       abis:
-        - name: C2_
-          file: C3_/abis/C2_.json
+        - name: DebtToken
+          file: DebtToken2/abis/DebtToken.json
       eventHandlers:
-        - event: Approval(indexed address,indexed address,uint256)
-          handler: handleApprovalEvent
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleBorrowAllowanceDelegatedEvent
-        - event: Transfer(indexed address,indexed address,uint256)
-          handler: handleTransferEvent
-      file: C2_/C2_.wasm
+      file: DebtToken1/DebtToken1.wasm
   - kind: ethereum/contract
-    name: C4_
+    name: DebtToken3
     network: celo
     source:
       address: "0xfb6c830c13D8322b31b282Ef1Fe85cbb669d9aE8"
-      abi: C2_
+      abi: DebtToken
       startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - ApprovalEvent
         - BorrowAllowanceDelegatedEvent
-        - TransferEvent
-        - approveCall
         - approveDelegationCall
         - decreaseAllowanceCall
         - increaseAllowanceCall
-        - transferCall
-        - transferFromCall
       abis:
-        - name: C2_
-          file: C4_/abis/C2_.json
+        - name: DebtToken
+          file: DebtToken3/abis/DebtToken.json
       eventHandlers:
-        - event: Approval(indexed address,indexed address,uint256)
-          handler: handleApprovalEvent
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleBorrowAllowanceDelegatedEvent
-        - event: Transfer(indexed address,indexed address,uint256)
-          handler: handleTransferEvent
-      file: C2_/C2_.wasm
+      file: DebtToken1/DebtToken1.wasm
   - kind: ethereum/contract
-    name: C5_
+    name: DebtToken4
     network: celo
     source:
       address: "0x612599D8421F36b7dA4dDBA201a3854FF55e3d03"
-      abi: C2_
+      abi: DebtToken
       startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - ApprovalEvent
         - BorrowAllowanceDelegatedEvent
-        - TransferEvent
-        - approveCall
         - approveDelegationCall
         - decreaseAllowanceCall
         - increaseAllowanceCall
-        - transferCall
-        - transferFromCall
       abis:
-        - name: C2_
-          file: C5_/abis/C2_.json
+        - name: DebtToken
+          file: DebtToken4/abis/DebtToken.json
       eventHandlers:
-        - event: Approval(indexed address,indexed address,uint256)
-          handler: handleApprovalEvent
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleBorrowAllowanceDelegatedEvent
-        - event: Transfer(indexed address,indexed address,uint256)
-          handler: handleTransferEvent
-      file: C2_/C2_.wasm
+      file: DebtToken1/DebtToken1.wasm
   - kind: ethereum/contract
-    name: C6_
+    name: DebtToken5
     network: celo
     source:
       address: "0xf602D9617564C07f1e128687798D8C699cED3961"
-      abi: C2_
+      abi: DebtToken
       startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - ApprovalEvent
         - BorrowAllowanceDelegatedEvent
-        - TransferEvent
-        - approveCall
         - approveDelegationCall
         - decreaseAllowanceCall
         - increaseAllowanceCall
-        - transferCall
-        - transferFromCall
       abis:
-        - name: C2_
-          file: C6_/abis/C2_.json
+        - name: DebtToken
+          file: DebtToken5/abis/DebtToken.json
       eventHandlers:
-        - event: Approval(indexed address,indexed address,uint256)
-          handler: handleApprovalEvent
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleBorrowAllowanceDelegatedEvent
-        - event: Transfer(indexed address,indexed address,uint256)
-          handler: handleTransferEvent
-      file: C2_/C2_.wasm
+      file: DebtToken1/DebtToken1.wasm
   - kind: ethereum/contract
-    name: C7_
+    name: DebtToken6
     network: celo
     source:
       address: "0xa9F50D9F7c03E8B48b2415218008822Ea3334adb"
-      abi: C2_
+      abi: DebtToken
       startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - ApprovalEvent
         - BorrowAllowanceDelegatedEvent
-        - TransferEvent
-        - approveCall
         - approveDelegationCall
         - decreaseAllowanceCall
         - increaseAllowanceCall
-        - transferCall
-        - transferFromCall
       abis:
-        - name: C2_
-          file: C7_/abis/C2_.json
+        - name: DebtToken
+          file: DebtToken6/abis/DebtToken.json
       eventHandlers:
-        - event: Approval(indexed address,indexed address,uint256)
-          handler: handleApprovalEvent
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleBorrowAllowanceDelegatedEvent
-        - event: Transfer(indexed address,indexed address,uint256)
-          handler: handleTransferEvent
-      file: C2_/C2_.wasm
+      file: DebtToken1/DebtToken1.wasm
