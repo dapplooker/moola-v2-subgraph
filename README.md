@@ -111,4 +111,4 @@
      amount
 
 
-Subgraph URL: https://thegraph.com/legacy-explorer/subgraph/dapplooker/
+Subgraph URL: https://thegraph.com/hosted-service/subgraph/dapplooker/moola-market-v2
