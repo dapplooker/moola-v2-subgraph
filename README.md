@@ -108,4 +108,7 @@
      fromUser,
      toUser,
      asset,
-     amount,
+     amount
+
+
+Subgraph URL: https://thegraph.com/legacy-explorer/subgraph/dapplooker/
