@@ -1,114 +1,19 @@
-# moola V2 
-> Democratizing access to borrowing and lending
-#
-# Entities and Attributes #
+# Moola Market V2 Subgraph
+ Democratizing access to borrowing and lending
 
-## Deposit 
-> Query deposit entities and properties.
-##
-      id,
-      txHash,
-      fromAddress,
-      toAddress,
-      valueTransferred,
-      gasUsed,
-      gasPrice,
-      blockTimestamp,
-      reserve,
-      user,
-      onBehalfOf,
-      amount,
-      referral,
-      
-     
-## Withdraw
-> Query withdraw entities and properties 
-##
-      id,
-      txHash,
-      fromAddress,
-      toAddress,
-      valueTransferred,
-      gasUsed,
-      gasPrice,
-      blockTimestamp,
-      reserve,
-      user,
-      to,
-      amount
-     
-     
-## FlashLoan
-> Query Flashloan entities and properties
-##
-     id,
-     txHash,
-     fromAddress,
-     toAddress,
-     valueTransferred,
-     gasUsed,
-     gasPrice,
-     blockTimestamp,
-     target,
-     initiator,
-     asset,
-     amount,
-     premium,
-     referralCode
-     
-     
-## Borrow
-> Query borrow entities and properties 
-##
-     id,
-     txHash,
-     fromAddress,
-     toAddress,
-     valueTransferred,
-     gasUsed,
-     gasPrice,
-     blockTimestamp,
-     reserve,
-     user,
-     onBehalfOf,
-     amount,
-     borrowRateMode,
-     borrowRate,
-     referral
-     
-     
-## Repay
-> Query repay entities and properties
-##
-     id,
-     txHash,
-     fromAddress,
-     toAddress,
-     valueTransferred,
-     gasUsed,
-     gasPrice,
-     blockTimestamp,
-     reserve,
-     user,
-     repayer,
-     amount
-     
+## Deployment
 
-## BorrowAllowanceDelegated 
-> information about delegate credit 
-##
-     id,
-     txHash,
-     fromAddress,
-     toAddress,
-     valueTransferred,
-     gasUsed,
-     gasPrice,
-     blockTimestamp,
-     fromUser,
-     toUser,
-     asset,
-     amount
+To be able to deploy the subgraph in you need to change the endpoint ```Github/Subgraph-Name``` and add the access token then run the below commands. 
+```bash
+npm run codengen
+# build the subgraph 
+npm run build 
+# deploy the subgraph
+npm run deploy 
+```
 
+## Subgraph entities and contract details #
+URL : https://dapplooker.notion.site/Moola-Market-Subgraph-d2129539e5094d389af403b02f80682e
 
+## Subgraph  #
 Subgraph URL: https://thegraph.com/hosted-service/subgraph/dapplooker/moola-market-v2
