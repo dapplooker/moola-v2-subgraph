@@ -3,7 +3,7 @@
 
 ## Deployment
 
-To be able to deploy the subgraph in you need to change the endpoint ```Github/Subgraph-Name``` and add the access token then run the below commands. 
+To be able to deploy the subgraph in you need to change the endpoint ```Github/Subgraph-Name``` and add the access token in ```package.json```. then run the below commands. 
 ```bash
 npm run codengen
 # build the subgraph 
