@@ -107,3 +107,122 @@ type BorrowAllowanceDelegated @entity {
   asset: Bytes! # address
   amount: BigInt! # uint256
 }
+
+interface UserTransaction {
+  id: ID!
+  user: User!
+  timestamp: Int!
+}
+
+type AToken @entity {
+  """
+  AToken address
+  """
+  id: ID!
+  underlyingAssetAddress: Bytes!
+  underlyingAssetDecimals: Int!
+}
+
+type UserReserve @entity {
+  """
+  user address + reserve address
+  """
+  id: ID!
+  reserve: Reserve!
+  user: User!
+  usageAsCollateralEnabledOnUser: Boolean!
+  scaledATokenBalance: BigInt!
+  currentATokenBalance: BigInt!
+  scaledVariableDebt: BigInt!
+  currentVariableDebt: BigInt!
+  principalStableDebt: BigInt!
+  currentStableDebt: BigInt!
+  currentTotalDebt: BigInt!
+  stableBorrowRate: BigInt!
+  oldStableBorrowRate: BigInt!
+  liquidityRate: BigInt!
+  stableBorrowLastUpdateTimestamp: Int!
+  lastUpdateTimestamp: Int!
+}
+
+type User @entity {
+  """
+  user address
+  """
+  id: ID!
+  reserves: [UserReserve!]! @derivedFrom(field: "user")
+}
+
+type Reserve @entity {
+  """
+  Reserve address
+  """
+  id: ID!
+  underlyingAsset: Bytes!
+  symbol: String!
+  name: String!
+  decimals: Int!
+  reserveLiquidationThreshold: BigInt!
+  reserveLiquidationBonus: BigInt!
+  totalATokenSupply: BigInt!
+  totalPrincipalStableDebt: BigInt! # default: 0
+  totalScaledVariableDebt: BigInt! # default: 0
+  totalCurrentVariableDebt: BigInt! # default: 0
+  totalDeposits: BigInt! # default: 0
+  lastUpdateTimestamp: Int!
+  liquidityRate: BigInt!
+  userReserves: [UserReserve!]! @derivedFrom(field: "reserve")
+}
+
+type UsageAsCollateral implements UserTransaction @entity {
+  """
+  tx hash
+  """ # TODO: replace with blockNumber/timestamp + blockPosition
+  id: ID!
+  user: User!
+  reserve: Reserve!
+  userReserve: UserReserve!
+  fromState: Boolean!
+  toState: Boolean!
+  timestamp: Int!
+}
+
+type SToken @entity {
+  """
+  SToken address
+  """
+  id: ID!
+  underlyingAssetAddress: Bytes!
+  underlyingAssetDecimals: Int!
+}
+
+type VToken @entity {
+  """
+  VToken address
+  """
+  id: ID!
+  underlyingAssetAddress: Bytes!
+  underlyingAssetDecimals: Int!
+}
+
+type StableTokenDelegatedAllowance @entity {
+  """
+  stable + fromuser address + touser address+ reserve address
+  """
+  id: ID!
+  fromUser: User!
+  toUser: User!
+  amountAllowed: BigInt!
+  userReserve: UserReserve!
+}
+
+type VariableTokenDelegatedAllowance @entity {
+  """
+  variable + fromuser address + touser address+ reserve address
+  """
+  id: ID!
+  fromUser: User!
+  toUser: User!
+  amountAllowed: BigInt!
+  userReserve: UserReserve!
+}
