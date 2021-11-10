@@ -178,8 +178,6 @@ type UsageAsCollateral implements UserTransaction @entity {
   user: User!
   reserve: Reserve!
   userReserve: UserReserve!
-  fromState: Boolean!
-  toState: Boolean!
   timestamp: Int!
 }
 

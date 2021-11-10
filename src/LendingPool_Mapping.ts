@@ -169,7 +169,7 @@ export function handleReserveUsedAsCollateralEnabled(event: ReserveUsedAsCollate
     getHistoryId(event, EventTypeRef.UsageAsCollateral)
   );
   // usageAsCollateral.pool = poolReserve.pool;
-  usageAsCollateral.toState = true;
+  // usageAsCollateral.toState = true;
   usageAsCollateral.user = userReserve.user;
   usageAsCollateral.userReserve = userReserve.id;
   usageAsCollateral.reserve = poolReserve.id;
@@ -190,7 +190,6 @@ export function handleReserveUsedAsCollateralDisabled(
   let usageAsCollateral = new UsageAsCollateralSchema(
     getHistoryId(event, EventTypeRef.UsageAsCollateral)
   );
-  usageAsCollateral.toState = false;
   usageAsCollateral.user = userReserve.user;
   usageAsCollateral.userReserve = userReserve.id;
   usageAsCollateral.reserve = poolReserve.id;

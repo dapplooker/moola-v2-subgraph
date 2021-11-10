@@ -1742,24 +1742,6 @@ export class UsageAsCollateral extends Entity {
     this.set("userReserve", Value.fromString(value));
   }
 
-  get fromState(): boolean {
-    let value = this.get("fromState");
-    return value.toBoolean();
-  }
-
-  set fromState(value: boolean) {
-    this.set("fromState", Value.fromBoolean(value));
-  }
-
-  get toState(): boolean {
-    let value = this.get("toState");
-    return value.toBoolean();
-  }
-
-  set toState(value: boolean) {
-    this.set("toState", Value.fromBoolean(value));
-  }
-
   get timestamp(): i32 {
     let value = this.get("timestamp");
     return value.toI32();
