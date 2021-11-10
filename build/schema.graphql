@@ -130,7 +130,6 @@ type UserReserve @entity {
   id: ID!
   reserve: Reserve!
   user: User!
-  usageAsCollateralEnabledOnUser: Boolean!
   scaledATokenBalance: BigInt!
   currentATokenBalance: BigInt!
   scaledVariableDebt: BigInt!
@@ -138,10 +137,7 @@ type UserReserve @entity {
   principalStableDebt: BigInt!
   currentStableDebt: BigInt!
   currentTotalDebt: BigInt!
-  stableBorrowRate: BigInt!
-  oldStableBorrowRate: BigInt!
   liquidityRate: BigInt!
-  stableBorrowLastUpdateTimestamp: Int!
   lastUpdateTimestamp: Int!
 }
 

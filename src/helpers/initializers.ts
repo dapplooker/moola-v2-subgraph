@@ -62,19 +62,15 @@ function initUserReserve(
   let userReserve = UserReserve.load(userReserveId);
   if (userReserve === null) {
     userReserve = new UserReserve(userReserveId);
-    userReserve.usageAsCollateralEnabledOnUser = false;
     userReserve.scaledATokenBalance = zeroBI();
     userReserve.scaledVariableDebt = zeroBI();
     userReserve.principalStableDebt = zeroBI();
     userReserve.currentATokenBalance = zeroBI();
     userReserve.currentVariableDebt = zeroBI();
     userReserve.currentStableDebt = zeroBI();
-    userReserve.stableBorrowRate = zeroBI();
-    userReserve.oldStableBorrowRate = zeroBI();
     userReserve.currentTotalDebt = zeroBI();
     userReserve.lastUpdateTimestamp = 0;
     userReserve.liquidityRate = zeroBI();
-    userReserve.stableBorrowLastUpdateTimestamp = 0;
     let user = getOrInitUser(userAddress);
     userReserve.user = user.id;
 

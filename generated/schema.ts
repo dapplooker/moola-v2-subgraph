@@ -1406,15 +1406,6 @@ export class UserReserve extends Entity {
     this.set("user", Value.fromString(value));
   }
 
-  get usageAsCollateralEnabledOnUser(): boolean {
-    let value = this.get("usageAsCollateralEnabledOnUser");
-    return value.toBoolean();
-  }
-
-  set usageAsCollateralEnabledOnUser(value: boolean) {
-    this.set("usageAsCollateralEnabledOnUser", Value.fromBoolean(value));
-  }
-
   get scaledATokenBalance(): BigInt {
     let value = this.get("scaledATokenBalance");
     return value.toBigInt();
@@ -1478,24 +1469,6 @@ export class UserReserve extends Entity {
     this.set("currentTotalDebt", Value.fromBigInt(value));
   }
 
-  get stableBorrowRate(): BigInt {
-    let value = this.get("stableBorrowRate");
-    return value.toBigInt();
-  }
-
-  set stableBorrowRate(value: BigInt) {
-    this.set("stableBorrowRate", Value.fromBigInt(value));
-  }
-
-  get oldStableBorrowRate(): BigInt {
-    let value = this.get("oldStableBorrowRate");
-    return value.toBigInt();
-  }
-
-  set oldStableBorrowRate(value: BigInt) {
-    this.set("oldStableBorrowRate", Value.fromBigInt(value));
-  }
-
   get liquidityRate(): BigInt {
     let value = this.get("liquidityRate");
     return value.toBigInt();
@@ -1503,15 +1476,6 @@ export class UserReserve extends Entity {
 
   set liquidityRate(value: BigInt) {
     this.set("liquidityRate", Value.fromBigInt(value));
-  }
-
-  get stableBorrowLastUpdateTimestamp(): i32 {
-    let value = this.get("stableBorrowLastUpdateTimestamp");
-    return value.toI32();
-  }
-
-  set stableBorrowLastUpdateTimestamp(value: i32) {
-    this.set("stableBorrowLastUpdateTimestamp", Value.fromI32(value));
   }
 
   get lastUpdateTimestamp(): i32 {

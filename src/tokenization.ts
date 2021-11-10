@@ -204,14 +204,9 @@ export function handleStableTokenMint(event: STokenMint): void {
     userReserve.currentVariableDebt
   );
 
-  userReserve.oldStableBorrowRate = userReserve.stableBorrowRate;
-  userReserve.stableBorrowRate = event.params.newRate;
   userReserve.liquidityRate = poolReserve.liquidityRate;
-
-  userReserve.stableBorrowLastUpdateTimestamp = event.block.timestamp.toI32();
   userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
   userReserve.save();
-
 }
 
 export function handleStableTokenBurn(event: STokenBurn): void {
@@ -243,7 +238,6 @@ export function handleStableTokenBurn(event: STokenBurn): void {
 
   userReserve.liquidityRate = poolReserve.liquidityRate;
 
-  userReserve.stableBorrowLastUpdateTimestamp = event.block.timestamp.toI32();
   userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
   userReserve.save();
 

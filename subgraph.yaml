@@ -220,36 +220,8 @@ dataSources:
       eventHandlers:
         - event: ReserveInitialized(indexed address,indexed address,address,address,address)
           handler: handleReserveInitialized
-        # - event: BorrowingEnabledOnReserve(indexed address,bool)
-        #   handler: handleBorrowingEnabledOnReserve
-        # - event: BorrowingDisabledOnReserve(indexed address)
-        #   handler: handleBorrowingDisabledOnReserve
         - event: CollateralConfigurationChanged(indexed address,uint256,uint256,uint256)
           handler: handleCollateralConfigurationChanged
-        # - event: StableRateEnabledOnReserve(indexed address)
-        #   handler: handleStableRateEnabledOnReserve
-        # - event: StableRateDisabledOnReserve(indexed address)
-        #   handler: handleStableRateDisabledOnReserve
-        # - event: ReserveActivated(indexed address)
-        #   handler: handleReserveActivated
-        # - event: ReserveDeactivated(indexed address)
-        #   handler: handleReserveDeactivated
-        # - event: ReserveFrozen(indexed address)
-        #   handler: handleReserveFreezed
-        # - event: ReserveUnfrozen(indexed address)
-        #   handler: handleReserveUnfreezed
-        # - event: ReserveFactorChanged(indexed address,uint256)
-        #   handler: handleReserveFactorChanged
-        # - event: ReserveDecimalsChanged(indexed address,uint256)
-        #   handler: handleReserveDecimalsChanged
-        # - event: ReserveInterestRateStrategyChanged(indexed address,address)
-        #   handler: handleReserveInterestRateStrategyChanged
-        # - event: ATokenUpgraded(indexed address,indexed address,indexed address)
-        #   handler: handleATokenUpgraded
-        # - event: StableDebtTokenUpgraded(indexed address,indexed address,indexed address)
-        #   handler: handleStableDebtTokenUpgraded
-        # - event: VariableDebtTokenUpgraded(indexed address,indexed address,indexed address)
-        #   handler: handleVariableDebtTokenUpgraded
       file: ./src/LendingPoolConfigurator_Mapping.ts
   - kind: ethereum/contract
     name: AToken
@@ -289,12 +261,8 @@ dataSources:
       entities:
         - UserReserve
       abis:
-        # - name: StableDebtToken
-        #   file: ./externals/protocol-v2/artifacts/contracts/protocol/tokenization/StableDebtToken.sol/StableDebtToken.json
         - name: StableDebtToken
           file: ./abis/StableDebtToken.json
-        # - name: IERC20Detailed
-        #   file: ./abis/IERC20Detailed.json
       eventHandlers:
         - event: Burn(indexed address,uint256,uint256,uint256,uint256,uint256)
           handler: handleStableTokenBurn
@@ -302,8 +270,6 @@ dataSources:
           handler: handleStableTokenMint
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleStableTokenBorrowAllowanceDelegated
-        # - event: Initialized(indexed address,indexed address,address,uint8,string,string,bytes)
-        #   handler: handleSTokenInitialized
       file: ./src/tokenization.ts
   - kind: ethereum/contract
     name: StableDebtToken2
@@ -318,12 +284,8 @@ dataSources:
       entities:
         - UserReserve
       abis:
-        # - name: StableDebtToken
-        #   file: ./externals/protocol-v2/artifacts/contracts/protocol/tokenization/StableDebtToken.sol/StableDebtToken.json
         - name: StableDebtToken
           file: ./abis/StableDebtToken.json
-        # - name: IERC20Detailed
-        #   file: ./abis/IERC20Detailed.json
       eventHandlers:
         - event: Burn(indexed address,uint256,uint256,uint256,uint256,uint256)
           handler: handleStableTokenBurn
@@ -331,8 +293,6 @@ dataSources:
           handler: handleStableTokenMint
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleStableTokenBorrowAllowanceDelegated
-        # - event: Initialized(indexed address,indexed address,address,uint8,string,string,bytes)
-        #   handler: handleSTokenInitialized
       file: ./src/tokenization.ts
   - kind: ethereum/contract
     name: StableDebtToken3
@@ -347,12 +307,8 @@ dataSources:
       entities:
         - UserReserve
       abis:
-        # - name: StableDebtToken
-        #   file: ./externals/protocol-v2/artifacts/contracts/protocol/tokenization/StableDebtToken.sol/StableDebtToken.json
         - name: StableDebtToken
           file: ./abis/StableDebtToken.json
-        # - name: IERC20Detailed
-        #   file: ./abis/IERC20Detailed.json
       eventHandlers:
         - event: Burn(indexed address,uint256,uint256,uint256,uint256,uint256)
           handler: handleStableTokenBurn
@@ -360,8 +316,6 @@ dataSources:
           handler: handleStableTokenMint
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleStableTokenBorrowAllowanceDelegated
-        # - event: Initialized(indexed address,indexed address,address,uint8,string,string,bytes)
-        #   handler: handleSTokenInitialized
       file: src/tokenization.ts
   - kind: ethereum/contract
     name: VariableDebtToken1
@@ -376,14 +330,8 @@ dataSources:
       entities:
         - UserReserve
       abis:
-        # - name: VariableDebtToken
-        #   file: ./externals/protocol-v2/artifacts/contracts/protocol/tokenization/VariableDebtToken.sol/VariableDebtToken.json
         - name: VariableDebtToken
           file: ./abis/VariableDebtToken.json
-        # - name: IERC20Detailed
-        #   file: ./abis/IERC20Detailed.json
-        # - name: AaveIncentivesController
-        #   file: ./constant-abis/AaveIncentivesController.json
       eventHandlers:
         - event: Burn(indexed address,uint256,uint256)
           handler: handleVariableTokenBurn
@@ -391,8 +339,6 @@ dataSources:
           handler: handleVariableTokenMint
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleVariableTokenBorrowAllowanceDelegated
-        # - event: Initialized(indexed address,indexed address,address,uint8,string,string,bytes)
-        #   handler: handleVTokenInitialized
       file: src/tokenization.ts
   - kind: ethereum/contract
     name: VariableDebtToken2
@@ -407,14 +353,8 @@ dataSources:
       entities:
         - UserReserve
       abis:
-        # - name: VariableDebtToken
-        #   file: ./externals/protocol-v2/artifacts/contracts/protocol/tokenization/VariableDebtToken.sol/VariableDebtToken.json
         - name: VariableDebtToken
           file: ./abis/VariableDebtToken.json
-        # - name: IERC20Detailed
-        #   file: ./abis/IERC20Detailed.json
-        # - name: AaveIncentivesController
-        #   file: ./constant-abis/AaveIncentivesController.json
       eventHandlers:
         - event: Burn(indexed address,uint256,uint256)
           handler: handleVariableTokenBurn
@@ -422,8 +362,6 @@ dataSources:
           handler: handleVariableTokenMint
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleVariableTokenBorrowAllowanceDelegated
-        # - event: Initialized(indexed address,indexed address,address,uint8,string,string,bytes)
-        #   handler: handleVTokenInitialized
       file: src/tokenization.ts
   - kind: ethereum/contract
     name: VariableDebtToken3
@@ -438,14 +376,8 @@ dataSources:
       entities:
         - UserReserve
       abis:
-        # - name: VariableDebtToken
-        #   file: ./externals/protocol-v2/artifacts/contracts/protocol/tokenization/VariableDebtToken.sol/VariableDebtToken.json
         - name: VariableDebtToken
           file: ./abis/VariableDebtToken.json
-        # - name: IERC20Detailed
-        #   file: ./abis/IERC20Detailed.json
-        # - name: AaveIncentivesController
-        #   file: ./constant-abis/AaveIncentivesController.json
       eventHandlers:
         - event: Burn(indexed address,uint256,uint256)
           handler: handleVariableTokenBurn
@@ -453,6 +385,4 @@ dataSources:
           handler: handleVariableTokenMint
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleVariableTokenBorrowAllowanceDelegated
-        # - event: Initialized(indexed address,indexed address,address,uint8,string,string,bytes)
-        #   handler: handleVTokenInitialized
       file: src/tokenization.ts
