@@ -1,11 +1,12 @@
 import {
   BorrowAllowanceDelegated as BorrowAllowanceDelegatedEvent,
 } from "../generated/DebtToken1/DebtToken"
-import {} from "../generated/DebtToken1/DebtToken"
+import { } from "../generated/DebtToken1/DebtToken"
 import {
   BorrowAllowanceDelegated as BorrowAllowanceDelegatedEventSchema,
 } from "../generated/schema"
-import {} from "../generated/schema"
+import { } from "../generated/schema"
+import { getOrInitUserReserve } from './helpers/initializers';
 
 export function handleBorrowAllowanceDelegatedEvent(
   event: BorrowAllowanceDelegatedEvent
@@ -13,6 +14,9 @@ export function handleBorrowAllowanceDelegatedEvent(
   let entity = new BorrowAllowanceDelegatedEventSchema(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   )
+  let fromUser = event.params.fromUser;
+  let asset = event.params.asset;
+  let userReserve = getOrInitUserReserve(fromUser, asset, event);
   entity.txHash = event.transaction.hash
   entity.fromAddress = event.transaction.from
   entity.toAddress = event.transaction.to

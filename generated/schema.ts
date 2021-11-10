@@ -1308,3 +1308,690 @@ export class BorrowAllowanceDelegated extends Entity {
     this.set("amount", Value.fromBigInt(value));
   }
 }
+
+export class AToken extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save AToken entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save AToken entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("AToken", id.toString(), this);
+  }
+
+  static load(id: string): AToken | null {
+    return store.get("AToken", id) as AToken | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get underlyingAssetAddress(): Bytes {
+    let value = this.get("underlyingAssetAddress");
+    return value.toBytes();
+  }
+
+  set underlyingAssetAddress(value: Bytes) {
+    this.set("underlyingAssetAddress", Value.fromBytes(value));
+  }
+
+  get underlyingAssetDecimals(): i32 {
+    let value = this.get("underlyingAssetDecimals");
+    return value.toI32();
+  }
+
+  set underlyingAssetDecimals(value: i32) {
+    this.set("underlyingAssetDecimals", Value.fromI32(value));
+  }
+}
+
+export class UserReserve extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save UserReserve entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save UserReserve entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("UserReserve", id.toString(), this);
+  }
+
+  static load(id: string): UserReserve | null {
+    return store.get("UserReserve", id) as UserReserve | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get reserve(): string {
+    let value = this.get("reserve");
+    return value.toString();
+  }
+
+  set reserve(value: string) {
+    this.set("reserve", Value.fromString(value));
+  }
+
+  get user(): string {
+    let value = this.get("user");
+    return value.toString();
+  }
+
+  set user(value: string) {
+    this.set("user", Value.fromString(value));
+  }
+
+  get scaledATokenBalance(): BigInt {
+    let value = this.get("scaledATokenBalance");
+    return value.toBigInt();
+  }
+
+  set scaledATokenBalance(value: BigInt) {
+    this.set("scaledATokenBalance", Value.fromBigInt(value));
+  }
+
+  get currentATokenBalance(): BigInt {
+    let value = this.get("currentATokenBalance");
+    return value.toBigInt();
+  }
+
+  set currentATokenBalance(value: BigInt) {
+    this.set("currentATokenBalance", Value.fromBigInt(value));
+  }
+
+  get scaledVariableDebt(): BigInt {
+    let value = this.get("scaledVariableDebt");
+    return value.toBigInt();
+  }
+
+  set scaledVariableDebt(value: BigInt) {
+    this.set("scaledVariableDebt", Value.fromBigInt(value));
+  }
+
+  get currentVariableDebt(): BigInt {
+    let value = this.get("currentVariableDebt");
+    return value.toBigInt();
+  }
+
+  set currentVariableDebt(value: BigInt) {
+    this.set("currentVariableDebt", Value.fromBigInt(value));
+  }
+
+  get principalStableDebt(): BigInt {
+    let value = this.get("principalStableDebt");
+    return value.toBigInt();
+  }
+
+  set principalStableDebt(value: BigInt) {
+    this.set("principalStableDebt", Value.fromBigInt(value));
+  }
+
+  get currentStableDebt(): BigInt {
+    let value = this.get("currentStableDebt");
+    return value.toBigInt();
+  }
+
+  set currentStableDebt(value: BigInt) {
+    this.set("currentStableDebt", Value.fromBigInt(value));
+  }
+
+  get currentTotalDebt(): BigInt {
+    let value = this.get("currentTotalDebt");
+    return value.toBigInt();
+  }
+
+  set currentTotalDebt(value: BigInt) {
+    this.set("currentTotalDebt", Value.fromBigInt(value));
+  }
+
+  get liquidityRate(): BigInt {
+    let value = this.get("liquidityRate");
+    return value.toBigInt();
+  }
+
+  set liquidityRate(value: BigInt) {
+    this.set("liquidityRate", Value.fromBigInt(value));
+  }
+
+  get lastUpdateTimestamp(): i32 {
+    let value = this.get("lastUpdateTimestamp");
+    return value.toI32();
+  }
+
+  set lastUpdateTimestamp(value: i32) {
+    this.set("lastUpdateTimestamp", Value.fromI32(value));
+  }
+}
+
+export class User extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save User entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save User entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("User", id.toString(), this);
+  }
+
+  static load(id: string): User | null {
+    return store.get("User", id) as User | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get reserves(): string {
+    let value = this.get("reserves");
+    return value.toStringArray();
+  }
+
+  set reserves(value: string) {
+    this.set("reserves", Value.fromStringArray(value));
+  }
+}
+
+export class Reserve extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save Reserve entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save Reserve entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("Reserve", id.toString(), this);
+  }
+
+  static load(id: string): Reserve | null {
+    return store.get("Reserve", id) as Reserve | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get underlyingAsset(): Bytes {
+    let value = this.get("underlyingAsset");
+    return value.toBytes();
+  }
+
+  set underlyingAsset(value: Bytes) {
+    this.set("underlyingAsset", Value.fromBytes(value));
+  }
+
+  get symbol(): string {
+    let value = this.get("symbol");
+    return value.toString();
+  }
+
+  set symbol(value: string) {
+    this.set("symbol", Value.fromString(value));
+  }
+
+  get name(): string {
+    let value = this.get("name");
+    return value.toString();
+  }
+
+  set name(value: string) {
+    this.set("name", Value.fromString(value));
+  }
+
+  get decimals(): i32 {
+    let value = this.get("decimals");
+    return value.toI32();
+  }
+
+  set decimals(value: i32) {
+    this.set("decimals", Value.fromI32(value));
+  }
+
+  get reserveLiquidationThreshold(): BigInt {
+    let value = this.get("reserveLiquidationThreshold");
+    return value.toBigInt();
+  }
+
+  set reserveLiquidationThreshold(value: BigInt) {
+    this.set("reserveLiquidationThreshold", Value.fromBigInt(value));
+  }
+
+  get reserveLiquidationBonus(): BigInt {
+    let value = this.get("reserveLiquidationBonus");
+    return value.toBigInt();
+  }
+
+  set reserveLiquidationBonus(value: BigInt) {
+    this.set("reserveLiquidationBonus", Value.fromBigInt(value));
+  }
+
+  get totalATokenSupply(): BigInt {
+    let value = this.get("totalATokenSupply");
+    return value.toBigInt();
+  }
+
+  set totalATokenSupply(value: BigInt) {
+    this.set("totalATokenSupply", Value.fromBigInt(value));
+  }
+
+  get totalPrincipalStableDebt(): BigInt {
+    let value = this.get("totalPrincipalStableDebt");
+    return value.toBigInt();
+  }
+
+  set totalPrincipalStableDebt(value: BigInt) {
+    this.set("totalPrincipalStableDebt", Value.fromBigInt(value));
+  }
+
+  get totalScaledVariableDebt(): BigInt {
+    let value = this.get("totalScaledVariableDebt");
+    return value.toBigInt();
+  }
+
+  set totalScaledVariableDebt(value: BigInt) {
+    this.set("totalScaledVariableDebt", Value.fromBigInt(value));
+  }
+
+  get totalCurrentVariableDebt(): BigInt {
+    let value = this.get("totalCurrentVariableDebt");
+    return value.toBigInt();
+  }
+
+  set totalCurrentVariableDebt(value: BigInt) {
+    this.set("totalCurrentVariableDebt", Value.fromBigInt(value));
+  }
+
+  get totalDeposits(): BigInt {
+    let value = this.get("totalDeposits");
+    return value.toBigInt();
+  }
+
+  set totalDeposits(value: BigInt) {
+    this.set("totalDeposits", Value.fromBigInt(value));
+  }
+
+  get lastUpdateTimestamp(): i32 {
+    let value = this.get("lastUpdateTimestamp");
+    return value.toI32();
+  }
+
+  set lastUpdateTimestamp(value: i32) {
+    this.set("lastUpdateTimestamp", Value.fromI32(value));
+  }
+
+  get liquidityRate(): BigInt {
+    let value = this.get("liquidityRate");
+    return value.toBigInt();
+  }
+
+  set liquidityRate(value: BigInt) {
+    this.set("liquidityRate", Value.fromBigInt(value));
+  }
+
+  get userReserves(): string {
+    let value = this.get("userReserves");
+    return value.toStringArray();
+  }
+
+  set userReserves(value: string) {
+    this.set("userReserves", Value.fromStringArray(value));
+  }
+}
+
+export class UsageAsCollateral extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save UsageAsCollateral entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save UsageAsCollateral entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("UsageAsCollateral", id.toString(), this);
+  }
+
+  static load(id: string): UsageAsCollateral | null {
+    return store.get("UsageAsCollateral", id) as UsageAsCollateral | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get user(): string {
+    let value = this.get("user");
+    return value.toString();
+  }
+
+  set user(value: string) {
+    this.set("user", Value.fromString(value));
+  }
+
+  get reserve(): string {
+    let value = this.get("reserve");
+    return value.toString();
+  }
+
+  set reserve(value: string) {
+    this.set("reserve", Value.fromString(value));
+  }
+
+  get userReserve(): string {
+    let value = this.get("userReserve");
+    return value.toString();
+  }
+
+  set userReserve(value: string) {
+    this.set("userReserve", Value.fromString(value));
+  }
+
+  get timestamp(): i32 {
+    let value = this.get("timestamp");
+    return value.toI32();
+  }
+
+  set timestamp(value: i32) {
+    this.set("timestamp", Value.fromI32(value));
+  }
+}
+
+export class SToken extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save SToken entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save SToken entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("SToken", id.toString(), this);
+  }
+
+  static load(id: string): SToken | null {
+    return store.get("SToken", id) as SToken | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get underlyingAssetAddress(): Bytes {
+    let value = this.get("underlyingAssetAddress");
+    return value.toBytes();
+  }
+
+  set underlyingAssetAddress(value: Bytes) {
+    this.set("underlyingAssetAddress", Value.fromBytes(value));
+  }
+
+  get underlyingAssetDecimals(): i32 {
+    let value = this.get("underlyingAssetDecimals");
+    return value.toI32();
+  }
+
+  set underlyingAssetDecimals(value: i32) {
+    this.set("underlyingAssetDecimals", Value.fromI32(value));
+  }
+}
+
+export class VToken extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save VToken entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save VToken entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("VToken", id.toString(), this);
+  }
+
+  static load(id: string): VToken | null {
+    return store.get("VToken", id) as VToken | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get underlyingAssetAddress(): Bytes {
+    let value = this.get("underlyingAssetAddress");
+    return value.toBytes();
+  }
+
+  set underlyingAssetAddress(value: Bytes) {
+    this.set("underlyingAssetAddress", Value.fromBytes(value));
+  }
+
+  get underlyingAssetDecimals(): i32 {
+    let value = this.get("underlyingAssetDecimals");
+    return value.toI32();
+  }
+
+  set underlyingAssetDecimals(value: i32) {
+    this.set("underlyingAssetDecimals", Value.fromI32(value));
+  }
+}
+
+export class StableTokenDelegatedAllowance extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id !== null,
+      "Cannot save StableTokenDelegatedAllowance entity without an ID"
+    );
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save StableTokenDelegatedAllowance entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("StableTokenDelegatedAllowance", id.toString(), this);
+  }
+
+  static load(id: string): StableTokenDelegatedAllowance | null {
+    return store.get(
+      "StableTokenDelegatedAllowance",
+      id
+    ) as StableTokenDelegatedAllowance | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get fromUser(): string {
+    let value = this.get("fromUser");
+    return value.toString();
+  }
+
+  set fromUser(value: string) {
+    this.set("fromUser", Value.fromString(value));
+  }
+
+  get toUser(): string {
+    let value = this.get("toUser");
+    return value.toString();
+  }
+
+  set toUser(value: string) {
+    this.set("toUser", Value.fromString(value));
+  }
+
+  get amountAllowed(): BigInt {
+    let value = this.get("amountAllowed");
+    return value.toBigInt();
+  }
+
+  set amountAllowed(value: BigInt) {
+    this.set("amountAllowed", Value.fromBigInt(value));
+  }
+
+  get userReserve(): string {
+    let value = this.get("userReserve");
+    return value.toString();
+  }
+
+  set userReserve(value: string) {
+    this.set("userReserve", Value.fromString(value));
+  }
+}
+
+export class VariableTokenDelegatedAllowance extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id !== null,
+      "Cannot save VariableTokenDelegatedAllowance entity without an ID"
+    );
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save VariableTokenDelegatedAllowance entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("VariableTokenDelegatedAllowance", id.toString(), this);
+  }
+
+  static load(id: string): VariableTokenDelegatedAllowance | null {
+    return store.get(
+      "VariableTokenDelegatedAllowance",
+      id
+    ) as VariableTokenDelegatedAllowance | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get fromUser(): string {
+    let value = this.get("fromUser");
+    return value.toString();
+  }
+
+  set fromUser(value: string) {
+    this.set("fromUser", Value.fromString(value));
+  }
+
+  get toUser(): string {
+    let value = this.get("toUser");
+    return value.toString();
+  }
+
+  set toUser(value: string) {
+    this.set("toUser", Value.fromString(value));
+  }
+
+  get amountAllowed(): BigInt {
+    let value = this.get("amountAllowed");
+    return value.toBigInt();
+  }
+
+  set amountAllowed(value: BigInt) {
+    this.set("amountAllowed", Value.fromBigInt(value));
+  }
+
+  get userReserve(): string {
+    let value = this.get("userReserve");
+    return value.toString();
+  }
+
+  set userReserve(value: string) {
+    this.set("userReserve", Value.fromString(value));
+  }
+}

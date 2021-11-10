@@ -4,23 +4,37 @@ import {
   FlashLoan as FlashLoanEvent,
   Repay as RepayEvent,
   Swap as SwapEvent,
-  Withdraw as WithdrawEvent
+  Withdraw as WithdrawEvent,
+  ReserveDataUpdated as ReserveDataUpdated,
+  ReserveUsedAsCollateralDisabled,
+  ReserveUsedAsCollateralEnabled,
 } from "../generated/LendingPool/LendingPool"
-import {} from "../generated/LendingPool/LendingPool"
+import { } from "../generated/LendingPool/LendingPool"
 import {
   Borrow as BorrowEventSchema,
   Deposit as DepositEventSchema,
   FlashLoan as FlashLoanEventSchema,
   Repay as RepayEventSchema,
   Swap as SwapEventSchema,
-  Withdraw as WithdrawEventSchema
+  Withdraw as WithdrawEventSchema,
+  UsageAsCollateral as UsageAsCollateralSchema
 } from "../generated/schema"
-import {} from "../generated/schema"
+import { } from "../generated/schema"
+import {
+  getOrInitReserve,
+  getOrInitUser,
+  getOrInitUserReserve,
+} from './helpers/initializers';
+import { EventTypeRef, getHistoryId } from './utils/id-generation';
+import { calculateGrowth } from './helpers/math';
+import { BigInt } from '@graphprotocol/graph-ts';
 
 export function handleBorrowEvent(event: BorrowEvent): void {
   let entity = new BorrowEventSchema(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   )
+  let userReserve = getOrInitUserReserve(event.params.user, event.params.reserve, event);
+  let poolReserve = getOrInitReserve(event.params.reserve, event);
   entity.txHash = event.transaction.hash
   entity.fromAddress = event.transaction.from
   entity.toAddress = event.transaction.to
@@ -39,6 +53,8 @@ export function handleBorrowEvent(event: BorrowEvent): void {
 }
 
 export function handleDepositEvent(event: DepositEvent): void {
+  let userReserve = getOrInitUserReserve(event.params.user, event.params.reserve, event);
+  let poolReserve = getOrInitReserve(event.params.reserve, event);
   let entity = new DepositEventSchema(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   )
@@ -58,6 +74,12 @@ export function handleDepositEvent(event: DepositEvent): void {
 }
 
 export function handleFlashLoanEvent(event: FlashLoanEvent): void {
+  let initiator = getOrInitUser(event.params.initiator);
+  let poolReserve = getOrInitReserve(event.params.asset, event);
+  let premium = event.params.premium;
+  poolReserve.totalATokenSupply = poolReserve.totalATokenSupply.plus(premium);
+
+  poolReserve.save();
   let entity = new FlashLoanEventSchema(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   )
@@ -78,6 +100,10 @@ export function handleFlashLoanEvent(event: FlashLoanEvent): void {
 }
 
 export function handleRepayEvent(event: RepayEvent): void {
+  let repayer = getOrInitUser(event.params.repayer);
+  let userReserve = getOrInitUserReserve(event.params.user, event.params.reserve, event);
+  let poolReserve = getOrInitReserve(event.params.reserve, event);
+  poolReserve.save();
   let entity = new RepayEventSchema(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   )
@@ -96,6 +122,8 @@ export function handleRepayEvent(event: RepayEvent): void {
 }
 
 export function handleSwapEvent(event: SwapEvent): void {
+  let userReserve = getOrInitUserReserve(event.params.user, event.params.reserve, event);
+  let poolReserve = getOrInitReserve(event.params.reserve, event);
   let entity = new SwapEventSchema(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   )
@@ -113,6 +141,9 @@ export function handleSwapEvent(event: SwapEvent): void {
 }
 
 export function handleWithdrawEvent(event: WithdrawEvent): void {
+  let toUser = getOrInitUser(event.params.to);
+  let poolReserve = getOrInitReserve(event.params.reserve, event);
+  let userReserve = getOrInitUserReserve(event.params.user, event.params.reserve, event);
   let entity = new WithdrawEventSchema(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   )
@@ -128,4 +159,61 @@ export function handleWithdrawEvent(event: WithdrawEvent): void {
   entity.to = event.params.to
   entity.amount = event.params.amount
   entity.save()
+}
+export function handleReserveUsedAsCollateralEnabled(event: ReserveUsedAsCollateralEnabled): void {
+  let poolReserve = getOrInitReserve(event.params.reserve, event);
+  let userReserve = getOrInitUserReserve(event.params.user, event.params.reserve, event);
+  let timestamp = event.block.timestamp.toI32();
+
+  let usageAsCollateral = new UsageAsCollateralSchema(
+    getHistoryId(event, EventTypeRef.UsageAsCollateral)
+  );
+  // usageAsCollateral.pool = poolReserve.pool;
+  // usageAsCollateral.toState = true;
+  usageAsCollateral.user = userReserve.user;
+  usageAsCollateral.userReserve = userReserve.id;
+  usageAsCollateral.reserve = poolReserve.id;
+  usageAsCollateral.timestamp = timestamp;
+  usageAsCollateral.save();
+
+  userReserve.lastUpdateTimestamp = timestamp;
+  userReserve.save();
+}
+
+export function handleReserveUsedAsCollateralDisabled(
+  event: ReserveUsedAsCollateralDisabled
+): void {
+  let poolReserve = getOrInitReserve(event.params.reserve, event);
+  let userReserve = getOrInitUserReserve(event.params.user, event.params.reserve, event);
+  let timestamp = event.block.timestamp.toI32();
+
+  let usageAsCollateral = new UsageAsCollateralSchema(
+    getHistoryId(event, EventTypeRef.UsageAsCollateral)
+  );
+  usageAsCollateral.user = userReserve.user;
+  usageAsCollateral.userReserve = userReserve.id;
+  usageAsCollateral.reserve = poolReserve.id;
+  usageAsCollateral.timestamp = timestamp;
+  usageAsCollateral.save();
+
+  userReserve.lastUpdateTimestamp = timestamp;
+  userReserve.save();
+}
+
+export function handleReserveDataUpdated(event: ReserveDataUpdated): void {
+  let reserve = getOrInitReserve(event.params.reserve, event);
+  reserve.liquidityRate = event.params.liquidityRate;
+  reserve.lastUpdateTimestamp = event.block.timestamp.toI32();
+  let timestamp = event.block.timestamp;
+  let prevTimestamp = BigInt.fromI32(reserve.lastUpdateTimestamp);
+  if (timestamp.gt(prevTimestamp)) {
+    let growth = calculateGrowth(
+      reserve.totalATokenSupply,
+      reserve.liquidityRate,
+      prevTimestamp,
+      timestamp
+    );
+    reserve.totalATokenSupply = reserve.totalATokenSupply.plus(growth);
+  }
+  reserve.save();
 }
