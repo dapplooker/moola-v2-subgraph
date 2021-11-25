@@ -71,6 +71,7 @@ function initUserReserve(
     userReserve.currentTotalDebt = zeroBI();
     userReserve.lastUpdateTimestamp = 0;
     userReserve.liquidityRate = zeroBI();
+    userReserve.usageAsCollateralEnabled = false;
     let user = getOrInitUser(userAddress);
     userReserve.user = user.id;
 

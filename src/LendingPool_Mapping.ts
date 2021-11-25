@@ -176,6 +176,7 @@ export function handleReserveUsedAsCollateralEnabled(event: ReserveUsedAsCollate
   usageAsCollateral.timestamp = timestamp;
   usageAsCollateral.save();
 
+  userReserve.usageAsCollateralEnabled = true;
   userReserve.lastUpdateTimestamp = timestamp;
   userReserve.save();
 }
@@ -196,6 +197,7 @@ export function handleReserveUsedAsCollateralDisabled(
   usageAsCollateral.timestamp = timestamp;
   usageAsCollateral.save();
 
+  userReserve.usageAsCollateralEnabled = false;
   userReserve.lastUpdateTimestamp = timestamp;
   userReserve.save();
 }
