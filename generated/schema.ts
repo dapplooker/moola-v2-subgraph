@@ -44,7 +44,7 @@ export class Borrow extends Entity {
 
   get txHash(): Bytes | null {
     let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -61,7 +61,7 @@ export class Borrow extends Entity {
 
   get fromAddress(): Bytes | null {
     let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -78,7 +78,7 @@ export class Borrow extends Entity {
 
   get toAddress(): Bytes | null {
     let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -95,7 +95,7 @@ export class Borrow extends Entity {
 
   get valueTransferred(): BigInt | null {
     let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -112,7 +112,7 @@ export class Borrow extends Entity {
 
   get gasUsed(): BigInt | null {
     let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -129,7 +129,7 @@ export class Borrow extends Entity {
 
   get gasPrice(): BigInt | null {
     let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -249,7 +249,7 @@ export class Deposit extends Entity {
 
   get txHash(): Bytes | null {
     let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -266,7 +266,7 @@ export class Deposit extends Entity {
 
   get fromAddress(): Bytes | null {
     let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -283,7 +283,7 @@ export class Deposit extends Entity {
 
   get toAddress(): Bytes | null {
     let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -300,7 +300,7 @@ export class Deposit extends Entity {
 
   get valueTransferred(): BigInt | null {
     let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -317,7 +317,7 @@ export class Deposit extends Entity {
 
   get gasUsed(): BigInt | null {
     let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -334,7 +334,7 @@ export class Deposit extends Entity {
 
   get gasPrice(): BigInt | null {
     let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -436,7 +436,7 @@ export class FlashLoan extends Entity {
 
   get txHash(): Bytes | null {
     let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -453,7 +453,7 @@ export class FlashLoan extends Entity {
 
   get fromAddress(): Bytes | null {
     let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -470,7 +470,7 @@ export class FlashLoan extends Entity {
 
   get toAddress(): Bytes | null {
     let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -487,7 +487,7 @@ export class FlashLoan extends Entity {
 
   get valueTransferred(): BigInt | null {
     let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -504,7 +504,7 @@ export class FlashLoan extends Entity {
 
   get gasUsed(): BigInt | null {
     let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -521,7 +521,7 @@ export class FlashLoan extends Entity {
 
   get gasPrice(): BigInt | null {
     let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -632,7 +632,7 @@ export class Repay extends Entity {
 
   get txHash(): Bytes | null {
     let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -649,7 +649,7 @@ export class Repay extends Entity {
 
   get fromAddress(): Bytes | null {
     let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -666,7 +666,7 @@ export class Repay extends Entity {
 
   get toAddress(): Bytes | null {
     let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -683,7 +683,7 @@ export class Repay extends Entity {
 
   get valueTransferred(): BigInt | null {
     let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -700,7 +700,7 @@ export class Repay extends Entity {
 
   get gasUsed(): BigInt | null {
     let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -717,7 +717,7 @@ export class Repay extends Entity {
 
   get gasPrice(): BigInt | null {
     let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -810,7 +810,7 @@ export class Swap extends Entity {
 
   get txHash(): Bytes | null {
     let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -827,7 +827,7 @@ export class Swap extends Entity {
 
   get fromAddress(): Bytes | null {
     let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -844,7 +844,7 @@ export class Swap extends Entity {
 
   get toAddress(): Bytes | null {
     let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -861,7 +861,7 @@ export class Swap extends Entity {
 
   get valueTransferred(): BigInt | null {
     let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -878,7 +878,7 @@ export class Swap extends Entity {
 
   get gasUsed(): BigInt | null {
     let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -895,7 +895,7 @@ export class Swap extends Entity {
 
   get gasPrice(): BigInt | null {
     let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -979,7 +979,7 @@ export class Withdraw extends Entity {
 
   get txHash(): Bytes | null {
     let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -996,7 +996,7 @@ export class Withdraw extends Entity {
 
   get fromAddress(): Bytes | null {
     let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -1013,7 +1013,7 @@ export class Withdraw extends Entity {
 
   get toAddress(): Bytes | null {
     let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -1030,7 +1030,7 @@ export class Withdraw extends Entity {
 
   get valueTransferred(): BigInt | null {
     let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -1047,7 +1047,7 @@ export class Withdraw extends Entity {
 
   get gasUsed(): BigInt | null {
     let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -1064,7 +1064,7 @@ export class Withdraw extends Entity {
 
   get gasPrice(): BigInt | null {
     let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -1163,7 +1163,7 @@ export class BorrowAllowanceDelegated extends Entity {
 
   get txHash(): Bytes | null {
     let value = this.get("txHash");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -1180,7 +1180,7 @@ export class BorrowAllowanceDelegated extends Entity {
 
   get fromAddress(): Bytes | null {
     let value = this.get("fromAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -1197,7 +1197,7 @@ export class BorrowAllowanceDelegated extends Entity {
 
   get toAddress(): Bytes | null {
     let value = this.get("toAddress");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBytes();
@@ -1214,7 +1214,7 @@ export class BorrowAllowanceDelegated extends Entity {
 
   get valueTransferred(): BigInt | null {
     let value = this.get("valueTransferred");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -1231,7 +1231,7 @@ export class BorrowAllowanceDelegated extends Entity {
 
   get gasUsed(): BigInt | null {
     let value = this.get("gasUsed");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -1248,7 +1248,7 @@ export class BorrowAllowanceDelegated extends Entity {
 
   get gasPrice(): BigInt | null {
     let value = this.get("gasPrice");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (value === null) {
       return null;
     } else {
       return value.toBigInt();
@@ -1486,6 +1486,15 @@ export class UserReserve extends Entity {
   set lastUpdateTimestamp(value: i32) {
     this.set("lastUpdateTimestamp", Value.fromI32(value));
   }
+
+  get usageAsCollateralEnabled(): boolean {
+    let value = this.get("usageAsCollateralEnabled");
+    return value.toBoolean();
+  }
+
+  set usageAsCollateralEnabled(value: boolean) {
+    this.set("usageAsCollateralEnabled", Value.fromBoolean(value));
+  }
 }
 
 export class User extends Entity {
@@ -1518,12 +1527,12 @@ export class User extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get reserves(): string {
+  get reserves(): Array<string> {
     let value = this.get("reserves");
     return value.toStringArray();
   }
 
-  set reserves(value: string) {
+  set reserves(value: Array<string>) {
     this.set("reserves", Value.fromStringArray(value));
   }
 }
@@ -1675,12 +1684,12 @@ export class Reserve extends Entity {
     this.set("liquidityRate", Value.fromBigInt(value));
   }
 
-  get userReserves(): string {
+  get userReserves(): Array<string> {
     let value = this.get("userReserves");
     return value.toStringArray();
   }
 
-  set userReserves(value: string) {
+  set userReserves(value: Array<string>) {
     this.set("userReserves", Value.fromStringArray(value));
   }
 }

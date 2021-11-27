@@ -139,6 +139,7 @@ type UserReserve @entity {
   currentTotalDebt: BigInt!
   liquidityRate: BigInt!
   lastUpdateTimestamp: Int!
+  usageAsCollateralEnabled: Boolean!
 }
 
 type User @entity {
