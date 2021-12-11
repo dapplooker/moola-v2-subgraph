@@ -168,8 +168,6 @@ export function handleReserveUsedAsCollateralEnabled(event: ReserveUsedAsCollate
   let usageAsCollateral = new UsageAsCollateralSchema(
     getHistoryId(event, EventTypeRef.UsageAsCollateral)
   );
-  // usageAsCollateral.pool = poolReserve.pool;
-  // usageAsCollateral.toState = true;
   usageAsCollateral.user = userReserve.user;
   usageAsCollateral.userReserve = userReserve.id;
   usageAsCollateral.reserve = poolReserve.id;
@@ -204,8 +202,6 @@ export function handleReserveUsedAsCollateralDisabled(
 
 export function handleReserveDataUpdated(event: ReserveDataUpdated): void {
   let reserve = getOrInitReserve(event.params.reserve, event);
-  reserve.liquidityRate = event.params.liquidityRate;
-  reserve.lastUpdateTimestamp = event.block.timestamp.toI32();
   let timestamp = event.block.timestamp;
   let prevTimestamp = BigInt.fromI32(reserve.lastUpdateTimestamp);
   if (timestamp.gt(prevTimestamp)) {
@@ -217,5 +213,7 @@ export function handleReserveDataUpdated(event: ReserveDataUpdated): void {
     );
     reserve.totalATokenSupply = reserve.totalATokenSupply.plus(growth);
   }
+  reserve.liquidityRate = event.params.liquidityRate;
+  reserve.lastUpdateTimestamp = event.block.timestamp.toI32();
   reserve.save();
 }

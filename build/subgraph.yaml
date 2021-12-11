@@ -407,7 +407,7 @@ dataSources:
           handler: handleATokenTransfer
         - event: Mint(indexed address,uint256,uint256)
           handler: handleATokenMint
-      file: AToken/AToken.wasm
+      file: StableDebtToken1/StableDebtToken1.wasm
   - kind: ethereum/contract
     name: AToken2
     network: celo
@@ -432,7 +432,7 @@ dataSources:
           handler: handleATokenTransfer
         - event: Mint(indexed address,uint256,uint256)
           handler: handleATokenMint
-      file: AToken/AToken.wasm
+      file: StableDebtToken1/StableDebtToken1.wasm
   - kind: ethereum/contract
     name: AToken3
     network: celo
@@ -457,4 +457,4 @@ dataSources:
           handler: handleATokenTransfer
         - event: Mint(indexed address,uint256,uint256)
           handler: handleATokenMint
-      file: AToken/AToken.wasm
+      file: StableDebtToken1/StableDebtToken1.wasm

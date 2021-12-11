@@ -99,7 +99,17 @@ export function handleATokenTransfer(event: ATokenTransfer): void {
   );
 
   let reserve = getOrInitReserve(aToken.underlyingAssetAddress as Address, event);
-  saveReserve(reserve, event);
+  if (
+    userFromReserve.usageAsCollateralEnabled &&
+    !userToReserve.usageAsCollateralEnabled
+  ) {
+    saveReserve(reserve, event);
+  } else if (
+    !userFromReserve.usageAsCollateralEnabled &&
+    userToReserve.usageAsCollateralEnabled
+  ) {
+    saveReserve(reserve, event);
+  }
 }
 
 export function handleVariableTokenBurn(event: VTokenBurn): void {
@@ -229,7 +239,7 @@ export function handleStableTokenBurn(event: STokenBurn): void {
   saveReserve(poolReserve, event);
 
   userReserve.principalStableDebt = userReserve.principalStableDebt
-    .minus(event.params.balanceIncrease)
+    // .minus(event.params.balanceIncrease)
     .minus(amount);
   userReserve.currentStableDebt = userReserve.principalStableDebt;
   userReserve.currentTotalDebt = userReserve.currentStableDebt.plus(
