@@ -34,7 +34,7 @@ export function getOrInitReserve(underlyingAsset: Address, event: ethereum.Event
   let reserveId = getReserveId(underlyingAsset/*, poolId*/);
   let reserve = Reserve.load(reserveId);
 
-  if (reserve === null) {
+  if (!reserve) {
     reserve = new Reserve(reserveId);
     reserve.underlyingAsset = underlyingAsset;
     reserve.symbol = '';
@@ -60,7 +60,7 @@ function initUserReserve(
 ): UserReserve {
   let userReserveId = getUserReserveId(userAddress, underlyingAssetAddress);
   let userReserve = UserReserve.load(userReserveId);
-  if (userReserve === null) {
+  if (!userReserve) {
     userReserve = new UserReserve(userReserveId);
     userReserve.scaledATokenBalance = zeroBI();
     userReserve.scaledVariableDebt = zeroBI();

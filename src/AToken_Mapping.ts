@@ -20,7 +20,6 @@ function tokenBurn(event: ethereum.Event, from: Address, value: BigInt, index: B
   let calculatedAmount = rayDiv(value, index);
 
   userReserve.scaledATokenBalance = userReserve.scaledATokenBalance.minus(calculatedAmount);
-  log.warning('Atoken_Mapping:tokenBurn:value of scaledAToken : {}, index {} ',[userReserve.scaledATokenBalance.toString(), index.toString()]);
   userReserve.currentATokenBalance = rayMul(userReserve.scaledATokenBalance, index);
 
   userReserve.liquidityRate = poolReserve.liquidityRate;
@@ -43,7 +42,6 @@ function tokenMint(event: ethereum.Event, from: Address, value: BigInt, index: B
     let calculatedAmount = rayDiv(value, index);
 
     userReserve.scaledATokenBalance = userReserve.scaledATokenBalance.plus(calculatedAmount);
-    log.warning('Atoken_Mapping:tokenMint:value of scaledAToken : {}, index {} ',[userReserve.scaledATokenBalance.toString(), index.toString()]);
     userReserve.currentATokenBalance = rayMul(userReserve.scaledATokenBalance, index);
     userReserve.liquidityRate = poolReserve.liquidityRate;
     userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
