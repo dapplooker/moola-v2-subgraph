@@ -410,7 +410,7 @@ dataSources:
           handler: handleATokenTransfer
         - event: Mint(indexed address,uint256,uint256)
           handler: handleATokenMint
-      file: ./src/AToken_Mapping.ts
+      file: ./src/tokenization.ts
   - kind: ethereum/contract
     name: AToken2
     network: celo
@@ -435,7 +435,7 @@ dataSources:
           handler: handleATokenTransfer
         - event: Mint(indexed address,uint256,uint256)
           handler: handleATokenMint
-      file: ./src/AToken_Mapping.ts
+      file: ./src/tokenization.ts
   - kind: ethereum/contract
     name: AToken3
     network: celo
@@ -460,4 +460,4 @@ dataSources:
           handler: handleATokenTransfer
         - event: Mint(indexed address,uint256,uint256)
           handler: handleATokenMint
-      file: ./src/AToken_Mapping.ts
+      file: ./src/tokenization.ts

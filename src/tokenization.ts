@@ -42,10 +42,29 @@ function tokenBurn(event: ethereum.Event, from: Address, value: BigInt, index: B
   let calculatedAmount = rayDiv(value, index);
 
   userReserve.scaledATokenBalance = userReserve.scaledATokenBalance.minus(calculatedAmount);
+  let prevcurrentATokenBalance = userReserve.currentATokenBalance;
   userReserve.currentATokenBalance = rayMul(userReserve.scaledATokenBalance, index);
+  log.info('tokenization::tokenBurn::user: {} and prevcurrentATokenBalance: {} and amount to assign {} (value get from raymul of scaledATokenBalance :{} and index: {}), currentATokenBalance: {} ',
+    [from.toHexString(),
+    prevcurrentATokenBalance.toString(),
+    rayMul(userReserve.scaledATokenBalance, index).toString(),
+    userReserve.scaledATokenBalance.toString(),
+    index.toString(),
+    userReserve.currentATokenBalance.toString()
+    ]
+  );
   userReserve.liquidityRate = poolReserve.liquidityRate;
   poolReserve.totalDeposits = poolReserve.totalDeposits.minus(value);
+
+  let prevtotalATokenSupply = poolReserve.totalATokenSupply;
   poolReserve.totalATokenSupply = poolReserve.totalATokenSupply.minus(value);
+
+  log.info('tokenization::tokenBurn::user: {} and prevtotalATokenSupply: {} and amount to subtract: {} , newtotalATokenSupply: {} ',
+    [from.toHexString(),
+    prevtotalATokenSupply.toString(),
+    value.toString(),
+    poolReserve.totalATokenSupply.toString()
+    ]);
   saveReserve(poolReserve, event);
 
   userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
@@ -55,15 +74,30 @@ function tokenBurn(event: ethereum.Event, from: Address, value: BigInt, index: B
 function tokenMint(event: ethereum.Event, from: Address, value: BigInt, index: BigInt): void {
   let aToken = getOrInitAToken(event.address);
   let poolReserve = getOrInitReserve(aToken.underlyingAssetAddress as Address, event);
+  let prevtotalATokenSupply = poolReserve.totalATokenSupply;
   poolReserve.totalATokenSupply = poolReserve.totalATokenSupply.plus(value);
-
+  log.info('tokenization::tokenMint::user: {} and prevtotalATokenSupply: {} and amount to add: {} , newtotalATokenSupply: {} ',
+    [from.toHexString(),
+    prevtotalATokenSupply.toString(),
+    value.toString(),
+    poolReserve.totalATokenSupply.toString()
+    ]
+  );
   let userReserve = getOrInitUserReserve(from, aToken.underlyingAssetAddress as Address, event);
   let calculatedAmount = rayDiv(value, index);
 
   userReserve.scaledATokenBalance = userReserve.scaledATokenBalance.plus(calculatedAmount);
-  log.warning('value of scaledATokenBalance: {} and index: {}  is Zero', [userReserve.currentATokenBalance.toString(), index.toString()]);
+  let prevcurrentATokenBalance = userReserve.currentATokenBalance;
   userReserve.currentATokenBalance = rayMul(userReserve.scaledATokenBalance, index);
-
+  log.info('tokenization::tokenMint::user: {} and prevcurrentATokenBalance: {} and amount to assign: {}(found by raymul on scaledATokenBalance: {} ,index: {}) , currentATokenBalance: {} ',
+    [from.toHexString(),
+    prevcurrentATokenBalance.toString(),
+    rayMul(userReserve.scaledATokenBalance, index).toString(),
+    userReserve.scaledATokenBalance.toString(),
+    value.toString(),
+    userReserve.currentATokenBalance.toString()
+    ]
+  );
   userReserve.liquidityRate = poolReserve.liquidityRate;
   userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
 
@@ -99,7 +133,17 @@ export function handleATokenTransfer(event: ATokenTransfer): void {
   );
 
   let reserve = getOrInitReserve(aToken.underlyingAssetAddress as Address, event);
-  saveReserve(reserve, event);
+  if (
+    userFromReserve.usageAsCollateralEnabled &&
+    !userToReserve.usageAsCollateralEnabled
+  ) {
+    saveReserve(reserve, event);
+  } else if (
+    !userFromReserve.usageAsCollateralEnabled &&
+    userToReserve.usageAsCollateralEnabled
+  ) {
+    saveReserve(reserve, event);
+  }
 }
 
 export function handleVariableTokenBurn(event: VTokenBurn): void {
@@ -113,8 +157,16 @@ export function handleVariableTokenBurn(event: VTokenBurn): void {
   let calculatedAmount = rayDiv(value, index);
   userReserve.scaledVariableDebt = userReserve.scaledVariableDebt.minus(calculatedAmount);
   userReserve.currentVariableDebt = rayMul(userReserve.scaledVariableDebt, index);
+  let prevCurrentTotalDebt = userReserve.currentTotalDebt;
   userReserve.currentTotalDebt = userReserve.currentStableDebt.plus(
     userReserve.currentVariableDebt
+  );
+  log.info('tokenization::handleVariableTokenBurn::user: {} and prevCurrentTotalDebt: {} and amount to add: {} , newCurrentTotalDebt: {} ',
+    [event.params.user.toHexString(),
+    prevCurrentTotalDebt.toString(),
+    userReserve.currentVariableDebt.toString(),
+    userReserve.currentTotalDebt.toString()
+    ]
   );
 
   poolReserve.totalScaledVariableDebt = poolReserve.totalScaledVariableDebt.minus(calculatedAmount);
@@ -162,10 +214,17 @@ export function handleVariableTokenMint(event: VTokenMint): void {
   userReserve.scaledVariableDebt = userReserve.scaledVariableDebt.plus(calculatedAmount);
   userReserve.currentVariableDebt = rayMul(userReserve.scaledVariableDebt, index);
 
+  let prevCurrentTotalDebt = userReserve.currentTotalDebt;
   userReserve.currentTotalDebt = userReserve.currentStableDebt.plus(
     userReserve.currentVariableDebt
   );
-
+  log.info('tokenization::handleVariableTokenMint::user: {} and prevCurrentTotalDebt: {} and amount to asign: {} , newCurrentTotalDebt: {} ',
+    [event.params.from.toHexString(),
+    prevCurrentTotalDebt.toString(),
+    userReserve.currentStableDebt.plus(userReserve.currentVariableDebt).toString(),
+    userReserve.currentTotalDebt.toString()
+    ]
+  );
   userReserve.liquidityRate = poolReserve.liquidityRate;
   userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
   userReserve.save();
@@ -200,10 +259,16 @@ export function handleStableTokenMint(event: STokenMint): void {
 
   userReserve.principalStableDebt = userReserve.principalStableDebt.plus(calculatedAmount);
   userReserve.currentStableDebt = userReserve.principalStableDebt;
+  let prevCurrentTotalDebt = userReserve.currentTotalDebt;
   userReserve.currentTotalDebt = userReserve.currentStableDebt.plus(
     userReserve.currentVariableDebt
   );
-
+  log.info('tokenization::handleStableTokenMint::user: {} and prevCurrentTotalDebt: {} and amount to asign: {} , newCurrentTotalDebt: {} ',
+    [event.params.user.toHexString(),
+    prevCurrentTotalDebt.toString(),
+    userReserve.currentStableDebt.plus(userReserve.currentVariableDebt).toString(),
+    userReserve.currentTotalDebt.toString()
+    ]);
   userReserve.liquidityRate = poolReserve.liquidityRate;
   userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
   userReserve.save();
@@ -223,19 +288,29 @@ export function handleStableTokenBurn(event: STokenBurn): void {
 
   poolReserve.totalPrincipalStableDebt = event.params.newTotalSupply;
 
-
+  let prevtotalATokenSupply = poolReserve.totalATokenSupply;
   poolReserve.totalATokenSupply = poolReserve.totalATokenSupply.plus(balanceIncrease);
-
+  log.info('tokenization::handleStableTokenBurn::user: {} and prevtotalATokenSupply: {} and amount to add: {} , totalATokenSupply: {} ', [event.params.user.toHexString(),
+  prevtotalATokenSupply.toString(),
+  balanceIncrease.toString(),
+  poolReserve.totalATokenSupply.toString()]);
   saveReserve(poolReserve, event);
 
   userReserve.principalStableDebt = userReserve.principalStableDebt
-    .minus(event.params.balanceIncrease)
+    // .minus(event.params.balanceIncrease)
     .minus(amount);
   userReserve.currentStableDebt = userReserve.principalStableDebt;
+  let prevCurrentTotalDebt = userReserve.currentTotalDebt;
   userReserve.currentTotalDebt = userReserve.currentStableDebt.plus(
     userReserve.currentVariableDebt
   );
-
+  log.info('tokenization::handleStableTokenBurn::user: {} and prevCurrentTotalDebt: {} and amount to add: {} , newCurrentTotalDebt: {} ',
+    [event.params.user.toHexString(),
+    prevCurrentTotalDebt.toString(),
+    amount.toString(),
+    userReserve.currentTotalDebt.toString()
+    ]
+  );
   userReserve.liquidityRate = poolReserve.liquidityRate;
 
   userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
