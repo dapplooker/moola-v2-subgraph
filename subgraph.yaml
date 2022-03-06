@@ -195,7 +195,7 @@ dataSources:
     name: DebtToken7
     network: celo
     source:
-      address: "0xaCdb7B3e2b0a038F1f4eF04736728E0065b689DA"
+      address: "0x0D00d9A02b85E9274f60A082609f44f7C57F373d"
       abi: DebtToken
       startBlock: 0
     mapping:
@@ -218,7 +218,7 @@ dataSources:
     name: DebtToken8
     network: celo
     source:
-      address: "0x0301Cf8F1FCD9255BD32FB7e0fE5B3494f445C2C"
+      address: "0xbd408042909351B649DC50353532dEeF6De9fAA9"
       abi: DebtToken
       startBlock: 0
     mapping:
@@ -361,7 +361,7 @@ dataSources:
     name: StableDebtToken4
     network: celo
     source:
-      address: "0xaCdb7B3e2b0a038F1f4eF04736728E0065b689DA"
+      address: "0x0D00d9A02b85E9274f60A082609f44f7C57F373d"
       abi: StableDebtToken
     mapping:
       kind: ethereum/events
@@ -453,7 +453,7 @@ dataSources:
     name: VariableDebtToken4
     network: celo
     source:
-      address: "0x0301Cf8F1FCD9255BD32FB7e0fE5B3494f445C2C"
+      address: "0xbd408042909351B649DC50353532dEeF6De9fAA9"
       abi: VariableDebtToken
     mapping:
       kind: ethereum/events
@@ -551,7 +551,7 @@ dataSources:
     name: AToken4
     network: celo
     source:
-      address: "0x55bFCED2451b2154e06604D4269c9349F31141e6"
+      address: "0x9802d866fdE4563d088a6619F7CeF82C0B991A55"
       abi: AToken
       startBlock: 0
     mapping:
