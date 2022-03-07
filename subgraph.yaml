@@ -32,7 +32,6 @@ dataSources:
       abis:
         - name: LendingPool
           file: ./abis/LendingPool.json
-
       eventHandlers:
         - event: Borrow(indexed address,address,indexed address,uint256,uint256,uint256,indexed uint16)
           handler: handleBorrowEvent
@@ -72,7 +71,6 @@ dataSources:
       abis:
         - name: DebtToken
           file: ./abis/DebtToken.json
-
       eventHandlers:
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleBorrowAllowanceDelegatedEvent
@@ -120,7 +118,6 @@ dataSources:
       abis:
         - name: DebtToken
           file: ./abis/DebtToken.json
-
       eventHandlers:
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleBorrowAllowanceDelegatedEvent
@@ -144,7 +141,6 @@ dataSources:
       abis:
         - name: DebtToken
           file: ./abis/DebtToken.json
-
       eventHandlers:
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleBorrowAllowanceDelegatedEvent
@@ -168,7 +164,6 @@ dataSources:
       abis:
         - name: DebtToken
           file: ./abis/DebtToken.json
-
       eventHandlers:
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleBorrowAllowanceDelegatedEvent
@@ -192,7 +187,52 @@ dataSources:
       abis:
         - name: DebtToken
           file: ./abis/DebtToken.json
-
+      eventHandlers:
+        - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
+          handler: handleBorrowAllowanceDelegatedEvent
+      file: ./src/DebtToken_Mapping.ts
+  - kind: ethereum/contract
+    name: DebtToken7
+    network: celo
+    source:
+      address: "0x0D00d9A02b85E9274f60A082609f44f7C57F373d"
+      abi: DebtToken
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - BorrowAllowanceDelegated
+        - approveDelegationCall
+        - decreaseAllowanceCall
+        - increaseAllowanceCall
+      abis:
+        - name: DebtToken
+          file: ./abis/DebtToken.json
+      eventHandlers:
+        - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
+          handler: handleBorrowAllowanceDelegatedEvent
+      file: ./src/DebtToken_Mapping.ts
+  - kind: ethereum/contract
+    name: DebtToken8
+    network: celo
+    source:
+      address: "0xbd408042909351B649DC50353532dEeF6De9fAA9"
+      abi: DebtToken
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - BorrowAllowanceDelegated
+        - approveDelegationCall
+        - decreaseAllowanceCall
+        - increaseAllowanceCall
+      abis:
+        - name: DebtToken
+          file: ./abis/DebtToken.json
       eventHandlers:
         - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
           handler: handleBorrowAllowanceDelegatedEvent
@@ -318,6 +358,29 @@ dataSources:
           handler: handleStableTokenBorrowAllowanceDelegated
       file: src/tokenization.ts
   - kind: ethereum/contract
+    name: StableDebtToken4
+    network: celo
+    source:
+      address: "0x0D00d9A02b85E9274f60A082609f44f7C57F373d"
+      abi: StableDebtToken
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - UserReserve
+      abis:
+        - name: StableDebtToken
+          file: ./abis/StableDebtToken.json
+      eventHandlers:
+        - event: Burn(indexed address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleStableTokenBurn
+        - event: Mint(indexed address,indexed address,uint256,uint256,uint256,uint256,uint256,uint256)
+          handler: handleStableTokenMint
+        - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
+          handler: handleStableTokenBorrowAllowanceDelegated
+      file: src/tokenization.ts
+  - kind: ethereum/contract
     name: VariableDebtToken1
     network: celo
     source:
@@ -368,6 +431,29 @@ dataSources:
     network: celo
     source:
       address: "0xAF451D23d6f0FA680113CE2D27a891Aa3587f0C3"
+      abi: VariableDebtToken
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - UserReserve
+      abis:
+        - name: VariableDebtToken
+          file: ./abis/VariableDebtToken.json
+      eventHandlers:
+        - event: Burn(indexed address,uint256,uint256)
+          handler: handleVariableTokenBurn
+        - event: Mint(indexed address,indexed address,uint256,uint256)
+          handler: handleVariableTokenMint
+        - event: BorrowAllowanceDelegated(indexed address,indexed address,address,uint256)
+          handler: handleVariableTokenBorrowAllowanceDelegated
+      file: src/tokenization.ts
+  - kind: ethereum/contract
+    name: VariableDebtToken4
+    network: celo
+    source:
+      address: "0xbd408042909351B649DC50353532dEeF6De9fAA9"
       abi: VariableDebtToken
     mapping:
       kind: ethereum/events
@@ -441,6 +527,31 @@ dataSources:
     network: celo
     source:
       address: "0x7D00cd74FF385c955EA3d79e47BF06bD7386387D"
+      abi: AToken
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - AToken
+        - UserReserve
+      abis:
+        - name: AToken
+          file: ./abis/AToken.json
+      eventHandlers:
+        - event: Burn(indexed address,indexed address,uint256,uint256)
+          handler: handleATokenBurn
+        - event: BalanceTransfer(indexed address,indexed address,uint256,uint256)
+          handler: handleATokenTransfer
+        - event: Mint(indexed address,uint256,uint256)
+          handler: handleATokenMint
+      file: ./src/tokenization.ts
+  - kind: ethereum/contract
+    name: AToken4
+    network: celo
+    source:
+      address: "0x9802d866fdE4563d088a6619F7CeF82C0B991A55"
       abi: AToken
       startBlock: 0
     mapping:
