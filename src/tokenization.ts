@@ -36,8 +36,8 @@ function saveReserve(reserve: Reserve, event: ethereum.Event): void {
 
 function tokenBurn(event: ethereum.Event, from: Address, value: BigInt, index: BigInt): void {
     let aToken = getOrInitAToken(event.address);
-    let userReserve = getOrInitUserReserve(from, aToken.underlyingAssetAddress as Address, event);
-    let poolReserve = getOrInitReserve(aToken.underlyingAssetAddress as Address, event);
+    let userReserve = getOrInitUserReserve(from, aToken.underlyingAssetAddress, event);
+    let poolReserve = getOrInitReserve(aToken.underlyingAssetAddress, event);
 
     let calculatedAmount = rayDiv(value, index);
 
@@ -73,7 +73,7 @@ function tokenBurn(event: ethereum.Event, from: Address, value: BigInt, index: B
 
 function tokenMint(event: ethereum.Event, from: Address, value: BigInt, index: BigInt): void {
     let aToken = getOrInitAToken(event.address);
-    let poolReserve = getOrInitReserve(aToken.underlyingAssetAddress as Address, event);
+    let poolReserve = getOrInitReserve(aToken.underlyingAssetAddress, event);
     let prevtotalATokenSupply = poolReserve.totalATokenSupply;
     poolReserve.totalATokenSupply = poolReserve.totalATokenSupply.plus(value);
     log.info('tokenization::tokenMint::user: {} and prevtotalATokenSupply: {} and amount to add: {} , newtotalATokenSupply: {} ',
@@ -83,7 +83,7 @@ function tokenMint(event: ethereum.Event, from: Address, value: BigInt, index: B
         poolReserve.totalATokenSupply.toString()
         ]
     );
-    let userReserve = getOrInitUserReserve(from, aToken.underlyingAssetAddress as Address, event);
+    let userReserve = getOrInitUserReserve(from, aToken.underlyingAssetAddress, event);
     let calculatedAmount = rayDiv(value, index);
 
     userReserve.scaledATokenBalance = userReserve.scaledATokenBalance.plus(calculatedAmount);
@@ -123,16 +123,16 @@ export function handleATokenTransfer(event: ATokenTransfer): void {
     let aToken = getOrInitAToken(event.address);
     let userFromReserve = getOrInitUserReserve(
         event.params.from,
-        aToken.underlyingAssetAddress as Address,
+        aToken.underlyingAssetAddress,
         event
     );
     let userToReserve = getOrInitUserReserve(
         event.params.to,
-        aToken.underlyingAssetAddress as Address,
+        aToken.underlyingAssetAddress,
         event
     );
 
-    let reserve = getOrInitReserve(aToken.underlyingAssetAddress as Address, event);
+    let reserve = getOrInitReserve(aToken.underlyingAssetAddress, event);
     if (
         userFromReserve.usageAsCollateralEnabled &&
         !userToReserve.usageAsCollateralEnabled
@@ -151,8 +151,8 @@ export function handleVariableTokenBurn(event: VTokenBurn): void {
     let from = event.params.user;
     let value = event.params.amount;
     let index = event.params.index;
-    let userReserve = getOrInitUserReserve(from, vToken.underlyingAssetAddress as Address, event);
-    let poolReserve = getOrInitReserve(vToken.underlyingAssetAddress as Address, event);
+    let userReserve = getOrInitUserReserve(from, vToken.underlyingAssetAddress, event);
+    let poolReserve = getOrInitReserve(vToken.underlyingAssetAddress, event);
 
     let calculatedAmount = rayDiv(value, index);
     userReserve.scaledVariableDebt = userReserve.scaledVariableDebt.minus(calculatedAmount);
@@ -190,7 +190,7 @@ export function handleVariableTokenBurn(event: VTokenBurn): void {
 
 export function handleVariableTokenMint(event: VTokenMint): void {
     let vToken = getOrInitVToken(event.address);
-    let poolReserve = getOrInitReserve(vToken.underlyingAssetAddress as Address, event);
+    let poolReserve = getOrInitReserve(vToken.underlyingAssetAddress, event);
 
     let from = event.params.from;
     if (from.toHexString() != event.params.onBehalfOf.toHexString()) {
@@ -200,7 +200,7 @@ export function handleVariableTokenMint(event: VTokenMint): void {
     let value = event.params.value;
     let index = event.params.index;
 
-    let userReserve = getOrInitUserReserve(from, vToken.underlyingAssetAddress as Address, event);
+    let userReserve = getOrInitUserReserve(from, vToken.underlyingAssetAddress, event);
 
     let user = getOrInitUser(event.params.from);
     if (
@@ -240,9 +240,9 @@ export function handleStableTokenMint(event: STokenMint): void {
     if (from.toHexString() != event.params.onBehalfOf.toHexString()) {
         from = event.params.onBehalfOf;
     }
-    let userReserve = getOrInitUserReserve(from, sToken.underlyingAssetAddress as Address, event);
+    let userReserve = getOrInitUserReserve(from, sToken.underlyingAssetAddress, event);
 
-    let poolReserve = getOrInitReserve(sToken.underlyingAssetAddress as Address, event);
+    let poolReserve = getOrInitReserve(sToken.underlyingAssetAddress, event);
 
     let user = getOrInitUser(from);
     if (
@@ -279,10 +279,10 @@ export function handleStableTokenBurn(event: STokenBurn): void {
     let sToken = getOrInitSToken(sTokenAddress);
     let userReserve = getOrInitUserReserve(
         event.params.user,
-        sToken.underlyingAssetAddress as Address,
+        sToken.underlyingAssetAddress,
         event
     );
-    let poolReserve = getOrInitReserve(sToken.underlyingAssetAddress as Address, event);
+    let poolReserve = getOrInitReserve(sToken.underlyingAssetAddress, event);
     let balanceIncrease = event.params.balanceIncrease;
     let amount = event.params.amount;
 
@@ -332,7 +332,6 @@ export function handleStableTokenBorrowAllowanceDelegated(event: SBorrowAllowanc
     let amount = event.params.amount;
 
     let userReserve = getOrInitUserReserve(fromUser, asset, event);
-    let fromUserAllawance = getOrInitUser(fromUser);
     let toUserAllawance = getOrInitUser(toUser);
 
     let delegatedAllowanceId =
@@ -355,7 +354,6 @@ export function handleVariableTokenBorrowAllowanceDelegated(
     let toUser = event.params.toUser;
     let asset = event.params.asset;
     let amount = event.params.amount;
-    let fromUserAllawance = getOrInitUser(fromUser);
     let toUserAllawance = getOrInitUser(toUser);
 
     let userReserve = getOrInitUserReserve(fromUser, asset, event);
