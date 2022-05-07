@@ -183,7 +183,7 @@ export function handleVariableTokenBurn(event: VTokenBurn): void {
         userReserve.scaledVariableDebt.equals(zeroBI()) &&
         userReserve.principalStableDebt.equals(zeroBI())
     ) {
-        user.lastUpdatedTimestamp = event.block.timestamp
+        user.lastUpdatedTimestamp = event.block.timestamp.toI32()
         user.save();
     }
 
@@ -208,7 +208,7 @@ export function handleVariableTokenMint(event: VTokenMint): void {
         userReserve.scaledVariableDebt.equals(zeroBI()) &&
         userReserve.principalStableDebt.equals(zeroBI())
     ) {
-        user.lastUpdatedTimestamp = event.block.timestamp
+        user.lastUpdatedTimestamp = event.block.timestamp.toI32()
         user.save();
     }
 
@@ -251,7 +251,7 @@ export function handleStableTokenMint(event: STokenMint): void {
         userReserve.scaledVariableDebt.equals(zeroBI()) &&
         userReserve.principalStableDebt.equals(zeroBI())
     ) {
-        user.lastUpdatedTimestamp = event.block.timestamp
+        user.lastUpdatedTimestamp = event.block.timestamp.toI32()
         user.save();
     }
 
@@ -324,7 +324,7 @@ export function handleStableTokenBurn(event: STokenBurn): void {
         userReserve.scaledVariableDebt.equals(zeroBI()) &&
         userReserve.principalStableDebt.equals(zeroBI())
     ) {
-        user.lastUpdatedTimestamp = event.block.timestamp
+        user.lastUpdatedTimestamp = event.block.timestamp.toI32()
         user.save();
     }
 }
