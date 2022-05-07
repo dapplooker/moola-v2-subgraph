@@ -121,6 +121,7 @@ type AToken @entity {
   id: ID!
   underlyingAssetAddress: Bytes!
   underlyingAssetDecimals: Int!
+  lastUpdatedTimestamp: Int!
 }
 
 type UserReserve @entity {
@@ -138,7 +139,7 @@ type UserReserve @entity {
   currentStableDebt: BigInt!
   currentTotalDebt: BigInt!
   liquidityRate: BigInt!
-  lastUpdateTimestamp: Int!
+  lastUpdatedTimestamp: Int!
   usageAsCollateralEnabled: Boolean!
 }
 
@@ -148,6 +149,7 @@ type User @entity {
   """
   id: ID!
   reserves: [UserReserve!]! @derivedFrom(field: "user")
+  lastUpdatedTimestamp: Int!
 }
 
 type Reserve @entity {
@@ -166,7 +168,7 @@ type Reserve @entity {
   totalScaledVariableDebt: BigInt! # default: 0
   totalCurrentVariableDebt: BigInt! # default: 0
   totalDeposits: BigInt! # default: 0
-  lastUpdateTimestamp: Int!
+  lastUpdatedTimestamp: Int!
   liquidityRate: BigInt!
   userReserves: [UserReserve!]! @derivedFrom(field: "reserve")
 }
@@ -189,6 +191,7 @@ type SToken @entity {
   id: ID!
   underlyingAssetAddress: Bytes!
   underlyingAssetDecimals: Int!
+  lastUpdatedTimestamp: Int!
 }
 
 type VToken @entity {
@@ -198,6 +201,7 @@ type VToken @entity {
   id: ID!
   underlyingAssetAddress: Bytes!
   underlyingAssetDecimals: Int!
+  lastUpdatedTimestamp: Int!
 }
 
 type StableTokenDelegatedAllowance @entity {
@@ -209,6 +213,7 @@ type StableTokenDelegatedAllowance @entity {
   toUser: User!
   amountAllowed: BigInt!
   userReserve: UserReserve!
+  lastUpdatedTimestamp: Int!
 }
 
 type VariableTokenDelegatedAllowance @entity {
@@ -220,4 +225,5 @@ type VariableTokenDelegatedAllowance @entity {
   toUser: User!
   amountAllowed: BigInt!
   userReserve: UserReserve!
+  lastUpdatedTimestamp: Int!
 }

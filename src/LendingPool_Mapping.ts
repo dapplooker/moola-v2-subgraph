@@ -39,7 +39,7 @@ export function handleBorrowEvent(event: BorrowEvent): void {
     entity.fromAddress = event.transaction.from
     entity.toAddress = event.transaction.to
     entity.valueTransferred = event.transaction.value
-    entity.gasUsed = event.transaction.gasLimit
+    entity.gasUsed = event.transaction.gasUsed
     entity.gasPrice = event.transaction.gasPrice
     entity.blockTimestamp = event.block.timestamp
     entity.reserve = event.params.reserve
@@ -62,7 +62,7 @@ export function handleDepositEvent(event: DepositEvent): void {
     entity.fromAddress = event.transaction.from
     entity.toAddress = event.transaction.to
     entity.valueTransferred = event.transaction.value
-    entity.gasUsed = event.transaction.gasLimit
+    entity.gasUsed = event.transaction.gasUsed
     entity.gasPrice = event.transaction.gasPrice
     entity.blockTimestamp = event.block.timestamp
     entity.reserve = event.params.reserve
@@ -87,7 +87,7 @@ export function handleFlashLoanEvent(event: FlashLoanEvent): void {
     entity.fromAddress = event.transaction.from
     entity.toAddress = event.transaction.to
     entity.valueTransferred = event.transaction.value
-    entity.gasUsed = event.transaction.gasLimit
+    entity.gasUsed = event.transaction.gasUsed
     entity.gasPrice = event.transaction.gasPrice
     entity.blockTimestamp = event.block.timestamp
     entity.target = event.params.target
@@ -111,7 +111,7 @@ export function handleRepayEvent(event: RepayEvent): void {
     entity.fromAddress = event.transaction.from
     entity.toAddress = event.transaction.to
     entity.valueTransferred = event.transaction.value
-    entity.gasUsed = event.transaction.gasLimit
+    entity.gasUsed = event.transaction.gasUsed
     entity.gasPrice = event.transaction.gasPrice
     entity.blockTimestamp = event.block.timestamp
     entity.reserve = event.params.reserve
@@ -131,7 +131,7 @@ export function handleSwapEvent(event: SwapEvent): void {
     entity.fromAddress = event.transaction.from
     entity.toAddress = event.transaction.to
     entity.valueTransferred = event.transaction.value
-    entity.gasUsed = event.transaction.gasLimit
+    entity.gasUsed = event.transaction.gasUsed
     entity.gasPrice = event.transaction.gasPrice
     entity.blockTimestamp = event.block.timestamp
     entity.reserve = event.params.reserve
@@ -151,7 +151,7 @@ export function handleWithdrawEvent(event: WithdrawEvent): void {
     entity.fromAddress = event.transaction.from
     entity.toAddress = event.transaction.to
     entity.valueTransferred = event.transaction.value
-    entity.gasUsed = event.transaction.gasLimit
+    entity.gasUsed = event.transaction.gasUsed
     entity.gasPrice = event.transaction.gasPrice
     entity.blockTimestamp = event.block.timestamp
     entity.reserve = event.params.reserve
@@ -175,7 +175,7 @@ export function handleReserveUsedAsCollateralEnabled(event: ReserveUsedAsCollate
     usageAsCollateral.save();
 
     userReserve.usageAsCollateralEnabled = true;
-    userReserve.lastUpdateTimestamp = timestamp;
+    userReserve.lastUpdatedTimestamp = timestamp;
     userReserve.save();
 }
 
@@ -196,14 +196,14 @@ export function handleReserveUsedAsCollateralDisabled(
     usageAsCollateral.save();
 
     userReserve.usageAsCollateralEnabled = false;
-    userReserve.lastUpdateTimestamp = timestamp;
+    userReserve.lastUpdatedTimestamp = timestamp;
     userReserve.save();
 }
 
 export function handleReserveDataUpdated(event: ReserveDataUpdated): void {
     let reserve = getOrInitReserve(event.params.reserve, event);
     let timestamp = event.block.timestamp;
-    let prevTimestamp = BigInt.fromI32(reserve.lastUpdateTimestamp);
+    let prevTimestamp = BigInt.fromI32(reserve.lastUpdatedTimestamp);
     if (timestamp.gt(prevTimestamp)) {
         let growth = calculateGrowth(
             reserve.totalATokenSupply,
@@ -214,6 +214,6 @@ export function handleReserveDataUpdated(event: ReserveDataUpdated): void {
         reserve.totalATokenSupply = reserve.totalATokenSupply.plus(growth);
     }
     reserve.liquidityRate = event.params.liquidityRate;
-    reserve.lastUpdateTimestamp = event.block.timestamp.toI32();
+    reserve.lastUpdatedTimestamp = event.block.timestamp.toI32();
     reserve.save();
 }

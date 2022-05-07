@@ -29,7 +29,7 @@ function tokenBurn(event: ethereum.Event, from: Address, value: BigInt, index: B
 
 
     poolReserve.save();
-    userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
+    userReserve.lastUpdatedTimestamp = event.block.timestamp.toI32();
     userReserve.save();
     //saveUserReserveAHistory(userReserve, event, index);
 }
@@ -44,7 +44,7 @@ function tokenMint(event: ethereum.Event, from: Address, value: BigInt, index: B
     userReserve.scaledATokenBalance = userReserve.scaledATokenBalance.plus(calculatedAmount);
     userReserve.currentATokenBalance = rayMul(userReserve.scaledATokenBalance, index);
     userReserve.liquidityRate = poolReserve.liquidityRate;
-    userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
+    userReserve.lastUpdatedTimestamp = event.block.timestamp.toI32();
 
     userReserve.save();
 

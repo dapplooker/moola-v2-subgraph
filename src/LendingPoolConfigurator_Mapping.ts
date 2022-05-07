@@ -53,6 +53,7 @@ export function handleReserveInitialized(event: ReserveInitialized): void {
   let aToken = getOrInitAToken(event.params.aToken);
   aToken.underlyingAssetAddress = reserve.underlyingAsset;
   aToken.underlyingAssetDecimals = reserve.decimals;
+  aToken.lastUpdatedTimestamp = event.block.timestamp;
   aToken.save();
 
   // STokenContract.create(event.params.stableDebtToken);
@@ -60,6 +61,7 @@ export function handleReserveInitialized(event: ReserveInitialized): void {
   let sToken = getOrInitSToken(event.params.stableDebtToken);
   sToken.underlyingAssetAddress = reserve.underlyingAsset;
   sToken.underlyingAssetDecimals = reserve.decimals;
+  sToken.lastUpdatedTimestamp = event.block.timestamp;
   sToken.save();
 
   // VTokenContract.create(event.params.variableDebtToken);
@@ -67,6 +69,8 @@ export function handleReserveInitialized(event: ReserveInitialized): void {
   let vToken = getOrInitVToken(event.params.variableDebtToken);
   vToken.underlyingAssetAddress = reserve.underlyingAsset;
   vToken.underlyingAssetDecimals = reserve.decimals;
+  reserve.lastUpdatedTimestamp = event.block.timestamp;
+  vToken.lastUpdatedTimestamp = event.block.timestamp;
   vToken.save();
   reserve.save();
 }

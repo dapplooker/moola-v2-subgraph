@@ -47,7 +47,7 @@ export function getOrInitReserve(underlyingAsset: Bytes, event: ethereum.Event):
         reserve.totalCurrentVariableDebt = zeroBI();
         reserve.totalPrincipalStableDebt = zeroBI();
         reserve.totalDeposits = zeroBI();
-        reserve.lastUpdateTimestamp = 0;
+        reserve.lastUpdatedTimestamp = 0;
     }
     return reserve as Reserve;
 }
@@ -69,7 +69,7 @@ function initUserReserve(
         userReserve.currentVariableDebt = zeroBI();
         userReserve.currentStableDebt = zeroBI();
         userReserve.currentTotalDebt = zeroBI();
-        userReserve.lastUpdateTimestamp = 0;
+        userReserve.lastUpdatedTimestamp = 0;
         userReserve.liquidityRate = zeroBI();
         userReserve.usageAsCollateralEnabled = false;
         let user = getOrInitUser(userAddress);
