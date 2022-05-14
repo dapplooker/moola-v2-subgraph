@@ -21,7 +21,7 @@ export function handleBorrowAllowanceDelegatedEvent(
     entity.fromAddress = event.transaction.from
     entity.toAddress = event.transaction.to
     entity.valueTransferred = event.transaction.value
-    entity.gasUsed = event.transaction.gasUsed
+    entity.gasUsed = event.transaction.gasLimit
     entity.gasPrice = event.transaction.gasPrice
     entity.blockTimestamp = event.block.timestamp
     entity.fromUser = event.params.fromUser

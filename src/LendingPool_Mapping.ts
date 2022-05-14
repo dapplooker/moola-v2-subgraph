@@ -39,7 +39,7 @@ export function handleBorrowEvent(event: BorrowEvent): void {
     entity.fromAddress = event.transaction.from
     entity.toAddress = event.transaction.to
     entity.valueTransferred = event.transaction.value
-    entity.gasUsed = event.transaction.gasUsed
+    entity.gasUsed = event.transaction.gasLimit
     entity.gasPrice = event.transaction.gasPrice
     entity.blockTimestamp = event.block.timestamp
     entity.reserve = event.params.reserve
@@ -62,7 +62,7 @@ export function handleDepositEvent(event: DepositEvent): void {
     entity.fromAddress = event.transaction.from
     entity.toAddress = event.transaction.to
     entity.valueTransferred = event.transaction.value
-    entity.gasUsed = event.transaction.gasUsed
+    entity.gasUsed = event.transaction.gasLimit
     entity.gasPrice = event.transaction.gasPrice
     entity.blockTimestamp = event.block.timestamp
     entity.reserve = event.params.reserve
@@ -87,7 +87,7 @@ export function handleFlashLoanEvent(event: FlashLoanEvent): void {
     entity.fromAddress = event.transaction.from
     entity.toAddress = event.transaction.to
     entity.valueTransferred = event.transaction.value
-    entity.gasUsed = event.transaction.gasUsed
+    entity.gasUsed = event.transaction.gasLimit
     entity.gasPrice = event.transaction.gasPrice
     entity.blockTimestamp = event.block.timestamp
     entity.target = event.params.target
@@ -111,7 +111,7 @@ export function handleRepayEvent(event: RepayEvent): void {
     entity.fromAddress = event.transaction.from
     entity.toAddress = event.transaction.to
     entity.valueTransferred = event.transaction.value
-    entity.gasUsed = event.transaction.gasUsed
+    entity.gasUsed = event.transaction.gasLimit
     entity.gasPrice = event.transaction.gasPrice
     entity.blockTimestamp = event.block.timestamp
     entity.reserve = event.params.reserve
@@ -131,7 +131,7 @@ export function handleSwapEvent(event: SwapEvent): void {
     entity.fromAddress = event.transaction.from
     entity.toAddress = event.transaction.to
     entity.valueTransferred = event.transaction.value
-    entity.gasUsed = event.transaction.gasUsed
+    entity.gasUsed = event.transaction.gasLimit
     entity.gasPrice = event.transaction.gasPrice
     entity.blockTimestamp = event.block.timestamp
     entity.reserve = event.params.reserve
@@ -151,7 +151,7 @@ export function handleWithdrawEvent(event: WithdrawEvent): void {
     entity.fromAddress = event.transaction.from
     entity.toAddress = event.transaction.to
     entity.valueTransferred = event.transaction.value
-    entity.gasUsed = event.transaction.gasUsed
+    entity.gasUsed = event.transaction.gasLimit
     entity.gasPrice = event.transaction.gasPrice
     entity.blockTimestamp = event.block.timestamp
     entity.reserve = event.params.reserve

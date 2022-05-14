@@ -332,18 +332,19 @@ export function handleStableTokenBurn(event: STokenBurn): void {
 export function handleStableTokenBorrowAllowanceDelegated(event: SBorrowAllowanceDelegated): void {
     let fromUser = event.params.fromUser;
     let toUser = event.params.toUser;
+    let toUserAllowance = getOrInitUser(toUser);
     let asset = event.params.asset;
     let amount = event.params.amount;
 
     let userReserve = getOrInitUserReserve(fromUser, asset, event);
 
-    let delegatedAllowanceId =
-        'stable' + fromUser.toHexString() + toUser.toHexString() + asset.toHexString();
+    let delegatedAllowanceId = 'stable' + fromUser.toHexString() + toUser.toHexString() + asset.toHexString();
     let delegatedAllowance = StableTokenDelegatedAllowance.load(delegatedAllowanceId);
     if (delegatedAllowance == null) {
+        log.info('tokenization::handleStableTokenBorrowAllowanceDelegated:: Creating new entry with user: {}', [toUser.toHexString()]);
         delegatedAllowance = new StableTokenDelegatedAllowance(delegatedAllowanceId);
         delegatedAllowance.fromUser = fromUser.toHexString();
-        delegatedAllowance.toUser = toUser.toHexString();
+        delegatedAllowance.toUser = toUserAllowance.id;
         delegatedAllowance.userReserve = userReserve.id;
     }
     delegatedAllowance.amountAllowed = amount;
@@ -358,17 +359,16 @@ export function handleVariableTokenBorrowAllowanceDelegated(
     let toUser = event.params.toUser;
     let asset = event.params.asset;
     let amount = event.params.amount;
-    let toUserAllawance = getOrInitUser(toUser);
+    let toUserAllowance = getOrInitUser(toUser);
 
     let userReserve = getOrInitUserReserve(fromUser, asset, event);
 
-    let delegatedAllowanceId =
-        'variable' + fromUser.toHexString() + toUser.toHexString() + asset.toHexString();
+    let delegatedAllowanceId = 'variable' + fromUser.toHexString() + toUser.toHexString() + asset.toHexString();
     let delegatedAllowance = VariableTokenDelegatedAllowance.load(delegatedAllowanceId);
     if (delegatedAllowance == null) {
         delegatedAllowance = new VariableTokenDelegatedAllowance(delegatedAllowanceId);
         delegatedAllowance.fromUser = fromUser.toHexString();
-        delegatedAllowance.toUser = toUser.toHexString();
+        delegatedAllowance.toUser = toUserAllowance.id;
         delegatedAllowance.userReserve = userReserve.id;
     }
     delegatedAllowance.amountAllowed = amount;
