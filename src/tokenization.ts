@@ -67,7 +67,7 @@ function tokenBurn(event: ethereum.Event, from: Address, value: BigInt, index: B
         ]);
     saveReserve(poolReserve, event);
 
-    userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
+    userReserve.lastUpdatedTimestamp = event.block.timestamp.toI32();
     userReserve.save();
 }
 
@@ -99,7 +99,7 @@ function tokenMint(event: ethereum.Event, from: Address, value: BigInt, index: B
         ]
     );
     userReserve.liquidityRate = poolReserve.liquidityRate;
-    userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
+    userReserve.lastUpdatedTimestamp = event.block.timestamp.toI32();
 
     userReserve.save();
 
@@ -173,7 +173,7 @@ export function handleVariableTokenBurn(event: VTokenBurn): void {
     poolReserve.totalCurrentVariableDebt = rayMul(poolReserve.totalScaledVariableDebt, index);
 
     userReserve.liquidityRate = poolReserve.liquidityRate;
-    userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
+    userReserve.lastUpdatedTimestamp = event.block.timestamp.toI32();
     userReserve.save();
 
     saveReserve(poolReserve, event);
@@ -183,6 +183,7 @@ export function handleVariableTokenBurn(event: VTokenBurn): void {
         userReserve.scaledVariableDebt.equals(zeroBI()) &&
         userReserve.principalStableDebt.equals(zeroBI())
     ) {
+        user.lastUpdatedTimestamp = event.block.timestamp.toI32()
         user.save();
     }
 
@@ -207,6 +208,7 @@ export function handleVariableTokenMint(event: VTokenMint): void {
         userReserve.scaledVariableDebt.equals(zeroBI()) &&
         userReserve.principalStableDebt.equals(zeroBI())
     ) {
+        user.lastUpdatedTimestamp = event.block.timestamp.toI32()
         user.save();
     }
 
@@ -226,7 +228,7 @@ export function handleVariableTokenMint(event: VTokenMint): void {
         ]
     );
     userReserve.liquidityRate = poolReserve.liquidityRate;
-    userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
+    userReserve.lastUpdatedTimestamp = event.block.timestamp.toI32();
     userReserve.save();
 
     poolReserve.totalScaledVariableDebt = poolReserve.totalScaledVariableDebt.plus(calculatedAmount);
@@ -249,6 +251,7 @@ export function handleStableTokenMint(event: STokenMint): void {
         userReserve.scaledVariableDebt.equals(zeroBI()) &&
         userReserve.principalStableDebt.equals(zeroBI())
     ) {
+        user.lastUpdatedTimestamp = event.block.timestamp.toI32()
         user.save();
     }
 
@@ -270,7 +273,7 @@ export function handleStableTokenMint(event: STokenMint): void {
         userReserve.currentTotalDebt.toString()
         ]);
     userReserve.liquidityRate = poolReserve.liquidityRate;
-    userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
+    userReserve.lastUpdatedTimestamp = event.block.timestamp.toI32();
     userReserve.save();
 }
 
@@ -313,7 +316,7 @@ export function handleStableTokenBurn(event: STokenBurn): void {
     );
     userReserve.liquidityRate = poolReserve.liquidityRate;
 
-    userReserve.lastUpdateTimestamp = event.block.timestamp.toI32();
+    userReserve.lastUpdatedTimestamp = event.block.timestamp.toI32();
     userReserve.save();
 
     let user = getOrInitUser(event.params.user);
@@ -321,6 +324,7 @@ export function handleStableTokenBurn(event: STokenBurn): void {
         userReserve.scaledVariableDebt.equals(zeroBI()) &&
         userReserve.principalStableDebt.equals(zeroBI())
     ) {
+        user.lastUpdatedTimestamp = event.block.timestamp.toI32()
         user.save();
     }
 }
@@ -328,22 +332,23 @@ export function handleStableTokenBurn(event: STokenBurn): void {
 export function handleStableTokenBorrowAllowanceDelegated(event: SBorrowAllowanceDelegated): void {
     let fromUser = event.params.fromUser;
     let toUser = event.params.toUser;
+    let toUserAllowance = getOrInitUser(toUser);
     let asset = event.params.asset;
     let amount = event.params.amount;
 
     let userReserve = getOrInitUserReserve(fromUser, asset, event);
-    let toUserAllawance = getOrInitUser(toUser);
 
-    let delegatedAllowanceId =
-        'stable' + fromUser.toHexString() + toUser.toHexString() + asset.toHexString();
+    let delegatedAllowanceId = 'stable' + fromUser.toHexString() + toUser.toHexString() + asset.toHexString();
     let delegatedAllowance = StableTokenDelegatedAllowance.load(delegatedAllowanceId);
     if (delegatedAllowance == null) {
+        log.info('tokenization::handleStableTokenBorrowAllowanceDelegated:: Creating new entry with user: {}', [toUser.toHexString()]);
         delegatedAllowance = new StableTokenDelegatedAllowance(delegatedAllowanceId);
         delegatedAllowance.fromUser = fromUser.toHexString();
-        delegatedAllowance.toUser = toUser.toHexString();
+        delegatedAllowance.toUser = toUserAllowance.id;
         delegatedAllowance.userReserve = userReserve.id;
     }
     delegatedAllowance.amountAllowed = amount;
+    delegatedAllowance.lastUpdatedTimestamp = userReserve.lastUpdatedTimestamp
     delegatedAllowance.save();
 }
 
@@ -354,19 +359,19 @@ export function handleVariableTokenBorrowAllowanceDelegated(
     let toUser = event.params.toUser;
     let asset = event.params.asset;
     let amount = event.params.amount;
-    let toUserAllawance = getOrInitUser(toUser);
+    let toUserAllowance = getOrInitUser(toUser);
 
     let userReserve = getOrInitUserReserve(fromUser, asset, event);
 
-    let delegatedAllowanceId =
-        'variable' + fromUser.toHexString() + toUser.toHexString() + asset.toHexString();
+    let delegatedAllowanceId = 'variable' + fromUser.toHexString() + toUser.toHexString() + asset.toHexString();
     let delegatedAllowance = VariableTokenDelegatedAllowance.load(delegatedAllowanceId);
     if (delegatedAllowance == null) {
         delegatedAllowance = new VariableTokenDelegatedAllowance(delegatedAllowanceId);
         delegatedAllowance.fromUser = fromUser.toHexString();
-        delegatedAllowance.toUser = toUser.toHexString();
+        delegatedAllowance.toUser = toUserAllowance.id;
         delegatedAllowance.userReserve = userReserve.id;
     }
     delegatedAllowance.amountAllowed = amount;
+    delegatedAllowance.lastUpdatedTimestamp = userReserve.lastUpdatedTimestamp
     delegatedAllowance.save();
 }

@@ -16,6 +16,7 @@ export function getOrInitUser(address: Bytes): User {
     let user = User.load(address.toHexString());
     if (!user) {
         user = new User(address.toHexString());
+        user.lastUpdatedTimestamp = 0;
         user.save();
     }
     return user as User;
@@ -47,7 +48,7 @@ export function getOrInitReserve(underlyingAsset: Bytes, event: ethereum.Event):
         reserve.totalCurrentVariableDebt = zeroBI();
         reserve.totalPrincipalStableDebt = zeroBI();
         reserve.totalDeposits = zeroBI();
-        reserve.lastUpdateTimestamp = 0;
+        reserve.lastUpdatedTimestamp = 0;
     }
     return reserve as Reserve;
 }
@@ -69,9 +70,9 @@ function initUserReserve(
         userReserve.currentVariableDebt = zeroBI();
         userReserve.currentStableDebt = zeroBI();
         userReserve.currentTotalDebt = zeroBI();
-        userReserve.lastUpdateTimestamp = 0;
         userReserve.liquidityRate = zeroBI();
         userReserve.usageAsCollateralEnabled = false;
+        userReserve.lastUpdatedTimestamp = 0;
         let user = getOrInitUser(userAddress);
         userReserve.user = user.id;
 
